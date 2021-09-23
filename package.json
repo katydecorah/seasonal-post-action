@@ -1,0 +1,42 @@
+{
+  "name": "seasonal-post-action",
+  "version": "0.0.0",
+  "description": "A GitHub action that generates an RSS feed from a list of public Instagram accounts",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "jest",
+    "pretty-quick": "pretty-quick",
+    "build": "ncc build src/index.js",
+    "prepare": "husky install"
+  },
+  "author": "Katy DeCorah",
+  "license": "MIT",
+  "devDependencies": {
+    "@actions/core": "^1.2.6",
+    "@babel/eslint-parser": "^7.15.7",
+    "@zeit/ncc": "^0.22.3",
+    "eslint": "^7.20.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "husky": "^7.0.2",
+    "jest": "^27.2.1",
+    "js-yaml": "^4.0.0",
+    "prettier": "^2.2.1",
+    "pretty-quick": "^3.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/katydecorah/instagram-rss-action.git"
+  },
+  "keywords": [
+    "github-actions"
+  ],
+  "bugs": {
+    "url": "https://github.com/katydecorah/instagram-rss-action/issues"
+  },
+  "homepage": "https://github.com/katydecorah/instagram-rss-action#readme"
+}
