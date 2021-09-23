@@ -83,7 +83,7 @@ ${recipes
   setFailed(error.message);
 }
 
-async function getDataFile(file) {
+export async function getDataFile(file) {
   try {
     const { data } = await octokit.rest.repos.getContent({
       mediaType: {
@@ -99,11 +99,11 @@ async function getDataFile(file) {
   }
 }
 
-function filter(data, field, start, end) {
+export function filter(data, field, start, end) {
   return data.filter((f) => f[field] >= start && f[field] <= end);
 }
 
-function findSeason() {
+export function findSeason() {
   const today = new Date();
   const month = today.getMonth();
   const year = today.getFullYear();
