@@ -1,15 +1,13 @@
 import { Octokit } from "octokit";
 import { load, dump } from "js-yaml";
 import { writeFileSync } from "fs";
-import { exportVariable, setFailed, warning } from "@actions/core";
+import { exportVariable, setFailed, warning, getInput } from "@actions/core";
+const GITHUB_TOKEN = getInput("repo-token");
+const octokit = new Octokit({
+  auth: GITHUB_TOKEN,
+});
 
 const main = async () => {
-  const GITHUB_TOKEN = core.getInput("repo-token");
-
-  const octokit = new Octokit({
-    auth: GITHUB_TOKEN,
-  });
-
   try {
     const { start, end, season, year, name } = findSeason();
     const image = `${year}-${season.toLowerCase()}.png`;
@@ -90,7 +88,7 @@ ${recipes
   }
 };
 
-main().catch((err) => core.setFailed(err.message));
+main().catch((err) => setFailed(err.message));
 
 export async function getDataFile(file) {
   try {

@@ -14381,14 +14381,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+const GITHUB_TOKEN = Object(_actions_core__WEBPACK_IMPORTED_MODULE_3__.getInput)("repo-token");
+const octokit = new octokit__WEBPACK_IMPORTED_MODULE_0__.Octokit({
+  auth: GITHUB_TOKEN,
+});
 
 const main = async () => {
-  const GITHUB_TOKEN = core.getInput('repo-token');
-
-  const octokit = new octokit__WEBPACK_IMPORTED_MODULE_0__.Octokit({
-    auth: GITHUB_TOKEN
-  });
-
   try {
     const { start, end, season, year, name } = findSeason();
     const image = `${year}-${season.toLowerCase()}.png`;
@@ -14440,22 +14438,23 @@ The books, music, and recipes I enjoyed this ${season.toLowerCase()}.
 ## Books
 
 ${books
-          .map(({ title, authors, url }) => `* [${title}](${url}) - ${authors}`)
-          .join("\n")}
+  .map(({ title, authors, url }) => `* [${title}](${url}) - ${authors}`)
+  .join("\n")}
 
 ## Playlist
 
-${playlist &&
-        playlist.tracks
-          .map(({ track, artist }) => `* ${track} - ${artist}`)
-          .join("\n")
-        }
+${
+  playlist &&
+  playlist.tracks
+    .map(({ track, artist }) => `* ${track} - ${artist}`)
+    .join("\n")
+}
 
 ## Recipes
 
 ${recipes
-          .map(({ title, site, url }) => `* [${title}](${url}) - ${site}`)
-          .join("\n")}
+  .map(({ title, site, url }) => `* [${title}](${url}) - ${site}`)
+  .join("\n")}
 `;
 
       Object(fs__WEBPACK_IMPORTED_MODULE_2__.writeFileSync)(
@@ -14466,11 +14465,9 @@ ${recipes
   } catch (error) {
     Object(_actions_core__WEBPACK_IMPORTED_MODULE_3__.setFailed)(error.message);
   }
-}
+};
 
-main().catch(err => core.setFailed(err.message))
-
-
+main().catch((err) => Object(_actions_core__WEBPACK_IMPORTED_MODULE_3__.setFailed)(err.message));
 
 async function getDataFile(file) {
   try {
