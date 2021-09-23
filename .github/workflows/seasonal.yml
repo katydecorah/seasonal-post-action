@@ -10,7 +10,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Write seasonal post
-        uses: ./bin/season.js
+        uses: ./
         env:
           GITHUB_TOKEN: ${{ secrets.GitHubToken }}
       - name: Commit files
