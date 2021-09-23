@@ -3,46 +3,49 @@ import { load, dump } from "js-yaml";
 import { writeFileSync } from "fs";
 import { exportVariable, setFailed, warning } from "@actions/core";
 
-const octokit = new Octokit({
-  auth: process.env.GITHUB_TOKEN,
-});
+const main = async () => {
+  const GITHUB_TOKEN = core.getInput("repo-token");
 
-try {
-  const { start, end, season, year, name } = findSeason();
-  const image = `${year}-${season.toLowerCase()}.png`;
+  const octokit = new Octokit({
+    auth: GITHUB_TOKEN,
+  });
 
-  exportVariable("season", name);
+  try {
+    const { start, end, season, year, name } = findSeason();
+    const image = `${year}-${season.toLowerCase()}.png`;
 
-  (async () => {
-    // fetch books
-    const bookData = await getDataFile("read.yml");
-    if (!bookData.length) setFailed("Did not find books.");
-    const books = filterData(bookData, "dateFinished", start, end).map(
-      ({ title, authors, canonicalVolumeLink, isbn }) => ({
-        title,
-        authors: authors.join(", "),
-        url: canonicalVolumeLink,
-        isbn,
-      })
-    );
+    exportVariable("season", name);
 
-    // fetch recipes
-    const recipeData = await getDataFile("recipes.yml");
-    if (!recipeData.length) setFailed("Did not find recipes.");
-    const recipes = filterData(recipeData, "date", start, end).map(
-      ({ title, site, url }) => ({
-        title,
-        site,
-        url,
-      })
-    );
+    (async () => {
+      // fetch books
+      const bookData = await getDataFile("read.yml");
+      if (!bookData.length) setFailed("Did not find books.");
+      const books = filterData(bookData, "dateFinished", start, end).map(
+        ({ title, authors, canonicalVolumeLink, isbn }) => ({
+          title,
+          authors: authors.join(", "),
+          url: canonicalVolumeLink,
+          isbn,
+        })
+      );
 
-    // fetch playlist
-    const playlistData = await getDataFile("playlists.yml");
-    if (!playlistData.length) setFailed("Did not find playlists.");
-    const playlist = playlistData.find(({ playlist }) => playlist === name);
+      // fetch recipes
+      const recipeData = await getDataFile("recipes.yml");
+      if (!recipeData.length) setFailed("Did not find recipes.");
+      const recipes = filterData(recipeData, "date", start, end).map(
+        ({ title, site, url }) => ({
+          title,
+          site,
+          url,
+        })
+      );
 
-    const md = `---
+      // fetch playlist
+      const playlistData = await getDataFile("playlists.yml");
+      if (!playlistData.length) setFailed("Did not find playlists.");
+      const playlist = playlistData.find(({ playlist }) => playlist === name);
+
+      const md = `---
 title: ${year} ${season}
 image: ${image}
 type: season
@@ -77,14 +80,17 @@ ${recipes
   .join("\n")}
 `;
 
-    writeFileSync(
-      `./notes/_posts/${end}-${year}-${season.toLowerCase()}.md`,
-      md
-    );
-  })();
-} catch (error) {
-  setFailed(error.message);
-}
+      writeFileSync(
+        `./notes/_posts/${end}-${year}-${season.toLowerCase()}.md`,
+        md
+      );
+    })();
+  } catch (error) {
+    setFailed(error.message);
+  }
+};
+
+main().catch((err) => core.setFailed(err.message));
 
 export async function getDataFile(file) {
   try {
