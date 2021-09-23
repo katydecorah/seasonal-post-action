@@ -1,7 +1,7 @@
 import { Octokit } from "octokit";
 import { load, dump } from "js-yaml";
 import { writeFileSync } from "fs";
-import { exportVariable, setFailed } from "@actions/core";
+import { exportVariable, setFailed, warning } from "@actions/core";
 
 const octokit = new Octokit({
   auth: process.env.GITHUB_TOKEN,
@@ -96,6 +96,7 @@ export async function getDataFile(file) {
       repo: "has",
       path: `_data/${file}`,
     });
+    warning(data);
     return load(data);
   } catch (err) {
     setFailed(err);
