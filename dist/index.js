@@ -14395,6 +14395,7 @@ try {
   (async () => {
     // fetch books
     const bookData = await getDataFile("read.yml");
+    if (!bookData.length) Object(_actions_core__WEBPACK_IMPORTED_MODULE_3__.setFailed)('Did not find books.');
     const books = filterData(bookData, "dateFinished", start, end).map(
       ({ title, authors, canonicalVolumeLink, isbn }) => ({
         title,
@@ -14406,6 +14407,7 @@ try {
 
     // fetch recipes
     const recipeData = await getDataFile("recipes.yml");
+    if (!recipeData.length) Object(_actions_core__WEBPACK_IMPORTED_MODULE_3__.setFailed)('Did not find recipes.');
     const recipes = filterData(recipeData, "date", start, end).map(
       ({ title, site, url }) => ({
         title,
@@ -14416,6 +14418,7 @@ try {
 
     // fetch playlist
     const playlistData = await getDataFile("playlists.yml");
+    if (!playlistData.length) Object(_actions_core__WEBPACK_IMPORTED_MODULE_3__.setFailed)('Did not find playlists.');
     const playlist = playlistData.find(({ playlist }) => playlist === name);
 
     const md = `---
