@@ -14367,7 +14367,7 @@ module.exports = function btoa(str) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getDataFile", function() { return getDataFile; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "filter", function() { return filter; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "filterData", function() { return filterData; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "findSeason", function() { return findSeason; });
 /* harmony import */ var octokit__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(996);
 /* harmony import */ var octokit__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(octokit__WEBPACK_IMPORTED_MODULE_0__);
@@ -14395,7 +14395,7 @@ try {
   (async () => {
     // fetch books
     const bookData = await getDataFile("read.yml");
-    const books = filter(bookData, "dateFinished", start, end).map(
+    const books = filterData(bookData, "dateFinished", start, end).map(
       ({ title, authors, canonicalVolumeLink, isbn }) => ({
         title,
         authors: authors.join(", "),
@@ -14406,7 +14406,7 @@ try {
 
     // fetch recipes
     const recipeData = await getDataFile("recipes.yml");
-    const recipes = filter(recipeData, "date", start, end).map(
+    const recipes = filterData(recipeData, "date", start, end).map(
       ({ title, site, url }) => ({
         title,
         site,
@@ -14478,7 +14478,7 @@ async function getDataFile(file) {
   }
 }
 
-function filter(data, field, start, end) {
+function filterData(data, field, start, end) {
   return data.filter((f) => f[field] >= start && f[field] <= end);
 }
 

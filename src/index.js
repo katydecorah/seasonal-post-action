@@ -16,7 +16,7 @@ try {
   (async () => {
     // fetch books
     const bookData = await getDataFile("read.yml");
-    const books = filter(bookData, "dateFinished", start, end).map(
+    const books = filterData(bookData, "dateFinished", start, end).map(
       ({ title, authors, canonicalVolumeLink, isbn }) => ({
         title,
         authors: authors.join(", "),
@@ -27,7 +27,7 @@ try {
 
     // fetch recipes
     const recipeData = await getDataFile("recipes.yml");
-    const recipes = filter(recipeData, "date", start, end).map(
+    const recipes = filterData(recipeData, "date", start, end).map(
       ({ title, site, url }) => ({
         title,
         site,
@@ -99,7 +99,7 @@ export async function getDataFile(file) {
   }
 }
 
-export function filter(data, field, start, end) {
+export function filterData(data, field, start, end) {
   return data.filter((f) => f[field] >= start && f[field] <= end);
 }
 
