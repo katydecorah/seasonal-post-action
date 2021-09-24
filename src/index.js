@@ -1,10 +1,9 @@
 import { Octokit } from "octokit";
 import { load, dump } from "js-yaml";
 import { writeFileSync } from "fs";
-import { exportVariable, setFailed, warning, getInput } from "@actions/core";
-const GITHUB_TOKEN = getInput("repo-token");
+import { exportVariable, setFailed, warning } from "@actions/core";
 const octokit = new Octokit({
-  auth: GITHUB_TOKEN,
+  auth: process.env.TOKEN,
 });
 
 const main = async () => {

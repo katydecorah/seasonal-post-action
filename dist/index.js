@@ -14381,9 +14381,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const GITHUB_TOKEN = Object(_actions_core__WEBPACK_IMPORTED_MODULE_3__.getInput)("repo-token");
 const octokit = new octokit__WEBPACK_IMPORTED_MODULE_0__.Octokit({
-  auth: GITHUB_TOKEN,
+  auth:process.env.TOKEN,
 });
 
 const main = async () => {
