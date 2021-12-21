@@ -82,7 +82,7 @@ export function formatBooks({ bookData, start, end }) {
   return {
     bookYaml: dump({ books }),
     bookText: books
-      .map(({ title, authors, url }) => `* [${title}](${url}) - ${authors}`)
+      .map(({ title, authors, url }) => `- [${title}](${url}) - ${authors}`)
       .join("\n"),
   };
 }
@@ -101,7 +101,7 @@ export function formatRecipes({ recipeData, start, end }) {
     recipeText: recipes
       .map(
         ({ title, site, url }) =>
-          `* [${title.replace(" ", "")}](${url}) - ${site}`
+          `- [${title.replace(" ", "")}](${url}) - ${site}`
       )
       .join("\n"),
   };
@@ -112,7 +112,7 @@ export function formatPlaylist({ playlistData, name }) {
   return {
     playlistYaml: dump(playlist),
     playlistText: playlist.tracks
-      .map(({ track, artist }) => `* ${track} - ${artist}`)
+      .map(({ track, artist }) => `- ${track} - ${artist}`)
       .join("\n"),
   };
 }
