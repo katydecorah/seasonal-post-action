@@ -2,5 +2,5 @@ name: "Seasonal post action"
 author: "@katydecorah"
 description: "Generate a season post from Jekyll data file."
 runs:
-  using: "node12"
+  using: "node16"
   main: "dist/index.js"

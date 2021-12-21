@@ -1,5 +1,5 @@
-const { readFileSync, writeFileSync } = require("fs");
-const { version, name } = require("../package.json");
+import { readFileSync, writeFileSync } from "fs";
+const { version, name } = JSON.parse(readFileSync("./package.json", "utf-8"));
 
 function writeDocs(doc, name) {
   const readme = readFileSync("./README.md", "utf-8");

@@ -1,6 +1,6 @@
 name: Seasonal post
 
-on: [push]
+on: push
 
 jobs:
   seasonal_post:

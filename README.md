@@ -11,7 +11,7 @@ Create `.github/workflows/seasonal.yml` file using the following template:
 ```yml
 name: Seasonal post
 
-on: [push]
+on: push
 
 jobs:
   seasonal_post:
