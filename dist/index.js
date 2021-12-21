@@ -13920,7 +13920,6 @@ async function getDataFile(file) {
       repo: "has",
       path: `_data/${file}`,
     });
-    Object(core.warning)(data);
     return Object(js_yaml.load)(data);
   } catch (err) {
     Object(core.setFailed)(err);

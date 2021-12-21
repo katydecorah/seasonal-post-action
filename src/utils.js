@@ -1,6 +1,6 @@
 import { Octokit } from "octokit";
 import { load, dump } from "js-yaml";
-import { setFailed, warning } from "@actions/core";
+import { setFailed } from "@actions/core";
 
 const octokit = new Octokit({
   auth: process.env.TOKEN,
@@ -16,7 +16,6 @@ export async function getDataFile(file) {
       repo: "has",
       path: `_data/${file}`,
     });
-    warning(data);
     return load(data);
   } catch (err) {
     setFailed(err);
