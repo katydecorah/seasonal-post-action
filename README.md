@@ -21,7 +21,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Write seasonal post
-        uses: katydecorah/seasonal-post-action@v1.0.0
+        uses: katydecorah/seasonal-post-action@v2.0.0
         env:
           TOKEN: ${{ secrets.TOKEN }}
       - name: Commit files
