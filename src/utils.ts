@@ -1,32 +1,46 @@
 import { Octokit } from "octokit";
 import { load, dump } from "js-yaml";
 import { setFailed } from "@actions/core";
+import { Buffer } from "buffer";
 
 const octokit = new Octokit({
   auth: process.env.TOKEN,
 });
 
-export async function getDataFile(file) {
+export async function getDataFile(file: string) {
   try {
     const { data } = await octokit.rest.repos.getContent({
-      mediaType: {
-        format: "raw",
-      },
       owner: "katydecorah",
       repo: "has",
       path: `_data/${file}`,
     });
-    return load(data);
+    if ("content" in data) {
+      if (typeof data.content === "string") {
+        const buffer = Buffer.from(data.content, "base64").toString();
+        return load(buffer);
+      }
+    }
   } catch (err) {
     setFailed(err);
   }
 }
 
-export function filterData(data, field, start, end) {
+export function filterData(
+  data: DataFile[],
+  field: "dateFinished" | "date",
+  start: number,
+  end: number
+): DataFile[] {
   return data.filter((f) => f[field] >= start && f[field] <= end);
 }
 
-export function findSeason() {
+export function findSeason(): {
+  name: string;
+  season: Seasons;
+  year: number;
+  start: string;
+  end: string;
+} {
   const today = new Date();
   const month = today.getMonth();
   const year = today.getFullYear();
@@ -70,7 +84,7 @@ ${playlistYaml}
 }
 
 export function formatBooks({ bookData, start, end }) {
-  const books = filterData(bookData, "dateFinished", start, end).map(
+  const books: Book[] = filterData(bookData, "dateFinished", start, end).map(
     ({ title, authors, canonicalVolumeLink, isbn }) => ({
       title,
       authors: authors.join(", "),
@@ -87,7 +101,7 @@ export function formatBooks({ bookData, start, end }) {
 }
 
 export function formatRecipes({ recipeData, start, end }) {
-  const recipes = filterData(recipeData, "date", start, end).map(
+  const recipes: Recipe[] = filterData(recipeData, "date", start, end).map(
     ({ title, site, url }) => ({
       title,
       site,
@@ -107,7 +121,9 @@ export function formatRecipes({ recipeData, start, end }) {
 }
 
 export function formatPlaylist({ playlistData, name }) {
-  const playlist = playlistData.find(({ playlist }) => playlist === name);
+  const playlist: Playlist = playlistData.find(
+    ({ playlist }) => playlist === name
+  );
   return {
     playlistYaml: dump(playlist),
     playlistText: playlist.tracks

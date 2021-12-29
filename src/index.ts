@@ -10,7 +10,7 @@ import {
   buildPost,
 } from "./utils.js";
 
-const main = async () => {
+async function main() {
   try {
     const { start, end, season, year, name } = findSeason();
     const image = `${year}-${season.toLowerCase()}.png`;
@@ -18,25 +18,23 @@ const main = async () => {
     exportVariable("season", name);
 
     (async () => {
-      // fetch books
-      const bookData = await getDataFile("read.yml");
-      if (!bookData.length) setFailed("Did not find books.");
-      const { bookYaml, bookText } = formatBooks({ bookData, start, end });
-
-      // fetch recipes
-      const recipeData = await getDataFile("recipes.yml");
-      if (!recipeData.length) setFailed("Did not find recipes.");
-      const { recipeYaml, recipeText } = formatRecipes({
-        recipeData,
+      const files = await Promise.all([
+        getDataFile("read.yml"),
+        getDataFile("recipes.yml"),
+        getDataFile("playlists.yml"),
+      ]);
+      const { bookYaml, bookText } = formatBooks({
+        bookData: files[0],
         start,
         end,
       });
-
-      // fetch playlist
-      const playlistData = await getDataFile("playlists.yml");
-      if (!playlistData.length) setFailed("Did not find playlists.");
+      const { recipeYaml, recipeText } = formatRecipes({
+        recipeData: files[1],
+        start,
+        end,
+      });
       const { playlistYaml, playlistText } = formatPlaylist({
-        playlistData,
+        playlistData: files[2],
         name,
       });
 
@@ -64,6 +62,6 @@ const main = async () => {
   } catch (error) {
     setFailed(error.message);
   }
-};
+}
 
 main().catch((err) => setFailed(err.message));
