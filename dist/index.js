@@ -23567,19 +23567,24 @@ exports.buildPost = exports.formatPlaylist = exports.formatRecipes = exports.for
 const octokit_1 = __nccwpck_require__(7467);
 const js_yaml_1 = __nccwpck_require__(1917);
 const core_1 = __nccwpck_require__(2186);
+const buffer_1 = __nccwpck_require__(4300);
 const octokit = new octokit_1.Octokit({
     auth: process.env.TOKEN,
 });
 function getDataFile(file) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const { data: content } = yield octokit.rest.repos.getContent({
+            const { data } = yield octokit.rest.repos.getContent({
                 owner: "katydecorah",
                 repo: "has",
                 path: `_data/${file}`,
             });
-            if (typeof content === "string")
-                return (0, js_yaml_1.load)(content);
+            if ("content" in data) {
+                if (typeof data.content === "string") {
+                    const buffer = buffer_1.Buffer.from(data.content, "base64").toString();
+                    return (0, js_yaml_1.load)(buffer);
+                }
+            }
         }
         catch (err) {
             (0, core_1.setFailed)(err);
