@@ -8,7 +8,7 @@
     "pretest": "eslint .",
     "test": "jest",
     "pretty-quick": "pretty-quick",
-    "build": "ncc build src/index.js && node src/docs.js",
+    "build": "ncc build src/index.ts && node src/docs.js",
     "prepare": "husky install"
   },
   "author": "Katy DeCorah",
@@ -17,6 +17,8 @@
     "@actions/core": "^1.6.0",
     "@babel/eslint-parser": "^7.16.5",
     "@babel/preset-env": "^7.16.5",
+    "@babel/preset-typescript": "^7.16.5",
+    "@types/js-yaml": "^4.0.5",
     "@vercel/ncc": "^0.33.1",
     "eslint": "^8.5.0",
     "eslint-config-prettier": "^8.3.0",
@@ -27,7 +29,8 @@
     "js-yaml": "^4.1.0",
     "octokit": "^1.7.1",
     "prettier": "^2.5.1",
-    "pretty-quick": "^3.1.2"
+    "pretty-quick": "^3.1.3",
+    "typescript": "^4.5.4"
   },
   "repository": {
     "type": "git",

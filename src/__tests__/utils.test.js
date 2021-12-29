@@ -5,7 +5,7 @@ import {
   formatRecipes,
   formatPlaylist,
   buildPost,
-} from "../utils.js";
+} from "../utils.ts";
 import { readFileSync } from "fs";
 
 const books = JSON.parse(
