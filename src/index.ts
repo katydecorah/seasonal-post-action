@@ -23,16 +23,19 @@ async function main() {
         getDataFile("recipes.yml"),
         getDataFile("playlists.yml"),
       ]);
+
       const { bookYaml, bookText } = formatBooks({
         bookData: files[0],
         start,
         end,
       });
+
       const { recipeYaml, recipeText } = formatRecipes({
         recipeData: files[1],
         start,
         end,
       });
+
       const { playlistYaml, playlistText } = formatPlaylist({
         playlistData: files[2],
         name,
@@ -47,6 +50,7 @@ async function main() {
         recipeYaml,
         playlistYaml,
       });
+
       const md = buildPost({
         frontmatter,
         season,
@@ -54,6 +58,7 @@ async function main() {
         playlistText,
         recipeText,
       });
+
       writeFileSync(
         `./notes/_posts/${end}-${year}-${season.toLowerCase()}.md`,
         md

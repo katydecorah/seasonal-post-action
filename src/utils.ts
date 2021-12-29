@@ -15,10 +15,8 @@ export async function getDataFile(file: string) {
       path: `_data/${file}`,
     });
     if ("content" in data) {
-      if (typeof data.content === "string") {
-        const buffer = Buffer.from(data.content, "base64").toString();
-        return load(buffer);
-      }
+      const buffer = Buffer.from(data.content, "base64").toString();
+      return load(buffer);
     }
   } catch (err) {
     setFailed(err);

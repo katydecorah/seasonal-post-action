@@ -23580,10 +23580,8 @@ function getDataFile(file) {
                 path: `_data/${file}`,
             });
             if ("content" in data) {
-                if (typeof data.content === "string") {
-                    const buffer = buffer_1.Buffer.from(data.content, "base64").toString();
-                    return (0, js_yaml_1.load)(buffer);
-                }
+                const buffer = buffer_1.Buffer.from(data.content, "base64").toString();
+                return (0, js_yaml_1.load)(buffer);
             }
         }
         catch (err) {

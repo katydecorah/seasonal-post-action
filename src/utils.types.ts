@@ -18,6 +18,8 @@ type Track = {
 };
 
 type Playlist = {
+  playlist: string;
+  spotify: string;
   tracks: Track[];
 };
 
