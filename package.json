@@ -8,7 +8,7 @@
     "pretest": "eslint .",
     "test": "jest",
     "pretty-quick": "pretty-quick",
-    "build": "ncc build src/index.ts && node src/docs.js",
+    "build": "ncc build src/index.ts",
     "prepare": "husky install"
   },
   "author": "Katy DeCorah",
