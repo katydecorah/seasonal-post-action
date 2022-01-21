@@ -8,7 +8,7 @@ A GitHub action that creates a seasonal Jekyll post from data files.
 
 To use this action, create a new workflow in `.github/workflows` and modify it as needed:
 
-````yml
+```yml
 name: Seasonal post
 
 on:
