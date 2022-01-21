@@ -4,3 +4,11 @@ description: "Generate a season post from Jekyll data file."
 runs:
   using: "node16"
   main: "dist/index.js"
+
+inputs:
+  GitHubUsername:
+    description: The GitHub username that owns the repository with the data files.
+    required: true
+  GitHubRepository:
+    description: The Github repository that has the data files.
+    required: true

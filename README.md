@@ -24,6 +24,9 @@ jobs:
         uses: actions/checkout@v2
       - name: Write seasonal post
         uses: katydecorah/seasonal-post-action@v2.0.0
+        with:
+          GitHubUsername: octocat
+          GitHubRepository: my-data-repo
         env:
           TOKEN: ${{ secrets.TOKEN }}
           # SETDATE: "2021-06-20"
@@ -33,5 +36,13 @@ jobs:
           git config --local user.name "GitHub Action"
           git add -A && git commit -m "${{ env.season }}"
           git push
-```<!-- END GENERATED DOCUMENTATION -->
+```
+
+## Action options
+
+- `GitHubUsername`: Required. The GitHub username that owns the repository with the data files.
+
+- `GitHubRepository`: Required. The Github repository that has the data files.
+
+<!-- END GENERATED DOCUMENTATION -->
 ````
