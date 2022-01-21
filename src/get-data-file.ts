@@ -2,8 +2,8 @@ import { load } from "js-yaml";
 import { setFailed } from "@actions/core";
 import { Buffer } from "buffer";
 import { Octokit } from "octokit";
-import { writeFileSync } from "fs";
 import { DataFile } from "./format";
+import { getInput } from "@actions/core";
 
 export const octokit = new Octokit({
   auth: process.env.TOKEN,
@@ -13,9 +13,11 @@ export async function getDataFile(
   file: string
 ): Promise<DataFile | undefined | []> {
   try {
+    const owner = getInput("GitHubUsername");
+    const repo = getInput("GitHubRepository");
     const { data } = await octokit.rest.repos.getContent({
-      owner: "katydecorah",
-      repo: "has",
+      owner,
+      repo,
       path: `_data/${file}`,
     });
     if ("content" in data) {

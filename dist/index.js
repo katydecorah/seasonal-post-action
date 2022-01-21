@@ -23788,15 +23788,18 @@ const js_yaml_1 = __nccwpck_require__(1917);
 const core_1 = __nccwpck_require__(2186);
 const buffer_1 = __nccwpck_require__(4300);
 const octokit_1 = __nccwpck_require__(7467);
+const core_2 = __nccwpck_require__(2186);
 exports.octokit = new octokit_1.Octokit({
     auth: process.env.TOKEN,
 });
 function getDataFile(file) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
+            const owner = (0, core_2.getInput)('GitHubUsername');
+            const repo = (0, core_2.getInput)('GitHubRepository');
             const { data } = yield exports.octokit.rest.repos.getContent({
-                owner: "katydecorah",
-                repo: "has",
+                owner,
+                repo,
                 path: `_data/${file}`,
             });
             if ("content" in data) {
