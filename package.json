@@ -1,6 +1,6 @@
 {
   "name": "seasonal-post-action",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "A GitHub action that creates a seasonal Jekyll post from data files",
   "main": "dist/index.js",
   "scripts": {
