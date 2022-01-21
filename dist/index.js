@@ -23581,23 +23581,19 @@ function action() {
             const { start, end, season, year, name } = (0, find_season_1.findSeason)();
             const image = `${year}-${season.toLowerCase()}.png`;
             (0, core_1.exportVariable)("season", name);
-            const files = yield Promise.all([
+            const [bookData, recipeData, playlistData] = yield Promise.all([
                 (0, get_data_file_1.getDataFile)("read.yml"),
                 (0, get_data_file_1.getDataFile)("recipes.yml"),
                 (0, get_data_file_1.getDataFile)("playlists.yml"),
             ]);
-            const { bookYaml, bookText } = (0, format_1.formatBooks)({
-                bookData: files[0],
-                start,
-                end,
-            });
+            const { bookYaml, bookText } = (0, format_1.formatBooks)({ bookData, start, end });
             const { recipeYaml, recipeText } = (0, format_1.formatRecipes)({
-                recipeData: files[1],
+                recipeData,
                 start,
                 end,
             });
             const { playlistYaml, playlistText } = (0, format_1.formatPlaylist)({
-                playlistData: files[2],
+                playlistData,
                 name,
             });
             // build post
@@ -23795,8 +23791,8 @@ exports.octokit = new octokit_1.Octokit({
 function getDataFile(file) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const owner = (0, core_2.getInput)('GitHubUsername');
-            const repo = (0, core_2.getInput)('GitHubRepository');
+            const owner = (0, core_2.getInput)("GitHubUsername");
+            const repo = (0, core_2.getInput)("GitHubRepository");
             const { data } = yield exports.octokit.rest.repos.getContent({
                 owner,
                 repo,

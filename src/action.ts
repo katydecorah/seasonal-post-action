@@ -17,26 +17,20 @@ export async function action() {
 
     exportVariable("season", name);
 
-    const files = await Promise.all([
+    const [bookData, recipeData, playlistData] = await Promise.all([
       getDataFile("read.yml"),
       getDataFile("recipes.yml"),
       getDataFile("playlists.yml"),
     ]);
 
-    const { bookYaml, bookText } = formatBooks({
-      bookData: files[0],
-      start,
-      end,
-    });
-
+    const { bookYaml, bookText } = formatBooks({ bookData, start, end });
     const { recipeYaml, recipeText } = formatRecipes({
-      recipeData: files[1],
+      recipeData,
       start,
       end,
     });
-
     const { playlistYaml, playlistText } = formatPlaylist({
-      playlistData: files[2],
+      playlistData,
       name,
     });
 
