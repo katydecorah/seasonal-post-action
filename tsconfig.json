@@ -4,5 +4,5 @@
     "module": "commonjs",
     "strictNullChecks": true
   },
-  "include": ["**/*.ts"]
+  "include": ["src/*.ts"]
 }
