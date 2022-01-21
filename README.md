@@ -2,17 +2,18 @@
 
 A GitHub action that creates a seasonal Jekyll post from data files.
 
-
 <!-- START GENERATED DOCUMENTATION -->
 
 ## Set up the workflow
 
 To use this action, create a new workflow in `.github/workflows` and modify it as needed:
 
-```yml
+````yml
 name: Seasonal post
 
-on: push
+on:
+  schedule:
+    - cron: "00 02 20 Mar,Jun,Sep,Dec *"
 
 jobs:
   seasonal_post:
@@ -25,10 +26,12 @@ jobs:
         uses: katydecorah/seasonal-post-action@v2.0.0
         env:
           TOKEN: ${{ secrets.TOKEN }}
+          # SETDATE: "2021-06-20"
       - name: Commit files
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git commit -am "${{ env.season }}"
+          git add -A && git commit -m "${{ env.season }}"
           git push
 ```<!-- END GENERATED DOCUMENTATION -->
+````
