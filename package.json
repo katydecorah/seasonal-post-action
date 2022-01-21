@@ -4,7 +4,7 @@
   "description": "A GitHub action that creates a seasonal Jekyll post from data files",
   "main": "dist/index.js",
   "scripts": {
-    "pretest": "eslint src/**/*.ts",
+    "pretest": "eslint . --ext .js,.ts",
     "test": "jest --coverage",
     "pretty-quick": "pretty-quick",
     "build": "ncc build src/index.ts",
@@ -14,11 +14,12 @@
   "license": "MIT",
   "devDependencies": {
     "@actions/core": "^1.6.0",
-    "@babel/eslint-parser": "^7.16.5",
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-typescript": "^7.16.7",
     "@types/jest": "^27.4.0",
     "@types/js-yaml": "^4.0.5",
+    "@typescript-eslint/eslint-plugin": "^5.10.0",
+    "@typescript-eslint/parser": "^5.10.0",
     "@vercel/ncc": "^0.33.1",
     "eslint": "^8.7.0",
     "eslint-config-prettier": "^8.3.0",

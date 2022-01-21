@@ -1,5 +1,5 @@
 import { writeFile } from "fs/promises";
-import { exportVariable, info, setFailed } from "@actions/core";
+import { exportVariable, setFailed } from "@actions/core";
 import { buildPost } from "./build-post";
 import {
   formatPlaylist,
