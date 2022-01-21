@@ -25,7 +25,7 @@ jobs:
       - name: Write seasonal post
         uses: katydecorah/seasonal-post-action@v2.0.0
         with:
-          GitHubUsername: octocate
+          GitHubUsername: octocat
           GitHubRepository: my-data-repo
         env:
           TOKEN: ${{ secrets.TOKEN }}
