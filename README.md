@@ -23,7 +23,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Write seasonal post
-        uses: katydecorah/seasonal-post-action@v2.0.0
+        uses: katydecorah/seasonal-post-action@v3.0.0
         with:
           GitHubUsername: octocat
           GitHubRepository: my-data-repo
