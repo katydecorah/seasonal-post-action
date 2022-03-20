@@ -11,9 +11,7 @@ To use this action, create a new workflow in `.github/workflows` and modify it a
 ```yml
 name: Seasonal post
 
-on:
-  schedule:
-    - cron: "00 02 20 Mar,Jun,Sep,Dec *"
+on: push
 
 jobs:
   seasonal_post:
@@ -25,8 +23,8 @@ jobs:
       - name: Write seasonal post
         uses: katydecorah/seasonal-post-action@v3.0.0
         with:
-          GitHubUsername: octocat
-          GitHubRepository: my-data-repo
+          GitHubUsername: katydecorah
+          GitHubRepository: has
         env:
           TOKEN: ${{ secrets.TOKEN }}
           # SETDATE: "2021-06-20"
