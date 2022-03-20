@@ -23768,10 +23768,11 @@ function formatPlaylist({ playlistData, name }) {
 }
 exports.formatPlaylist = formatPlaylist;
 function formatRecipes({ recipeData, start, end }) {
-    const recipes = filterData(recipeData, "date", start, end).map(({ title, site, url }) => ({
+    const recipes = filterData(recipeData, "date", start, end).map(({ title, site, url, image }) => ({
         title,
         site,
         url,
+        image,
     }));
     return {
         recipeYaml: (0, js_yaml_1.dump)({ recipes }),

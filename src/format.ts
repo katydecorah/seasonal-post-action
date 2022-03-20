@@ -53,10 +53,11 @@ export function formatRecipes({ recipeData, start, end }): {
   recipeText: string;
 } {
   const recipes: Recipe[] = filterData(recipeData, "date", start, end).map(
-    ({ title, site, url }) => ({
+    ({ title, site, url, image }) => ({
       title,
       site,
       url,
+      image,
     })
   );
   return {
@@ -91,6 +92,7 @@ export type Recipe = {
   title: string;
   site: string;
   url: string;
+  image: string;
 };
 
 export type Track = {
@@ -114,4 +116,5 @@ export type DataFile = {
   url: string;
   dateFinished: number;
   date: number;
+  image: string;
 };
