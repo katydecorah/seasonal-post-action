@@ -7,47 +7,47 @@ describe("findSeason", () => {
   it("works", () => {
     jest.useFakeTimers().setSystemTime(new Date("2021-3-20").getTime());
     expect(findSeason()).toMatchInlineSnapshot(`
-          Object {
-            "end": "2021-03-20",
-            "name": "2020/2021 Winter",
-            "season": "Winter",
-            "start": "2020-12-21",
-            "year": 2021,
-          }
-      `);
+      {
+        "end": "2021-03-20",
+        "name": "2020/2021 Winter",
+        "season": "Winter",
+        "start": "2020-12-21",
+        "year": 2021,
+      }
+    `);
 
     jest.useFakeTimers().setSystemTime(new Date("2021-6-20").getTime());
     expect(findSeason()).toMatchInlineSnapshot(`
-          Object {
-            "end": "2021-06-20",
-            "name": "2021 Spring",
-            "season": "Spring",
-            "start": "2021-03-21",
-            "year": 2021,
-          }
-      `);
+      {
+        "end": "2021-06-20",
+        "name": "2021 Spring",
+        "season": "Spring",
+        "start": "2021-03-21",
+        "year": 2021,
+      }
+    `);
 
     jest.useFakeTimers().setSystemTime(new Date("2021-9-20").getTime());
     expect(findSeason()).toMatchInlineSnapshot(`
-          Object {
-            "end": "2021-09-20",
-            "name": "2021 Summer",
-            "season": "Summer",
-            "start": "2021-06-21",
-            "year": 2021,
-          }
-      `);
+      {
+        "end": "2021-09-20",
+        "name": "2021 Summer",
+        "season": "Summer",
+        "start": "2021-06-21",
+        "year": 2021,
+      }
+    `);
 
     jest.useFakeTimers().setSystemTime(new Date("2021-12-20").getTime());
     expect(findSeason()).toMatchInlineSnapshot(`
-          Object {
-            "end": "2021-12-20",
-            "name": "2021 Fall",
-            "season": "Fall",
-            "start": "2021-09-21",
-            "year": 2021,
-          }
-      `);
+      {
+        "end": "2021-12-20",
+        "name": "2021 Fall",
+        "season": "Fall",
+        "start": "2021-09-21",
+        "year": 2021,
+      }
+    `);
   });
 
   it("fail", () => {

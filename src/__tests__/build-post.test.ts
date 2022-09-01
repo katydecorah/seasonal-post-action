@@ -174,7 +174,7 @@ it("buildPost", () => {
         site: NYT Cooking
         url: https://cooking.nytimes.com/recipes/1022121-mushroom-pasta-stir-fry
         image: bookmark-mushroom-pasta-stir-fry-recipe.jpg
-      - title: \\"Sheet-Pan Crispy Pork Schnitzel\\\\_ Recipe\\"
+      - title: "Sheet-Pan Crispy Pork Schnitzel\\_ Recipe"
         site: NYT Cooking
         url: >-
           https://cooking.nytimes.com/recipes/1022582-sheet-pan-crispy-pork-schnitzel
