@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getJsonFile works 1`] = `
+[
+  {
+    "authors": [
+      "Jennette McCurdy",
+    ],
+    "categories": [
+      "Biography & Autobiography",
+    ],
+    "dateFinished": "2022-09-07",
+    "description": "A heartbreaking and hilarious memoir by iCarly and Sam & Cat star Jennette McCurdy about her struggles as a former child actor—including eating disorders, addiction, and a complicated relationship with her overbearing mother—and how she retook control of her life. Jennette McCurdy was six years old when she had her first acting audition. Her mother’s dream was for her only daughter to become a star, and Jennette would do anything to make her mother happy. So she went along with what Mom called “calorie restriction,” eating little and weighing herself five times a day. She endured extensive at-home makeovers while Mom chided, “Your eyelashes are invisible, okay? You think Dakota Fanning doesn’t tint hers?” She was even showered by Mom until age sixteen while sharing her diaries, email, and all her income. In I’m Glad My Mom Died, Jennette recounts all this in unflinching detail—just as she chronicles what happens when the dream finally comes true. Cast in a new Nickelodeon series called iCarly, she is thrust into fame. Though Mom is ecstatic, emailing fan club moderators and getting on a first-name basis with the paparazzi (“Hi Gale!”), Jennette is riddled with anxiety, shame, and self-loathing, which manifest into eating disorders, addiction, and a series of unhealthy relationships. These issues only get worse when, soon after taking the lead in the iCarly spinoff Sam & Cat alongside Ariana Grande, her mother dies of cancer. Finally, after discovering therapy and quitting acting, Jennette embarks on recovery and decides for the first time in her life what she really wants. Told with refreshing candor and dark humor, I’m Glad My Mom Died is an inspiring story of resilience, independence, and the joy of shampooing your own hair.",
+    "isbn": "9781982185824",
+    "language": "en",
+    "link": "https://books.google.com/books/about/I_m_Glad_My_Mom_Died.html?hl=&id=13mAEAAAQBAJ",
+    "pageCount": 320,
+    "printType": "BOOK",
+    "publishedDate": "2022-08-09",
+    "thumbnail": "https://books.google.com/books/content?id=13mAEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+    "title": "I'm Glad My Mom Died",
+  },
+  {
+    "authors": [
+      "Nicole LePera",
+    ],
+    "categories": [
+      "Self-Help",
+    ],
+    "dateFinished": "2022-09-09",
+    "description": "THE #1 NEW YORK TIMES BESTSELLER THE SUNDAY TIMES BESTSELLER 'If LePera's Instagram feed is full of aha moments illuminating the inner workings of your psyche, the revelations in the book are more like a full firework display.' Red magazine 'This book is a must-read for anyone on a path of personal growth.' GABBY BERNSTEIN, author of number one New York Times bestsellers Super Attractor and The Universe Has Your Back 'The book I wish I had read in my twenties.' ELIZABETH DAY, author of How to Fail 'How to Do the Work will transform how you see yourself and your ability to change. I believe this book could change lives, if not the world.' HOLLY BOURNE, bestselling author of How Do You Like Me Now? 'Want more from life? Looking for answers? How to Do the Work will teach you how to find them within yourself. A masterpiece of empowerment - this book changed my life and, trust me, it'll change yours too.' MEL ROBBINS, author of The 5 Second Rule As a clinical psychologist, Dr Nicole LePera found herself frustrated by the limitations of traditional psychotherapy. Wanting more for her patients - and for herself - she began a journey to develop a united philosophy of mental, physical and spiritual health that equips people with the tools necessary to heal themselves. After experiencing the life-changing results herself, she began to share what she'd learned with others - and The Holistic Psychologist was born. Now Dr LePera is ready to share her much-requested protocol with the world. In How to Do the Work, she offers both a manifesto for self-healing and an essential guide to creating a more vibrant, authentic, and joyful life. Drawing on the latest research from both scientific research and healing modalities, Dr LePera helps us recognise how adverse experiences and trauma in childhood live with us, keeping us stuck engaging in patterns of codependency, emotional immaturity, and trauma bonds. Unless addressed, these self-sabotaging behaviours can quickly become cyclical, leaving people feeling unhappy, unfulfilled, and unwell. In How to Do the Work, Dr LePera offers readers the support and tools that will allow them to break free from destructive behaviours to reclaim and recreate their lives. Nothing short of a paradigm shift, this is a celebration of empowerment that will forever change the way we approach mental wellness and self-care.",
+    "isbn": "9781409197768",
+    "language": "en",
+    "link": "https://books.google.com/books/about/How_To_Do_The_Work.html?hl=&id=NRHoDwAAQBAJ",
+    "pageCount": 271,
+    "printType": "BOOK",
+    "publishedDate": "2021-03-11",
+    "thumbnail": "https://books.google.com/books/content?id=NRHoDwAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+    "title": "How To Do The Work",
+  },
+  {
+    "authors": [
+      "Kim Fu",
+    ],
+    "categories": [
+      "Fiction",
+    ],
+    "dateFinished": "2022-09-10",
+    "description": ""The strange and wonderful define Kim Fu’s story collection, where the line between fantasy and reality fades in and out, elusive and beckoning." —The New York Times Book Review A LitHub, ALTA, and PureWow Best Book of the Month A BuzzFeed and WIRED Pick for a Book You Need to Read This Winter In the twelve unforgettable tales of Lesser Known Monsters of the 21st Century, the strange is made familiar and the familiar strange, such that a girl growing wings on her legs feels like an ordinary rite of passage, while a bug-infested house becomes an impossible, Kafkaesque nightmare. Each story builds a new world all its own: a group of children steal a haunted doll; a runaway bride encounters a sea monster; a vendor sells toy boxes that seemingly control the passage of time; an insomniac is seduced by the Sandman. These visions of modern life wrestle with themes of death and technological consequence, guilt and sexuality, and unmask the contradictions that exist within all of us. Mesmerizing, electric, and wholly original, Kim Fu’s Lesser Known Monsters of the 21st Century blurs the boundaries of the real and fantastic, offering intricate and surprising insights into human nature.",
+    "isbn": "9781953534064",
+    "language": "en",
+    "link": "https://play.google.com/store/books/details?id=4D1UEAAAQBAJ",
+    "pageCount": 232,
+    "printType": "BOOK",
+    "publishedDate": "2022-02-01",
+    "thumbnail": "https://books.google.com/books/content?id=4D1UEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+    "title": "Lesser Known Monsters of the 21st Century",
+  },
+]
+`;

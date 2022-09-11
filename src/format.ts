@@ -2,10 +2,10 @@ import { dump } from "js-yaml";
 
 export function formatBooks({ bookData, start, end }) {
   const books: Book[] = filterData(bookData, "dateFinished", start, end).map(
-    ({ title, authors, canonicalVolumeLink, isbn }) => ({
+    ({ title, authors, link, isbn }) => ({
       title,
       authors: authors.join(", "),
-      url: canonicalVolumeLink,
+      url: link,
       isbn,
     })
   );
@@ -110,7 +110,7 @@ export type Playlist = {
 export type DataFile = {
   title: string;
   authors: string[];
-  canonicalVolumeLink: string;
+  link: string;
   isbn: string;
   site: string;
   url: string;

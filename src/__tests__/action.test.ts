@@ -1,6 +1,7 @@
 import { action } from "../action";
 import { exportVariable, setFailed } from "@actions/core";
 import * as GetDataFile from "../get-data-file";
+import * as GetJsonFile from "../get-json-file";
 import * as FindSeason from "../find-season";
 import * as Format from "../format";
 import recipes from "./fixtures/recipes.json";
@@ -14,9 +15,11 @@ jest.useFakeTimers().setSystemTime(new Date("2021-9-20"));
 
 describe("action", () => {
   test("works", async () => {
+    const getJsonFileSpy = jest
+      .spyOn(GetJsonFile, "getJsonFile")
+      .mockReturnValueOnce(books);
     const getDataFileSpy = jest
       .spyOn(GetDataFile, "getDataFile")
-      .mockReturnValueOnce(books)
       .mockReturnValueOnce(recipes)
       .mockReturnValueOnce(playlists);
     const formatBooksSpy = jest.spyOn(Format, "formatBooks");
@@ -34,10 +37,10 @@ describe("action", () => {
       year: 2021,
     });
     expect(exportVariable).toHaveBeenLastCalledWith("season", "2021 Summer");
-    expect(getDataFileSpy).toHaveBeenNthCalledWith(1, "read.yml");
-    expect(getDataFileSpy).toHaveNthReturnedWith(1, books);
-    expect(getDataFileSpy).toHaveBeenNthCalledWith(2, "recipes.yml");
-    expect(getDataFileSpy).toHaveBeenNthCalledWith(3, "playlists.yml");
+    expect(getJsonFileSpy).toHaveBeenNthCalledWith(1, "read.json");
+    expect(getJsonFileSpy).toHaveNthReturnedWith(1, books);
+    expect(getDataFileSpy).toHaveBeenNthCalledWith(1, "recipes.yml");
+    expect(getDataFileSpy).toHaveBeenNthCalledWith(2, "playlists.yml");
     expect(setFailed).not.toHaveBeenCalled();
     expect(formatBooksSpy).toHaveBeenCalled();
     expect(formatRecipesSpy).toHaveBeenCalled();

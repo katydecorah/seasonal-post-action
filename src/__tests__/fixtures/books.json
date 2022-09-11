@@ -18,7 +18,7 @@
     "pageCount": 31,
     "printType": "BOOK",
     "language": "en",
-    "canonicalVolumeLink": "https://www.amazon.com/Malleability-Blackness-Bersabel-Tadesse/dp/B08R689SJJ"
+    "link": "https://www.amazon.com/Malleability-Blackness-Bersabel-Tadesse/dp/B08R689SJJ"
   },
   {
     "isbn": "9781937557867",
@@ -43,7 +43,7 @@
     "pageCount": 162,
     "printType": "BOOK",
     "language": "en",
-    "canonicalVolumeLink": "https://books.google.com/books/about/Cross_Cultural_Design_People_and_Culture.html?hl=&id=maelzQEACAAJ"
+    "link": "https://books.google.com/books/about/Cross_Cultural_Design_People_and_Culture.html?hl=&id=maelzQEACAAJ"
   },
   {
     "isbn": "9781937557973",
@@ -69,7 +69,7 @@
     "printType": "BOOK",
     "categories": ["Decision making"],
     "language": "en",
-    "canonicalVolumeLink": "https://books.google.com/books/about/Design_for_Cognitive_Bias.html?hl=&id=Uq0DzgEACAAJ"
+    "link": "https://books.google.com/books/about/Design_for_Cognitive_Bias.html?hl=&id=Uq0DzgEACAAJ"
   },
   {
     "isbn": "9780316422048",
@@ -95,7 +95,7 @@
       "thumbnail": "https://books.google.com/books/content?id=7AhYzQEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
     },
     "language": "en",
-    "canonicalVolumeLink": "https://books.google.com/books/about/The_Once_and_Future_Witches.html?hl=&id=7AhYzQEACAAJ"
+    "link": "https://books.google.com/books/about/The_Once_and_Future_Witches.html?hl=&id=7AhYzQEACAAJ"
   },
   {
     "isbn": "9780525506348",
@@ -121,7 +121,7 @@
       "thumbnail": "https://books.google.com/books/content?id=R-wexgEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
     },
     "language": "en",
-    "canonicalVolumeLink": "https://books.google.com/books/about/Eleanor_Oliphant_Is_Completely_Fine.html?hl=&id=R-wexgEACAAJ"
+    "link": "https://books.google.com/books/about/Eleanor_Oliphant_Is_Completely_Fine.html?hl=&id=R-wexgEACAAJ"
   },
   {
     "isbn": "9780593133378",
@@ -148,7 +148,7 @@
       "thumbnail": "https://books.google.com/books/content?id=pO8OEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     },
     "language": "en",
-    "canonicalVolumeLink": "https://books.google.com/books/about/Detransition_Baby.html?hl=&id=pO8OEAAAQBAJ"
+    "link": "https://books.google.com/books/about/Detransition_Baby.html?hl=&id=pO8OEAAAQBAJ"
   },
   {
     "isbn": "9781250239365",
@@ -175,7 +175,7 @@
       "thumbnail": "https://books.google.com/books/content?id=nCCxvgEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
     },
     "language": "en",
-    "canonicalVolumeLink": "https://books.google.com/books/about/The_Lottery_and_Other_Stories.html?hl=&id=nCCxvgEACAAJ"
+    "link": "https://books.google.com/books/about/The_Lottery_and_Other_Stories.html?hl=&id=nCCxvgEACAAJ"
   },
   {
     "isbn": "9781984879363",
@@ -202,7 +202,7 @@
       "thumbnail": "https://books.google.com/books/content?id=kiikDwAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
     },
     "language": "en",
-    "canonicalVolumeLink": "https://books.google.com/books/about/Death_in_Her_Hands.html?hl=&id=kiikDwAAQBAJ"
+    "link": "https://books.google.com/books/about/Death_in_Her_Hands.html?hl=&id=kiikDwAAQBAJ"
   },
   {
     "isbn": "9780062997562",
@@ -229,7 +229,7 @@
       "thumbnail": "https://books.google.com/books/content?id=9UzlDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     },
     "language": "en",
-    "canonicalVolumeLink": "https://play.google.com/store/books/details?id=9UzlDwAAQBAJ"
+    "link": "https://play.google.com/store/books/details?id=9UzlDwAAQBAJ"
   },
   {
     "isbn": "9781984802446",
@@ -256,7 +256,7 @@
       "thumbnail": "https://books.google.com/books/content?id=v-fEDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     },
     "language": "en",
-    "canonicalVolumeLink": "https://books.google.com/books/about/The_Care_and_Feeding_of_Ravenously_Hungr.html?hl=&id=v-fEDwAAQBAJ"
+    "link": "https://books.google.com/books/about/The_Care_and_Feeding_of_Ravenously_Hungr.html?hl=&id=v-fEDwAAQBAJ"
   },
   {
     "isbn": "9781635575439",
@@ -283,7 +283,7 @@
       "thumbnail": "https://books.google.com/books/content?id=WX3hDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     },
     "language": "en",
-    "canonicalVolumeLink": "https://play.google.com/store/books/details?id=WX3hDwAAQBAJ"
+    "link": "https://play.google.com/store/books/details?id=WX3hDwAAQBAJ"
   },
   {
     "isbn": "9780802158161",
@@ -309,7 +309,7 @@
       "thumbnail": "https://books.google.com/books/content?id=NvwTEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     },
     "language": "en",
-    "canonicalVolumeLink": "https://play.google.com/store/books/details?id=NvwTEAAAQBAJ"
+    "link": "https://play.google.com/store/books/details?id=NvwTEAAAQBAJ"
   },
   {
     "isbn": "9780525509134",
@@ -336,7 +336,7 @@
       "thumbnail": "https://books.google.com/books/content?id=p-g6DwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     },
     "language": "en",
-    "canonicalVolumeLink": "https://play.google.com/store/books/details?id=p-g6DwAAQBAJ"
+    "link": "https://play.google.com/store/books/details?id=p-g6DwAAQBAJ"
   },
   {
     "isbn": "9780525541608",
@@ -363,7 +363,7 @@
       "thumbnail": "https://books.google.com/books/content?id=3VT4DwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     },
     "language": "en",
-    "canonicalVolumeLink": "https://books.google.com/books/about/The_Death_of_Vivek_Oji.html?hl=&id=3VT4DwAAQBAJ"
+    "link": "https://books.google.com/books/about/The_Death_of_Vivek_Oji.html?hl=&id=3VT4DwAAQBAJ"
   },
   {
     "isbn": "9780593318188",
@@ -390,7 +390,7 @@
       "thumbnail": "https://books.google.com/books/content?id=S7jrDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     },
     "language": "en",
-    "canonicalVolumeLink": "https://play.google.com/store/books/details?id=S7jrDwAAQBAJ"
+    "link": "https://play.google.com/store/books/details?id=S7jrDwAAQBAJ"
   },
   {
     "isbn": "9781453263617",
@@ -417,7 +417,7 @@
       "thumbnail": "https://books.google.com/books/content?id=8thMLkahggcC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     },
     "language": "en",
-    "canonicalVolumeLink": "https://play.google.com/store/books/details?id=8thMLkahggcC"
+    "link": "https://play.google.com/store/books/details?id=8thMLkahggcC"
   },
   {
     "isbn": "9781936787982",
@@ -444,7 +444,7 @@
       "thumbnail": "https://books.google.com/books/content?id=e1lPDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     },
     "language": "en",
-    "canonicalVolumeLink": "https://play.google.com/store/books/details?id=e1lPDwAAQBAJ"
+    "link": "https://play.google.com/store/books/details?id=e1lPDwAAQBAJ"
   },
   {
     "isbn": "9781643751764",
@@ -471,7 +471,7 @@
       "thumbnail": "https://books.google.com/books/content?id=75r4DwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     },
     "language": "en",
-    "canonicalVolumeLink": "https://play.google.com/store/books/details?id=75r4DwAAQBAJ"
+    "link": "https://play.google.com/store/books/details?id=75r4DwAAQBAJ"
   },
   {
     "isbn": "9781476753850",
@@ -498,7 +498,7 @@
       "thumbnail": "https://books.google.com/books/content?id=JCiMDAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     },
     "language": "en",
-    "canonicalVolumeLink": "https://play.google.com/store/books/details?id=JCiMDAAAQBAJ"
+    "link": "https://play.google.com/store/books/details?id=JCiMDAAAQBAJ"
   },
   {
     "isbn": "9781784295554",
@@ -525,7 +525,7 @@
       "thumbnail": "https://books.google.com/books/content?id=L2A9CgAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
     },
     "language": "en",
-    "canonicalVolumeLink": "https://books.google.com/books/about/Shrill.html?hl=&id=L2A9CgAAQBAJ"
+    "link": "https://books.google.com/books/about/Shrill.html?hl=&id=L2A9CgAAQBAJ"
   },
   {
     "isbn": "9780143127550",
@@ -552,7 +552,7 @@
       "thumbnail": "https://books.google.com/books/content?id=JEYCDAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     },
     "language": "en",
-    "canonicalVolumeLink": "https://books.google.com/books/about/Everything_I_Never_Told_You.html?hl=&id=JEYCDAAAQBAJ"
+    "link": "https://books.google.com/books/about/Everything_I_Never_Told_You.html?hl=&id=JEYCDAAAQBAJ"
   },
   {
     "isbn": "9780374716684",
@@ -579,7 +579,7 @@
       "thumbnail": "https://books.google.com/books/content?id=U_6wDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     },
     "language": "un",
-    "canonicalVolumeLink": "https://play.google.com/store/books/details?id=U_6wDwAAQBAJ"
+    "link": "https://play.google.com/store/books/details?id=U_6wDwAAQBAJ"
   },
   {
     "isbn": "9780385545730",
@@ -606,7 +606,7 @@
       "thumbnail": "https://books.google.com/books/content?id=onK0DwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     },
     "language": "un",
-    "canonicalVolumeLink": "https://play.google.com/store/books/details?id=onK0DwAAQBAJ"
+    "link": "https://play.google.com/store/books/details?id=onK0DwAAQBAJ"
   },
   {
     "isbn": "9780525522133",
@@ -633,7 +633,7 @@
       "thumbnail": "https://books.google.com/books/content?id=zZyaDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     },
     "language": "un",
-    "canonicalVolumeLink": "https://books.google.com/books/about/My_Year_of_Rest_and_Relaxation.html?hl=&id=zZyaDwAAQBAJ"
+    "link": "https://books.google.com/books/about/My_Year_of_Rest_and_Relaxation.html?hl=&id=zZyaDwAAQBAJ"
   },
   {
     "isbn": "9780593189467",
@@ -660,7 +660,7 @@
       "thumbnail": "https://books.google.com/books/content?id=MrzQDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     },
     "language": "un",
-    "canonicalVolumeLink": "https://play.google.com/store/books/details?id=MrzQDwAAQBAJ"
+    "link": "https://play.google.com/store/books/details?id=MrzQDwAAQBAJ"
   },
   {
     "isbn": "9781637603611",
@@ -681,7 +681,7 @@
     "pageCount": 134,
     "printType": "EBOOK",
     "language": "en",
-    "canonicalVolumeLink": "https://www.gitcuteguide.dev/"
+    "link": "https://www.gitcuteguide.dev/"
   },
   {
     "isbn": "9781250245304",
@@ -708,7 +708,7 @@
       "thumbnail": "https://books.google.com/books/content?id=lVv2DwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     },
     "language": "un",
-    "canonicalVolumeLink": "https://play.google.com/store/books/details?id=lVv2DwAAQBAJ"
+    "link": "https://play.google.com/store/books/details?id=lVv2DwAAQBAJ"
   },
   {
     "isbn": "9781626251724",
@@ -735,7 +735,7 @@
       "thumbnail": "https://books.google.com/books/content?id=cZpGCQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     },
     "language": "un",
-    "canonicalVolumeLink": "https://play.google.com/store/books/details?id=cZpGCQAAQBAJ"
+    "link": "https://play.google.com/store/books/details?id=cZpGCQAAQBAJ"
   },
   {
     "isbn": "9780553448191",
@@ -762,7 +762,7 @@
       "thumbnail": "https://books.google.com/books/content?id=qtDvCAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     },
     "language": "un",
-    "canonicalVolumeLink": "https://play.google.com/store/books/details?id=qtDvCAAAQBAJ"
+    "link": "https://play.google.com/store/books/details?id=qtDvCAAAQBAJ"
   },
   {
     "isbn": "9781250776693",
@@ -789,7 +789,7 @@
       "thumbnail": "https://books.google.com/books/content?id=VcHiDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     },
     "language": "un",
-    "canonicalVolumeLink": "https://play.google.com/store/books/details?id=VcHiDwAAQBAJ"
+    "link": "https://play.google.com/store/books/details?id=VcHiDwAAQBAJ"
   },
   {
     "isbn": "9781501131653",
@@ -816,7 +816,7 @@
       "thumbnail": "https://books.google.com/books/content?id=6WfUDQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     },
     "language": "un",
-    "canonicalVolumeLink": "https://books.google.com/books/about/How_to_Talk_So_Little_Kids_Will_Listen.html?hl=&id=6WfUDQAAQBAJ"
+    "link": "https://books.google.com/books/about/How_to_Talk_So_Little_Kids_Will_Listen.html?hl=&id=6WfUDQAAQBAJ"
   },
   {
     "isbn": "9780679645986",
@@ -843,7 +843,7 @@
       "thumbnail": "https://books.google.com/books/content?id=TV05BgAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     },
     "language": "un",
-    "canonicalVolumeLink": "https://play.google.com/store/books/details?id=TV05BgAAQBAJ"
+    "link": "https://play.google.com/store/books/details?id=TV05BgAAQBAJ"
   },
   {
     "isbn": "9780062882066",
@@ -870,7 +870,7 @@
       "thumbnail": "https://books.google.com/books/content?id=il6xDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     },
     "language": "un",
-    "canonicalVolumeLink": "https://play.google.com/store/books/details?id=il6xDwAAQBAJ"
+    "link": "https://play.google.com/store/books/details?id=il6xDwAAQBAJ"
   },
   {
     "isbn": "9780525533139",
@@ -897,7 +897,7 @@
       "thumbnail": "https://books.google.com/books/content?id=Tq6ZDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     },
     "language": "un",
-    "canonicalVolumeLink": "https://books.google.com/books/about/Tell_the_Machine_Goodnight.html?hl=&id=Tq6ZDwAAQBAJ"
+    "link": "https://books.google.com/books/about/Tell_the_Machine_Goodnight.html?hl=&id=Tq6ZDwAAQBAJ"
   },
   {
     "isbn": "9780751575774",
@@ -923,7 +923,7 @@
       "thumbnail": "https://books.google.com/books/content?id=t-0qwwEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
     },
     "language": "un",
-    "canonicalVolumeLink": "https://books.google.com/books/about/Yearbook.html?hl=&id=t-0qwwEACAAJ"
+    "link": "https://books.google.com/books/about/Yearbook.html?hl=&id=t-0qwwEACAAJ"
   },
   {
     "isbn": "9781594634703",
@@ -950,7 +950,7 @@
       "thumbnail": "https://books.google.com/books/content?id=SQcmEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     },
     "language": "en",
-    "canonicalVolumeLink": "https://books.google.com/books/about/All_Adults_Here.html?hl=&id=SQcmEAAAQBAJ"
+    "link": "https://books.google.com/books/about/All_Adults_Here.html?hl=&id=SQcmEAAAQBAJ"
   },
   {
     "isbn": "9780593098394",
@@ -977,7 +977,7 @@
       "thumbnail": "https://books.google.com/books/content?id=ugGWDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     },
     "language": "en",
-    "canonicalVolumeLink": "https://books.google.com/books/about/The_Wedding_Date.html?hl=&id=ugGWDwAAQBAJ"
+    "link": "https://books.google.com/books/about/The_Wedding_Date.html?hl=&id=ugGWDwAAQBAJ"
   },
   {
     "isbn": "9781984882165",
@@ -1004,7 +1004,7 @@
       "thumbnail": "https://books.google.com/books/content?id=FE32DwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     },
     "language": "en",
-    "canonicalVolumeLink": "https://play.google.com/store/books/details?id=FE32DwAAQBAJ"
+    "link": "https://play.google.com/store/books/details?id=FE32DwAAQBAJ"
   },
   {
     "isbn": "9780525657750",
@@ -1031,7 +1031,7 @@
       "thumbnail": "https://books.google.com/books/content?id=kRjzDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     },
     "language": "en",
-    "canonicalVolumeLink": "https://play.google.com/store/books/details?id=kRjzDwAAQBAJ"
+    "link": "https://play.google.com/store/books/details?id=kRjzDwAAQBAJ"
   },
   {
     "isbn": "9780063065413",
@@ -1058,7 +1058,7 @@
       "thumbnail": "https://books.google.com/books/content?id=mrHmDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     },
     "language": "en",
-    "canonicalVolumeLink": "https://play.google.com/store/books/details?id=mrHmDwAAQBAJ"
+    "link": "https://play.google.com/store/books/details?id=mrHmDwAAQBAJ"
   },
   {
     "isbn": "9780063012219",
@@ -1085,7 +1085,7 @@
       "thumbnail": "https://books.google.com/books/content?id=U2XbDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     },
     "language": "en",
-    "canonicalVolumeLink": "https://play.google.com/store/books/details?id=U2XbDwAAQBAJ"
+    "link": "https://play.google.com/store/books/details?id=U2XbDwAAQBAJ"
   },
   {
     "isbn": "9780451499059",
@@ -1112,7 +1112,7 @@
       "thumbnail": "https://books.google.com/books/content?id=4ZQnDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     },
     "language": "en",
-    "canonicalVolumeLink": "https://books.google.com/books/about/Conversations_with_Friends.html?hl=&id=4ZQnDwAAQBAJ"
+    "link": "https://books.google.com/books/about/Conversations_with_Friends.html?hl=&id=4ZQnDwAAQBAJ"
   },
   {
     "isbn": "9780393242843",
@@ -1139,7 +1139,7 @@
       "thumbnail": "https://books.google.com/books/content?id=QjXtDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     },
     "language": "en",
-    "canonicalVolumeLink": "https://play.google.com/store/books/details?id=QjXtDwAAQBAJ"
+    "link": "https://play.google.com/store/books/details?id=QjXtDwAAQBAJ"
   },
   {
     "isbn": "9781949199734",
@@ -1166,7 +1166,7 @@
       "thumbnail": "https://books.google.com/books/content?id=RalczQEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
     },
     "language": "en",
-    "canonicalVolumeLink": "https://books.google.com/books/about/The_Secret_Lives_of_Church_Ladies.html?hl=&id=RalczQEACAAJ"
+    "link": "https://books.google.com/books/about/The_Secret_Lives_of_Church_Ladies.html?hl=&id=RalczQEACAAJ"
   },
   {
     "isbn": "9780525620792",
@@ -1193,7 +1193,7 @@
       "thumbnail": "https://books.google.com/books/content?id=ksKyDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     },
     "language": "en",
-    "canonicalVolumeLink": "https://play.google.com/store/books/details?id=ksKyDwAAQBAJ"
+    "link": "https://play.google.com/store/books/details?id=ksKyDwAAQBAJ"
   },
   {
     "isbn": "9780062968777",
@@ -1220,7 +1220,7 @@
       "thumbnail": "https://books.google.com/books/content?id=aa6sDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     },
     "language": "en",
-    "canonicalVolumeLink": "https://play.google.com/store/books/details?id=aa6sDwAAQBAJ"
+    "link": "https://play.google.com/store/books/details?id=aa6sDwAAQBAJ"
   },
   {
     "isbn": "9781555973407",
@@ -1247,7 +1247,7 @@
       "thumbnail": "https://books.google.com/books/content?id=F4QkBQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     },
     "language": "en",
-    "canonicalVolumeLink": "https://play.google.com/store/books/details?id=F4QkBQAAQBAJ"
+    "link": "https://play.google.com/store/books/details?id=F4QkBQAAQBAJ"
   },
   {
     "isbn": "9781984806758",
@@ -1274,7 +1274,7 @@
       "thumbnail": "https://books.google.com/books/content?id=5fooEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     },
     "language": "en",
-    "canonicalVolumeLink": "https://books.google.com/books/about/People_We_Meet_on_Vacation.html?hl=&id=5fooEAAAQBAJ"
+    "link": "https://books.google.com/books/about/People_We_Meet_on_Vacation.html?hl=&id=5fooEAAAQBAJ"
   },
   {
     "isbn": "9780374602611",
@@ -1301,7 +1301,7 @@
       "thumbnail": "https://books.google.com/books/content?id=sL4SEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     },
     "language": "en",
-    "canonicalVolumeLink": "https://play.google.com/store/books/details?id=sL4SEAAAQBAJ"
+    "link": "https://play.google.com/store/books/details?id=sL4SEAAAQBAJ"
   },
   {
     "isbn": "9780802165565",
@@ -1328,7 +1328,7 @@
       "thumbnail": "https://books.google.com/books/content?id=_eUoDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     },
     "language": "en",
-    "canonicalVolumeLink": "https://play.google.com/store/books/details?id=_eUoDwAAQBAJ"
+    "link": "https://play.google.com/store/books/details?id=_eUoDwAAQBAJ"
   },
   {
     "isbn": "9781644450536",
@@ -1355,7 +1355,7 @@
       "thumbnail": "https://books.google.com/books/content?id=_xC-zQEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
     },
     "language": "en",
-    "canonicalVolumeLink": "https://books.google.com/books/about/The_Renunciations.html?hl=&id=_xC-zQEACAAJ"
+    "link": "https://books.google.com/books/about/The_Renunciations.html?hl=&id=_xC-zQEACAAJ"
   },
   {
     "isbn": "9780593197837",
@@ -1382,7 +1382,7 @@
       "thumbnail": "https://books.google.com/books/content?id=fzc7EAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     },
     "language": "en",
-    "canonicalVolumeLink": "https://books.google.com/books/about/The_Heart_Principle.html?hl=&id=fzc7EAAAQBAJ"
+    "link": "https://books.google.com/books/about/The_Heart_Principle.html?hl=&id=fzc7EAAAQBAJ"
   },
   {
     "isbn": "9780143128755",
@@ -1409,7 +1409,7 @@
       "thumbnail": "https://books.google.com/books/content?id=AKqvDAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     },
     "language": "en",
-    "canonicalVolumeLink": "https://books.google.com/books/about/Eileen.html?hl=&id=AKqvDAAAQBAJ"
+    "link": "https://books.google.com/books/about/Eileen.html?hl=&id=AKqvDAAAQBAJ"
   },
   {
     "isbn": "9781585429134",
@@ -1436,7 +1436,7 @@
       "thumbnail": "https://books.google.com/books/content?id=_O0oDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     },
     "language": "en",
-    "canonicalVolumeLink": "https://books.google.com/books/about/Attached.html?hl=&id=_O0oDwAAQBAJ"
+    "link": "https://books.google.com/books/about/Attached.html?hl=&id=_O0oDwAAQBAJ"
   },
   {
     "isbn": "9780606415545",
@@ -1462,7 +1462,7 @@
       "thumbnail": "https://books.google.com/books/content?id=8v3mwAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
     },
     "language": "en",
-    "canonicalVolumeLink": "https://books.google.com/books/about/The_Haunting_of_Hill_House.html?hl=&id=8v3mwAEACAAJ"
+    "link": "https://books.google.com/books/about/The_Haunting_of_Hill_House.html?hl=&id=8v3mwAEACAAJ"
   },
   {
     "isbn": "9780062667656",
@@ -1489,7 +1489,7 @@
       "thumbnail": "https://books.google.com/books/content?id=UyTIDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     },
     "language": "en",
-    "canonicalVolumeLink": "https://play.google.com/store/books/details?id=UyTIDwAAQBAJ"
+    "link": "https://play.google.com/store/books/details?id=UyTIDwAAQBAJ"
   },
   {
     "isbn": "9780062880864",
@@ -1516,7 +1516,7 @@
       "thumbnail": "https://books.google.com/books/content?id=MWinDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     },
     "language": "en",
-    "canonicalVolumeLink": "https://play.google.com/store/books/details?id=MWinDwAAQBAJ"
+    "link": "https://play.google.com/store/books/details?id=MWinDwAAQBAJ"
   },
   {
     "isbn": "9780593330456",
@@ -1543,7 +1543,7 @@
       "thumbnail": "https://books.google.com/books/content?id=GxACEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     },
     "language": "en",
-    "canonicalVolumeLink": "https://play.google.com/store/books/details?id=GxACEAAAQBAJ"
+    "link": "https://play.google.com/store/books/details?id=GxACEAAAQBAJ"
   },
   {
     "isbn": "9780062975966",
@@ -1570,7 +1570,7 @@
       "thumbnail": "https://books.google.com/books/content?id=O5K5DwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     },
     "language": "en",
-    "canonicalVolumeLink": "https://play.google.com/store/books/details?id=O5K5DwAAQBAJ"
+    "link": "https://play.google.com/store/books/details?id=O5K5DwAAQBAJ"
   },
   {
     "isbn": "9781984806734",
@@ -1597,7 +1597,7 @@
       "thumbnail": "https://books.google.com/books/content?id=vDTgDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     },
     "language": "en",
-    "canonicalVolumeLink": "https://books.google.com/books/about/Beach_Read.html?hl=&id=vDTgDwAAQBAJ"
+    "link": "https://books.google.com/books/about/Beach_Read.html?hl=&id=vDTgDwAAQBAJ"
   },
   {
     "isbn": "9781538702741",
@@ -1623,7 +1623,7 @@
       "thumbnail": "https://books.google.com/books/content?id=qD8czgEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
     },
     "language": "en",
-    "canonicalVolumeLink": "https://books.google.com/books/about/Sometimes_I_Trip_on_How_Happy_We_Could_B.html?hl=&id=qD8czgEACAAJ"
+    "link": "https://books.google.com/books/about/Sometimes_I_Trip_on_How_Happy_We_Could_B.html?hl=&id=qD8czgEACAAJ"
   },
   {
     "isbn": "9780525559481",
@@ -1650,7 +1650,7 @@
       "thumbnail": "https://books.google.com/books/content?id=nNjTDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     },
     "language": "en",
-    "canonicalVolumeLink": "https://play.google.com/store/books/details?id=nNjTDwAAQBAJ"
+    "link": "https://play.google.com/store/books/details?id=nNjTDwAAQBAJ"
   },
   {
     "isbn": "9780593329825",
@@ -1677,7 +1677,7 @@
       "thumbnail": "https://books.google.com/books/content?id=qQMyEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     },
     "language": "en",
-    "canonicalVolumeLink": "https://books.google.com/books/about/The_Paper_Palace.html?hl=&id=qQMyEAAAQBAJ"
+    "link": "https://books.google.com/books/about/The_Paper_Palace.html?hl=&id=qQMyEAAAQBAJ"
   },
   {
     "isbn": "9780593296905",
@@ -1704,6 +1704,6 @@
       "thumbnail": "https://books.google.com/books/content?id=Fxs3EAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
     },
     "language": "en",
-    "canonicalVolumeLink": "https://books.google.com/books/about/This_Is_Your_Mind_on_Plants.html?hl=&id=Fxs3EAAAQBAJ"
+    "link": "https://books.google.com/books/about/This_Is_Your_Mind_on_Plants.html?hl=&id=Fxs3EAAAQBAJ"
   }
 ]
