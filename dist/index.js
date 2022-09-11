@@ -25016,6 +25016,47 @@ function getDataFile(file) {
     });
 }
 
+;// CONCATENATED MODULE: ./src/get-json-file.ts
+var get_json_file_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+
+
+
+
+const get_json_file_octokit = new dist_node/* Octokit */.vd({
+    auth: process.env.TOKEN,
+});
+function getJsonFile(file) {
+    return get_json_file_awaiter(this, void 0, void 0, function* () {
+        try {
+            const owner = (0,core.getInput)("GitHubUsername");
+            const repo = (0,core.getInput)("GitHubRepository");
+            const { data } = yield get_json_file_octokit.rest.repos.getContent({
+                owner,
+                repo,
+                path: `_data/${file}`,
+            });
+            if ("content" in data) {
+                const buffer = external_buffer_.Buffer.from(data.content, "base64").toString();
+                return JSON.parse(buffer);
+            }
+            else {
+                return [];
+            }
+        }
+        catch (error) {
+            (0,core.setFailed)(error.message);
+        }
+    });
+}
+
 ;// CONCATENATED MODULE: ./src/action.ts
 var action_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -25032,6 +25073,7 @@ var action_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _a
 
 
 
+
 function action() {
     return action_awaiter(this, void 0, void 0, function* () {
         try {
@@ -25039,7 +25081,7 @@ function action() {
             const image = `${year}-${season.toLowerCase()}.png`;
             (0,core.exportVariable)("season", name);
             const [bookData, recipeData, playlistData] = yield Promise.all([
-                getDataFile("read.yml"),
+                getJsonFile("read.json"),
                 getDataFile("recipes.yml"),
                 getDataFile("playlists.yml"),
             ]);
