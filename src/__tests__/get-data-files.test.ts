@@ -2,7 +2,7 @@ import { getDataFile } from "../get-data-file";
 import { setFailed } from "@actions/core";
 
 let mockGetContents = Promise.resolve({
-  data: require("./fixtures/repo-contents.json"),
+  data: require("./fixtures/repo-contents-yaml.json"),
 });
 
 jest.mock("@actions/core");
