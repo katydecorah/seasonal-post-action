@@ -24885,10 +24885,10 @@ var jsYaml = {
 ;// CONCATENATED MODULE: ./src/format.ts
 
 function formatBooks({ bookData, start, end }) {
-    const books = filterData(bookData, "dateFinished", start, end).map(({ title, authors, canonicalVolumeLink, isbn }) => ({
+    const books = filterData(bookData, "dateFinished", start, end).map(({ title, authors, link, isbn }) => ({
         title,
         authors: authors.join(", "),
-        url: canonicalVolumeLink,
+        url: link,
         isbn,
     }));
     return {
