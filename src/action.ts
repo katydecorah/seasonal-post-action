@@ -9,6 +9,7 @@ import {
 } from "./format";
 import { findSeason } from "./find-season";
 import { getDataFile } from "./get-data-file";
+import { getJsonFile } from "./get-json-file";
 
 export async function action() {
   try {
@@ -18,7 +19,7 @@ export async function action() {
     exportVariable("season", name);
 
     const [bookData, recipeData, playlistData] = await Promise.all([
-      getDataFile("read.yml"),
+      getJsonFile("read.json"),
       getDataFile("recipes.yml"),
       getDataFile("playlists.yml"),
     ]);
