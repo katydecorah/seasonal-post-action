@@ -20,7 +20,7 @@ export async function action() {
 
     const [bookData, recipeData, playlistData] = await Promise.all([
       getJsonFile("read.json"),
-      getDataFile("recipes.yml"),
+      getJsonFile("recipes.json"),
       getDataFile("playlists.yml"),
     ]);
 
