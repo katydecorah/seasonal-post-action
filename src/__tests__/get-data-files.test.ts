@@ -20,19 +20,19 @@ jest.mock("octokit", () => {
 
 describe("getDataFile", () => {
   test("works", async () => {
-    expect(await getDataFile("recipes.yml")).toMatchSnapshot();
+    expect(await getDataFile("playlists.yml")).toMatchSnapshot();
   });
   test("missing content", async () => {
     mockGetContents = Promise.resolve({
       data: {},
     });
-    expect(await getDataFile("recipes.yml")).toEqual([]);
+    expect(await getDataFile("playlists.yml")).toEqual([]);
   });
   test("fails", async () => {
     mockGetContents = Promise.reject({
       message: "Error",
     });
-    await getDataFile("recipes.yml");
+    await getDataFile("playlists.yml");
     expect(setFailed).toHaveBeenCalledWith("Error");
   });
 });

@@ -17,10 +17,10 @@ describe("action", () => {
   test("works", async () => {
     const getJsonFileSpy = jest
       .spyOn(GetJsonFile, "getJsonFile")
-      .mockReturnValueOnce(books);
+      .mockReturnValueOnce(books)
+      .mockReturnValueOnce(recipes);
     const getDataFileSpy = jest
       .spyOn(GetDataFile, "getDataFile")
-      .mockReturnValueOnce(recipes)
       .mockReturnValueOnce(playlists);
     const formatBooksSpy = jest.spyOn(Format, "formatBooks");
     const formatRecipesSpy = jest.spyOn(Format, "formatRecipes");
@@ -39,8 +39,8 @@ describe("action", () => {
     expect(exportVariable).toHaveBeenLastCalledWith("season", "2021 Summer");
     expect(getJsonFileSpy).toHaveBeenNthCalledWith(1, "read.json");
     expect(getJsonFileSpy).toHaveNthReturnedWith(1, books);
-    expect(getDataFileSpy).toHaveBeenNthCalledWith(1, "recipes.yml");
-    expect(getDataFileSpy).toHaveBeenNthCalledWith(2, "playlists.yml");
+    expect(getJsonFileSpy).toHaveBeenNthCalledWith(2, "recipes.json");
+    expect(getDataFileSpy).toHaveBeenNthCalledWith(1, "playlists.yml");
     expect(setFailed).not.toHaveBeenCalled();
     expect(formatBooksSpy).toHaveBeenCalled();
     expect(formatRecipesSpy).toHaveBeenCalled();
