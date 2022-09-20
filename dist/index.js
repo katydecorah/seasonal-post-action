@@ -24958,7 +24958,6 @@ function findSeason() {
     };
     if (dates[month] === undefined) {
         (0,core.setFailed)(`The current date is out of range, it's not time to create a playlist yet. If testing, set the env variable \`SETDATE\`.`);
-        throw new Error();
     }
     return {
         name: `${month == 2 ? `${year - 1}/${year}` : year} ${season[month]}`,
@@ -24987,7 +24986,6 @@ var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _argume
 
 
 
-
 const octokit = new dist_node/* Octokit */.vd({
     auth: process.env.TOKEN,
 });
@@ -25011,7 +25009,7 @@ function getDataFile(file) {
             }
         }
         catch (error) {
-            (0,core.setFailed)(error.message);
+            throw new Error(error);
         }
     });
 }
@@ -25026,7 +25024,6 @@ var get_json_file_awaiter = (undefined && undefined.__awaiter) || function (this
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-
 
 
 
@@ -25052,7 +25049,7 @@ function getJsonFile(file) {
             }
         }
         catch (error) {
-            (0,core.setFailed)(error.message);
+            throw new Error(error);
         }
     });
 }
@@ -25082,7 +25079,7 @@ function action() {
             (0,core.exportVariable)("season", name);
             const [bookData, recipeData, playlistData] = yield Promise.all([
                 getJsonFile("read.json"),
-                getDataFile("recipes.yml"),
+                getJsonFile("recipes.json"),
                 getDataFile("playlists.yml"),
             ]);
             const { bookYaml, bookText } = formatBooks({ bookData, start, end });
@@ -25114,7 +25111,7 @@ function action() {
             yield (0,promises_namespaceObject.writeFile)(`./notes/_posts/${end}-${year}-${season.toLowerCase()}.md`, md);
         }
         catch (error) {
-            (0,core.setFailed)(error.message);
+            (0,core.setFailed)(error);
         }
     });
 }

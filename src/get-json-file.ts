@@ -1,4 +1,3 @@
-import { setFailed } from "@actions/core";
 import { Buffer } from "buffer";
 import { Octokit } from "octokit";
 import { DataFile } from "./format";
@@ -26,6 +25,6 @@ export async function getJsonFile(
       return [];
     }
   } catch (error) {
-    setFailed(error.message);
+    throw new Error(error);
   }
 }

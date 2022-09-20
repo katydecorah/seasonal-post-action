@@ -58,6 +58,6 @@ export async function action() {
       md
     );
   } catch (error) {
-    setFailed(error.message);
+    setFailed(error);
   }
 }

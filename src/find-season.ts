@@ -30,7 +30,6 @@ export function findSeason(): {
     setFailed(
       `The current date is out of range, it's not time to create a playlist yet. If testing, set the env variable \`SETDATE\`.`
     );
-    throw new Error();
   }
   return {
     name: `${month == 2 ? `${year - 1}/${year}` : year} ${season[month]}`,
