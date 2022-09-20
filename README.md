@@ -12,6 +12,7 @@ To use this action, create a new workflow in `.github/workflows` and modify it a
 name: Seasonal post
 
 on:
+  workflow_dispatch: # enables run button on github.com
   schedule:
     - cron: "00 02 20 Mar,Jun,Sep,Dec *"
 
@@ -25,16 +26,16 @@ jobs:
       - name: Write seasonal post
         uses: katydecorah/seasonal-post-action@v5.2.0
         with:
-          GitHubUsername: octocat
-          GitHubRepository: my-data-repo
+          GitHubUsername: katydecorah
+          GitHubRepository: has
         env:
           TOKEN: ${{ secrets.TOKEN }}
           # SETDATE: "2021-06-20"
       - name: Commit files
         run: |
+          git pull
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git pull
           git add -A && git commit -m "${{ env.season }}"
           git push
 ```
