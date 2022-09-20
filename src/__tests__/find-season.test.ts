@@ -56,7 +56,9 @@ describe("findSeason", () => {
     try {
       findSeason();
     } catch (err) {
-      expect(err).toMatchInlineSnapshot(`[Error]`);
+      expect(err).toMatchInlineSnapshot(
+        `[TypeError: Cannot read properties of undefined (reading '0')]`
+      );
     }
     expect(setFailed).toHaveBeenCalledWith(
       `The current date is out of range, it's not time to create a playlist yet. If testing, set the env variable \`SETDATE\`.`

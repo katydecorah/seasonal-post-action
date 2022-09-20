@@ -1,5 +1,4 @@
 import { getDataFile } from "../get-data-file";
-import { setFailed } from "@actions/core";
 
 let mockGetContents = Promise.resolve({
   data: require("./fixtures/repo-contents-yml.json"),
@@ -32,7 +31,11 @@ describe("getDataFile", () => {
     mockGetContents = Promise.reject({
       message: "Error",
     });
-    await getDataFile("playlists.yml");
-    expect(setFailed).toHaveBeenCalledWith("Error");
+
+    try {
+      await getDataFile("playlists.yml");
+    } catch (err) {
+      expect(err).toMatchInlineSnapshot(`[Error: [object Object]]`);
+    }
   });
 });

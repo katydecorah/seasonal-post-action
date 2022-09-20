@@ -1,5 +1,4 @@
 import { getJsonFile } from "../get-json-file";
-import { setFailed } from "@actions/core";
 
 let mockGetContents = Promise.resolve({
   data: require("./fixtures/repo-contents.json"),
@@ -32,7 +31,10 @@ describe("getJsonFile", () => {
     mockGetContents = Promise.reject({
       message: "Error",
     });
-    await getJsonFile("books.json");
-    expect(setFailed).toHaveBeenCalledWith("Error");
+    try {
+      await getJsonFile("books.json");
+    } catch (err) {
+      expect(err).toMatchInlineSnapshot(`[Error: [object Object]]`);
+    }
   });
 });

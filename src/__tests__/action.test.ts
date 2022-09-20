@@ -53,7 +53,11 @@ describe("action", () => {
     jest
       .spyOn(GetDataFile, "getDataFile")
       .mockRejectedValue({ message: "Error" });
-    await action();
-    expect(setFailed).toHaveBeenCalledWith("Error");
+
+    try {
+      await action();
+    } catch (err) {
+      expect(err).toMatchInlineSnapshot(`[Error: [object Object]]`);
+    }
   });
 });
