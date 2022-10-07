@@ -24,7 +24,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Write seasonal post
-        uses: katydecorah/seasonal-post-action@v5.2.0
+        uses: katydecorah/seasonal-post-action@v5.2.1
         with:
           GitHubUsername: katydecorah
           GitHubRepository: has
@@ -40,11 +40,10 @@ jobs:
           git push
 ```
 
+
 ## Action options
 
 - `GitHubUsername`: Required. The GitHub username that owns the repository with the data files.
-
 - `GitHubRepository`: Required. The Github repository that has the data files.
-
 <!-- END GENERATED DOCUMENTATION -->
 ````
