@@ -43080,9 +43080,7 @@ var github = __nccwpck_require__(5438);
 
 function findSeason() {
     const payload = github.context.payload.inputs;
-    const today = payload.date
-        ? new Date(payload.date)
-        : new Date();
+    const today = payload.date ? new Date(payload.date) : new Date();
     const month = today.getMonth();
     const year = today.getFullYear();
     const season = {
