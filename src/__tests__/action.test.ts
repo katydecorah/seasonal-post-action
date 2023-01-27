@@ -8,11 +8,18 @@ import recipes from "./fixtures/recipes.json";
 import playlists from "./fixtures/playlists.json";
 import books from "./fixtures/books.json";
 import { promises } from "fs";
+import * as core from "@actions/core";
 import * as github from "@actions/github";
 
 jest.mock("@actions/core");
 
 jest.useFakeTimers().setSystemTime(new Date("2021-9-20"));
+
+const defaultInputs = {
+  GitHubUsername: "katydecorah",
+  GitHubRepository: "archive",
+  SeasonEmoji: "❄️,🌷,☀️,🍂",
+};
 
 beforeEach(() => {
   Object.defineProperty(github, "context", {
@@ -24,6 +31,9 @@ beforeEach(() => {
       },
     },
   });
+  jest
+    .spyOn(core, "getInput")
+    .mockImplementation((name) => defaultInputs[name] || undefined);
 });
 
 describe("action", () => {
@@ -46,6 +56,7 @@ describe("action", () => {
       end: "2021-09-20",
       name: "2021 Summer",
       season: "Summer",
+      seasonEmoji: "☀️",
       start: "2021-06-21",
       year: 2021,
     });

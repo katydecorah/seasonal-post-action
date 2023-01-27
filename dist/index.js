@@ -43083,12 +43083,16 @@ function findSeason() {
     const today = payload.date ? new Date(payload.date) : new Date();
     const month = today.getMonth();
     const year = today.getFullYear();
-    const season = {
+    const seasons = {
         2: "Winter",
         5: "Spring",
         8: "Summer",
         11: "Fall",
     };
+    const season = seasons[month];
+    const seasonEmojis = (0,core.getInput)("SeasonEmoji").split(",");
+    const seasonEmoji = seasonEmojis[Object.keys(seasons).indexOf(month.toString())];
+    (0,core.exportVariable)("seasonEmoji", seasonEmoji);
     const dates = {
         2: ["12", "03"],
         5: ["03", "06"],
@@ -43099,11 +43103,12 @@ function findSeason() {
         (0,core.setFailed)(`The current date is out of range, it's not time to create a playlist yet. If testing, set the env variable \`SETDATE\`.`);
     }
     return {
-        name: `${month == 2 ? `${year - 1}/${year}` : year} ${season[month]}`,
-        season: season[month],
-        year: year,
+        name: `${month == 2 ? `${year - 1}/${year}` : year} ${season}`,
+        season,
+        year,
         start: `${month === 2 ? `${year - 1}` : `${year}`}-${dates[month][0]}-21`,
         end: `${year}-${dates[month][1]}-20`,
+        seasonEmoji,
     };
 }
 
