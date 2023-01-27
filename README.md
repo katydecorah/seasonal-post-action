@@ -11,6 +11,11 @@ To use this action, create a new workflow in `.github/workflows` and modify it a
 ```yml
 name: Seasonal post
 
+# Grant the action permission to write to the repository
+permissions:
+  contents: write
+  pull-requests: write
+
 on:
   workflow_dispatch: # enables run button on github.com
   schedule:
@@ -27,7 +32,7 @@ jobs:
         uses: katydecorah/seasonal-post-action@v5.2.1
         with:
           GitHubUsername: katydecorah
-          GitHubRepository: has
+          GitHubRepository: archive
         env:
           TOKEN: ${{ secrets.TOKEN }}
           # SETDATE: "2021-06-20"

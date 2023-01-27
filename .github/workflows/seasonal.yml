@@ -1,5 +1,10 @@
 name: Seasonal post
 
+# Grant the action permission to write to the repository
+permissions:
+  contents: write
+  pull-requests: write
+
 on:
   workflow_dispatch: # enables run button on github.com
   schedule:
@@ -16,7 +21,7 @@ jobs:
         uses: ./
         with:
           GitHubUsername: katydecorah
-          GitHubRepository: has
+          GitHubRepository: archive
         env:
           TOKEN: ${{ secrets.TOKEN }}
           # SETDATE: "2021-06-20"

@@ -25,6 +25,6 @@ export async function getJsonFile(
       return [];
     }
   } catch (error) {
-    throw new Error(error);
+    throw new Error(`${file}: ${error}`);
   }
 }

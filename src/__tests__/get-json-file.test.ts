@@ -28,13 +28,11 @@ describe("getJsonFile", () => {
     expect(await getJsonFile("books.json")).toEqual([]);
   });
   test("fails", async () => {
-    mockGetContents = Promise.reject({
-      message: "Error",
-    });
+    mockGetContents = Promise.reject("Error");
     try {
       await getJsonFile("books.json");
     } catch (err) {
-      expect(err).toMatchInlineSnapshot(`[Error: [object Object]]`);
+      expect(err).toMatchInlineSnapshot(`[Error: books.json: Error]`);
     }
   });
 });
