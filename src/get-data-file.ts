@@ -27,6 +27,6 @@ export async function getDataFile(
       return [];
     }
   } catch (error) {
-    throw new Error(error);
+    throw new Error(`${file}: ${error}`);
   }
 }

@@ -40576,7 +40576,7 @@ function getDataFile(file) {
             }
         }
         catch (error) {
-            throw new Error(error);
+            throw new Error(`${file}: ${error}`);
         }
     });
 }
@@ -40616,7 +40616,7 @@ function getJsonFile(file) {
             }
         }
         catch (error) {
-            throw new Error(error);
+            throw new Error(`${file}: ${error}`);
         }
     });
 }
