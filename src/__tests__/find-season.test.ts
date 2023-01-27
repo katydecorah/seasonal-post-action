@@ -108,6 +108,7 @@ describe("findSeason", () => {
         "end": "2023-06-20",
         "name": "2023 Spring",
         "season": "Spring",
+        "seasonEmoji": "🌷",
         "start": "2023-03-21",
         "year": 2023,
       }
