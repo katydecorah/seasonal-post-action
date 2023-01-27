@@ -40518,7 +40518,7 @@ function findSeason() {
         11: "Fall",
     };
     const season = seasons[month];
-    const seasonEmojis = (0,core.getInput)('SeasonEmoji').split(',');
+    const seasonEmojis = (0,core.getInput)("SeasonEmoji").split(",");
     const seasonEmoji = seasonEmojis[Object.keys(seasons).indexOf(month.toString())];
     (0,core.exportVariable)("seasonEmoji", seasonEmoji);
     const dates = {
@@ -40536,7 +40536,7 @@ function findSeason() {
         year,
         start: `${month === 2 ? `${year - 1}` : `${year}`}-${dates[month][0]}-21`,
         end: `${year}-${dates[month][1]}-20`,
-        seasonEmoji
+        seasonEmoji,
     };
 }
 
