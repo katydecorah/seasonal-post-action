@@ -3,6 +3,7 @@ on:
   push:
     paths:
       - ".github/workflows/seasonal.yml"
+      - ".github/workflows/documentation.yml"
       - "action.yml"
       - "package.json"
       - "README.md"
@@ -15,7 +16,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Documentation action
-        uses: katydecorah/documentation-action@v0.2.0
+        uses: katydecorah/documentation-action@v0.3.0
         with:
           exampleWorkflowFile: "seasonal.yml"
       - name: Commit files
