@@ -8,10 +8,23 @@ import recipes from "./fixtures/recipes.json";
 import playlists from "./fixtures/playlists.json";
 import books from "./fixtures/books.json";
 import { promises } from "fs";
+import * as github from "@actions/github";
 
 jest.mock("@actions/core");
 
 jest.useFakeTimers().setSystemTime(new Date("2021-9-20"));
+
+beforeEach(() => {
+  Object.defineProperty(github, "context", {
+    value: {
+      payload: {
+        inputs: {
+          date: undefined,
+        },
+      },
+    },
+  });
+});
 
 describe("action", () => {
   test("works", async () => {
