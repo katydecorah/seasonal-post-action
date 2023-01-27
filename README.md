@@ -41,7 +41,7 @@ jobs:
           git pull
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add -A && git commit -m "${{ env.season }}"
+          git add -A && git commit -m "${{ env.seasonEmoji }} ${{ env.season }}"
           git push
 ```
 
@@ -50,5 +50,6 @@ jobs:
 
 - `GitHubUsername`: Required. The GitHub username that owns the repository with the data files.
 - `GitHubRepository`: Required. The Github repository that has the data files.
+- `SeasonEmoji`: Emoji to assign each season (winter, spring, summer, fall). Default: `❄️,🌷,☀️,🍂`.
 <!-- END GENERATED DOCUMENTATION -->
 ````
