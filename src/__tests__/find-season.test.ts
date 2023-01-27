@@ -1,7 +1,20 @@
 import { findSeason } from "../find-season";
 import { setFailed } from "@actions/core";
+import * as core from "@actions/core";
 
 jest.mock("@actions/core");
+
+const defaultInputs = {
+  GitHubUsername: "katydecorah",
+  GitHubRepository: "archive",
+  SeasonEmoji: "❄️,🌷,☀️,🍂",
+};
+
+beforeEach(() => {
+  jest
+    .spyOn(core, "getInput")
+    .mockImplementation((name) => defaultInputs[name] || undefined);
+});
 
 describe("findSeason", () => {
   it("works", () => {
@@ -11,6 +24,7 @@ describe("findSeason", () => {
         "end": "2021-03-20",
         "name": "2020/2021 Winter",
         "season": "Winter",
+        "seasonEmoji": "❄️",
         "start": "2020-12-21",
         "year": 2021,
       }
@@ -22,6 +36,7 @@ describe("findSeason", () => {
         "end": "2021-06-20",
         "name": "2021 Spring",
         "season": "Spring",
+        "seasonEmoji": "🌷",
         "start": "2021-03-21",
         "year": 2021,
       }
@@ -33,6 +48,7 @@ describe("findSeason", () => {
         "end": "2021-09-20",
         "name": "2021 Summer",
         "season": "Summer",
+        "seasonEmoji": "☀️",
         "start": "2021-06-21",
         "year": 2021,
       }
@@ -44,6 +60,7 @@ describe("findSeason", () => {
         "end": "2021-12-20",
         "name": "2021 Fall",
         "season": "Fall",
+        "seasonEmoji": "🍂",
         "start": "2021-09-21",
         "year": 2021,
       }

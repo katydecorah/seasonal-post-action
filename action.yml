@@ -12,3 +12,6 @@ inputs:
   GitHubRepository:
     description: The Github repository that has the data files.
     required: true
+  SeasonEmoji:
+    description: Emoji to assign each season (winter, spring, summer, fall).
+    default: "❄️,🌷,☀️,🍂"
