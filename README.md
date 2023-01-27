@@ -48,11 +48,12 @@ jobs:
           git push
 ```
 
-
 ## Action options
 
 - `GitHubUsername`: Required. The GitHub username that owns the repository with the data files.
+
 - `GitHubRepository`: Required. The Github repository that has the data files.
+
 - `SeasonEmoji`: Emoji to assign each season (winter, spring, summer, fall). Default: `❄️,🌷,☀️,🍂`.
 
 ## Trigger the action
