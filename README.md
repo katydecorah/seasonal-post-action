@@ -48,6 +48,7 @@ jobs:
           git push
 ```
 
+
 ## Action options
 
 - `GitHubUsername`: Required. The GitHub username that owns the repository with the data files.
@@ -59,12 +60,11 @@ jobs:
 To trigger the action, [create a workflow dispatch event](https://docs.github.com/en/rest/actions/workflows#create-a-workflow-dispatch-event) with the following body parameters:
 
 ```js
-{
+{ 
   "ref": "main", // Required. The git reference for the workflow, a branch or tag name.
   "inputs": {
     "date": "", // Set a specific date to run the action (YYYY-MM-DD), leave blank for today.
   }
 }
 ```
-
 <!-- END GENERATED DOCUMENTATION -->
