@@ -20,7 +20,7 @@ on:
   workflow_dispatch:
     inputs:
       date:
-        description: Set a specific date to run the action, leave blank for today.
+        description: Set a specific date to run the action (YYYY-MM-DD), leave blank for today.
         type: string
   schedule:
     - cron: "00 02 20 Mar,Jun,Sep,Dec *"
@@ -62,7 +62,7 @@ To trigger the action, [create a workflow dispatch event](https://docs.github.co
 { 
   "ref": "main", // Required. The git reference for the workflow, a branch or tag name.
   "inputs": {
-    "date": "", // Set a specific date to run the action, leave blank for today.
+    "date": "", // Set a specific date to run the action (YYYY-MM-DD), leave blank for today.
   }
 }
 ```
