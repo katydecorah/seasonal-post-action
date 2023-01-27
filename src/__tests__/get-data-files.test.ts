@@ -28,14 +28,12 @@ describe("getDataFile", () => {
     expect(await getDataFile("playlists.yml")).toEqual([]);
   });
   test("fails", async () => {
-    mockGetContents = Promise.reject({
-      message: "Error",
-    });
+    mockGetContents = Promise.reject("Error");
 
     try {
       await getDataFile("playlists.yml");
     } catch (err) {
-      expect(err).toMatchInlineSnapshot(`[Error: [object Object]]`);
+      expect(err).toMatchInlineSnapshot(`[Error: playlists.yml: Error]`);
     }
   });
 });
