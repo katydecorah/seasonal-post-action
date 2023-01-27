@@ -1,6 +1,7 @@
 import { findSeason } from "../find-season";
 import { setFailed } from "@actions/core";
 import * as core from "@actions/core";
+import * as github from "@actions/github";
 
 jest.mock("@actions/core");
 
@@ -11,6 +12,15 @@ const defaultInputs = {
 };
 
 beforeEach(() => {
+  Object.defineProperty(github, "context", {
+    value: {
+      payload: {
+        inputs: {
+          date: undefined,
+        },
+      },
+    },
+  });
   jest
     .spyOn(core, "getInput")
     .mockImplementation((name) => defaultInputs[name] || undefined);
@@ -81,5 +91,26 @@ describe("findSeason", () => {
       `The current date is out of range, it's not time to create a playlist yet. If testing, set the env variable \`SETDATE\`.`
     );
     process.env.SETDATE = undefined;
+  });
+
+  it("set date", () => {
+    Object.defineProperty(github, "context", {
+      value: {
+        payload: {
+          inputs: {
+            date: "2023-06-20",
+          },
+        },
+      },
+    });
+    expect(findSeason()).toMatchInlineSnapshot(`
+      {
+        "end": "2023-06-20",
+        "name": "2023 Spring",
+        "season": "Spring",
+        "start": "2023-03-21",
+        "year": 2023,
+      }
+    `);
   });
 });

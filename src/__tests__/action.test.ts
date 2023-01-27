@@ -9,6 +9,7 @@ import playlists from "./fixtures/playlists.json";
 import books from "./fixtures/books.json";
 import { promises } from "fs";
 import * as core from "@actions/core";
+import * as github from "@actions/github";
 
 jest.mock("@actions/core");
 
@@ -21,6 +22,15 @@ const defaultInputs = {
 };
 
 beforeEach(() => {
+  Object.defineProperty(github, "context", {
+    value: {
+      payload: {
+        inputs: {
+          date: undefined,
+        },
+      },
+    },
+  });
   jest
     .spyOn(core, "getInput")
     .mockImplementation((name) => defaultInputs[name] || undefined);

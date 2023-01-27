@@ -1,4 +1,5 @@
 import { exportVariable, getInput, setFailed } from "@actions/core";
+import * as github from "@actions/github";
 
 export type Seasons = "Winter" | "Spring" | "Summer" | "Fall";
 
@@ -10,9 +11,9 @@ export function findSeason(): {
   end: string;
   seasonEmoji: string;
 } {
-  const today = process.env.SETDATE
-    ? new Date(process.env.SETDATE)
-    : new Date();
+  const payload = github.context.payload.inputs;
+
+  const today = payload.date ? new Date(payload.date) : new Date();
   const month = today.getMonth();
   const year = today.getFullYear();
   const seasons = {

@@ -17,7 +17,11 @@ permissions:
   pull-requests: write
 
 on:
-  workflow_dispatch: # enables run button on github.com
+  workflow_dispatch:
+    inputs:
+      date:
+        description: Set a specific date to run the action (YYYY-MM-DD), leave blank for today.
+        type: string
   schedule:
     - cron: "00 02 20 Mar,Jun,Sep,Dec *"
 
@@ -35,7 +39,6 @@ jobs:
           GitHubRepository: archive
         env:
           TOKEN: ${{ secrets.TOKEN }}
-          # SETDATE: "2021-06-20"
       - name: Commit files
         run: |
           git pull
@@ -45,11 +48,26 @@ jobs:
           git push
 ```
 
-
 ## Action options
 
 - `GitHubUsername`: Required. The GitHub username that owns the repository with the data files.
 - `GitHubRepository`: Required. The Github repository that has the data files.
-- `SeasonEmoji`: Emoji to assign each season (winter, spring, summer, fall). Default: `❄️,🌷,☀️,🍂`.
+
+## Trigger the action
+
+To trigger the action, [create a workflow dispatch event](https://docs.github.com/en/rest/actions/workflows#create-a-workflow-dispatch-event) with the following body parameters:
+
+```js
+{
+  "ref": "main", // Required. The git reference for the workflow, a branch or tag name.
+  "inputs": {
+    "date": "", // Set a specific date to run the action (YYYY-MM-DD), leave blank for today.
+  }
+}
+```
+
 <!-- END GENERATED DOCUMENTATION -->
-````
+
+```
+
+```
