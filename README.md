@@ -27,7 +27,7 @@ jobs:
         uses: katydecorah/seasonal-post-action@v5.2.1
         with:
           GitHubUsername: katydecorah
-          GitHubRepository: has
+          GitHubRepository: archive
         env:
           TOKEN: ${{ secrets.TOKEN }}
           SETDATE: "2021-06-20"
