@@ -35,7 +35,7 @@ jobs:
           GitHubRepository: archive
         env:
           TOKEN: ${{ secrets.TOKEN }}
-          SETDATE: "2021-06-20"
+          # SETDATE: "2021-06-20"
       - name: Commit files
         run: |
           git pull
