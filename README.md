@@ -33,7 +33,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Write seasonal post
-        uses: katydecorah/seasonal-post-action@v5.3.0
+        uses: katydecorah/seasonal-post-action@v5.4.0
         with:
           GitHubUsername: katydecorah
           GitHubRepository: archive
