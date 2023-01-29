@@ -12,6 +12,9 @@ inputs:
   GitHubRepository:
     description: The Github repository that has the data files.
     required: true
+  SeasonNames:
+    description: The season names in order by the season that ends in March, June, September, and then December.
+    default: "Winter,Spring,Summer,Fall"
   SeasonEmoji:
-    description: Emoji to assign each season (winter, spring, summer, fall).
+    description: Emoji to assign each season in the same order as described by `SeasonNames`.
     default: "❄️,🌷,☀️,🍂"

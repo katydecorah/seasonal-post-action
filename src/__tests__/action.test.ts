@@ -19,6 +19,7 @@ const defaultInputs = {
   GitHubUsername: "katydecorah",
   GitHubRepository: "archive",
   SeasonEmoji: "❄️,🌷,☀️,🍂",
+  SeasonNames: "Winter,Spring,Summer,Fall",
 };
 
 beforeEach(() => {

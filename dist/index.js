@@ -43083,11 +43083,14 @@ function findSeason() {
     const today = payload.date ? new Date(payload.date) : new Date();
     const month = today.getMonth();
     const year = today.getFullYear();
+    const [marchEnd, juneEnd, septemberEnd, decemberEnd] = (0,core.getInput)("SeasonNames")
+        .split(",")
+        .map((s) => s.trim());
     const seasons = {
-        2: "Winter",
-        5: "Spring",
-        8: "Summer",
-        11: "Fall",
+        2: marchEnd,
+        5: juneEnd,
+        8: septemberEnd,
+        11: decemberEnd,
     };
     const season = seasons[month];
     const seasonEmojis = (0,core.getInput)("SeasonEmoji").split(",");

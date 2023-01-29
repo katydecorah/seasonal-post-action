@@ -54,7 +54,9 @@ jobs:
 
 - `GitHubRepository`: Required. The Github repository that has the data files.
 
-- `SeasonEmoji`: Emoji to assign each season (winter, spring, summer, fall). Default: `❄️,🌷,☀️,🍂`.
+- `SeasonNames`: The season names in order by the season that ends in March, June, September, and then December. Default: `Winter,Spring,Summer,Fall`.
+
+- `SeasonEmoji`: Emoji to assign each season in the same order as described by `SeasonNames`. Default: `❄️,🌷,☀️,🍂`.
 
 ## Trigger the action
 

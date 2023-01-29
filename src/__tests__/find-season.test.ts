@@ -9,6 +9,7 @@ const defaultInputs = {
   GitHubUsername: "katydecorah",
   GitHubRepository: "archive",
   SeasonEmoji: "❄️,🌷,☀️,🍂",
+  SeasonNames: "Winter,Spring,Summer,Fall",
 };
 
 beforeEach(() => {
@@ -111,6 +112,22 @@ describe("findSeason", () => {
         "seasonEmoji": "🌷",
         "start": "2023-03-21",
         "year": 2023,
+      }
+    `);
+  });
+
+  it("change season names", () => {
+    jest.useFakeTimers().setSystemTime(new Date("2021-3-20").getTime());
+    defaultInputs.SeasonNames = "Summer,Fall,Winter,Spring";
+    defaultInputs.SeasonEmoji = "☀️,🍂,❄️,🌷";
+    expect(findSeason()).toMatchInlineSnapshot(`
+      {
+        "end": "2021-03-20",
+        "name": "2020/2021 Summer",
+        "season": "Summer",
+        "seasonEmoji": "☀️",
+        "start": "2020-12-21",
+        "year": 2021,
       }
     `);
   });
