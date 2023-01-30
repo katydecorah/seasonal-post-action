@@ -19,6 +19,7 @@ jobs:
         uses: katydecorah/documentation-action@v0.3.0
         with:
           exampleWorkflowFile: "seasonal.yml"
+          additionalWorkflowFilePrefix: "seasonal"
       - name: Commit files
         if: env.UpdateDocumentation == 'true'
         run: |

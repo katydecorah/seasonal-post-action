@@ -1,13 +1,11 @@
-name: Seasonal post
-
-# Grant the action permission to write to the repository
-permissions:
-  contents: write
-  pull-requests: write
+name: Manually trigger the action
 
 on:
-  schedule:
-    - cron: "00 02 20 Mar,Jun,Sep,Dec *"
+  workflow_dispatch:
+    inputs:
+      date:
+        description: Set a specific date to run the action (YYYY-MM-DD), leave blank for today.
+        type: string
 
 jobs:
   seasonal_post:
