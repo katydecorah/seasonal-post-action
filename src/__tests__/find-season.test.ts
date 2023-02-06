@@ -10,7 +10,7 @@ const defaultInputs = {
   GitHubRepository: "archive",
   SeasonEmoji: "❄️,🌷,☀️,🍂",
   SeasonNames: "Winter,Spring,Summer,Fall",
-  PostDir: "notes/_posts/",
+  PostsDir: "notes/_posts/",
 };
 
 beforeEach(() => {
