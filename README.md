@@ -93,4 +93,6 @@ jobs:
 - `SeasonNames`: The season names in order by the season that ends in March, June, September, and then December. Default: `Winter,Spring,Summer,Fall`.
 
 - `SeasonEmoji`: Emoji to assign each season in the same order as described by `SeasonNames`. Default: `❄️,🌷,☀️,🍂`.
+
+- `PostsDir`: The path to where you want to save your seasonal post files to in this repository. Default: `notes/_posts/`.
 <!-- END GENERATED DOCUMENTATION -->
