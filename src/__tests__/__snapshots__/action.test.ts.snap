@@ -2,7 +2,7 @@
 
 exports[`action works 1`] = `
 [
-  "./notes/_posts/2021-09-20-2021-summer.md",
+  "notes/_posts/2021-09-20-2021-summer.md",
   "---
 title: 2021 Summer
 image: 2021-summer.png

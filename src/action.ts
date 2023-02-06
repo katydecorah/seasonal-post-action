@@ -1,5 +1,5 @@
 import { writeFile } from "fs/promises";
-import { exportVariable, setFailed } from "@actions/core";
+import { exportVariable, getInput, setFailed } from "@actions/core";
 import { buildPost } from "./build-post";
 import {
   formatPlaylist,
@@ -10,6 +10,7 @@ import {
 import { findSeason } from "./find-season";
 import { getDataFile } from "./get-data-file";
 import { getJsonFile } from "./get-json-file";
+import { join } from "path";
 
 export async function action() {
   try {
@@ -53,10 +54,14 @@ export async function action() {
       recipeText,
     });
 
-    await writeFile(
-      `./notes/_posts/${end}-${year}-${season.toLowerCase()}.md`,
-      md
+    const postsDir = getInput("PostsDir");
+
+    const blogFilePath = join(
+      postsDir,
+      `${end}-${year}-${season.toLowerCase()}.md`
     );
+
+    await writeFile(blogFilePath, md);
   } catch (error) {
     setFailed(error);
   }

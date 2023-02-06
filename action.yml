@@ -18,3 +18,6 @@ inputs:
   SeasonEmoji:
     description: Emoji to assign each season in the same order as described by `SeasonNames`.
     default: "❄️,🌷,☀️,🍂"
+  PostsDir:
+    description: The path to where you want to save your seasonal post files to in this repository.
+    default: "notes/_posts/"
