@@ -1,6 +1,6 @@
 # Seasonal post action
 
-A GitHub action that creates a seasonal Jekyll post from data files.
+A GitHub action that creates a seasonal post from data files.
 
 <!-- START GENERATED DOCUMENTATION -->
 
@@ -43,7 +43,7 @@ jobs:
           git push
 ```
 
- ### Additional example workflows
+### Additional example workflows
 
 <details>
 <summary>Manually trigger the action</summary>
@@ -82,7 +82,6 @@ jobs:
 ```
 
 </details>
-
 
 ## Action options
 

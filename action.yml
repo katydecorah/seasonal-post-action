@@ -1,6 +1,6 @@
 name: "Seasonal post action"
 author: "@katydecorah"
-description: "Generate a season post from Jekyll data file."
+description: "A GitHub action that creates a seasonal post from data files."
 runs:
   using: "node16"
   main: "dist/index.js"
