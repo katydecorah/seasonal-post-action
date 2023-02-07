@@ -11,28 +11,10 @@ export function formatBooks({ bookData, start, end }) {
   );
   return {
     bookYaml: dump({ books }),
-    bookText: books
+    bookMarkdown: books
       .map(({ title, authors, url }) => `- [${title}](${url}) - ${authors}`)
       .join("\n"),
   };
-}
-
-export function formatFrontMatter({
-  year,
-  season,
-  image,
-  bookYaml,
-  recipeYaml,
-  playlistYaml,
-}) {
-  return `---
-title: ${year} ${season}
-image: ${image}
-type: season
-${bookYaml}
-${recipeYaml}
-${playlistYaml}
----`;
 }
 
 export function formatPlaylist({ playlistData, name }) {
@@ -41,7 +23,7 @@ export function formatPlaylist({ playlistData, name }) {
   );
   return {
     playlistYaml: dump(playlist),
-    playlistText: playlist.tracks
+    playlistMarkdown: playlist.tracks
       .map(({ track, artist }) => `- ${track} - ${artist}`)
       .join("\n"),
   };
@@ -50,7 +32,7 @@ export function formatPlaylist({ playlistData, name }) {
 export function formatRecipes({ recipeData, start, end }): {
   recipeYaml: string;
   // remove irregular whitespace
-  recipeText: string;
+  recipeMarkdown: string;
 } {
   const recipes: Recipe[] = filterData(recipeData, "date", start, end).map(
     ({ title, site, url, image }) => ({
@@ -63,7 +45,7 @@ export function formatRecipes({ recipeData, start, end }): {
   return {
     recipeYaml: dump({ recipes }),
     // remove irregular whitespace
-    recipeText: recipes
+    recipeMarkdown: recipes
       .map(
         ({ title, site, url }) =>
           `- [${title.replace(" ", "")}](${url}) - ${site}`

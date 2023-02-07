@@ -1,12 +1,7 @@
 import { writeFile } from "fs/promises";
 import { exportVariable, getInput, setFailed } from "@actions/core";
 import { buildPost } from "./build-post";
-import {
-  formatPlaylist,
-  formatRecipes,
-  formatBooks,
-  formatFrontMatter,
-} from "./format";
+import { formatPlaylist, formatRecipes, formatBooks } from "./format";
 import { findSeason } from "./find-season";
 import { getDataFile } from "./get-data-file";
 import { getJsonFile } from "./get-json-file";
@@ -25,33 +20,28 @@ export async function action() {
       getDataFile("playlists.yml"),
     ]);
 
-    const { bookYaml, bookText } = formatBooks({ bookData, start, end });
-    const { recipeYaml, recipeText } = formatRecipes({
+    const { bookYaml, bookMarkdown } = formatBooks({ bookData, start, end });
+    const { recipeYaml, recipeMarkdown } = formatRecipes({
       recipeData,
       start,
       end,
     });
-    const { playlistYaml, playlistText } = formatPlaylist({
+    const { playlistYaml, playlistMarkdown } = formatPlaylist({
       playlistData,
       name,
     });
 
     // build post
-    const frontmatter = formatFrontMatter({
-      year,
+    const md = buildPost({
       season,
+      bookMarkdown,
+      playlistMarkdown,
+      recipeMarkdown,
+      year,
       image,
       bookYaml,
       recipeYaml,
       playlistYaml,
-    });
-
-    const md = buildPost({
-      frontmatter,
-      season,
-      bookText,
-      playlistText,
-      recipeText,
     });
 
     const postsDir = getInput("PostsDir");

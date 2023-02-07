@@ -11,6 +11,7 @@ const defaultInputs = {
   SeasonEmoji: "❄️,🌷,☀️,🍂",
   SeasonNames: "Winter,Spring,Summer,Fall",
   PostsDir: "notes/_posts/",
+  SeasonalPostTemplate: ".github/actions/seasonal-post-template.md",
 };
 
 beforeEach(() => {

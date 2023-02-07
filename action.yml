@@ -21,3 +21,6 @@ inputs:
   PostsDir:
     description: The path to where you want to save your seasonal post files to in this repository.
     default: "notes/_posts/"
+  SeasonalPostTemplate:
+    description: The path to the template file for the seasonal post.
+    default: ".github/actions/seasonal-post-template.md"

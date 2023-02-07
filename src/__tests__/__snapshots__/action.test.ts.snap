@@ -6,7 +6,6 @@ exports[`action works 1`] = `
   "---
 title: 2021 Summer
 image: 2021-summer.png
-type: season
 books:
   - title: How to Talk So Little Kids Will Listen
     authors: Joanna Faber, Julie King
@@ -179,7 +178,7 @@ tracks:
 
 ---
 
-The books, music, and recipes I enjoyed this summer.
+The books, music, and recipes I enjoyed this Summer.
 
 ## Books
 

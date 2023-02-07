@@ -21,6 +21,7 @@ const defaultInputs = {
   SeasonEmoji: "❄️,🌷,☀️,🍂",
   SeasonNames: "Winter,Spring,Summer,Fall",
   PostsDir: "notes/_posts/",
+  SeasonalPostTemplate: ".github/actions/seasonal-post-template.md",
 };
 
 beforeEach(() => {
@@ -50,7 +51,6 @@ describe("action", () => {
     const formatBooksSpy = jest.spyOn(Format, "formatBooks");
     const formatRecipesSpy = jest.spyOn(Format, "formatRecipes");
     const formatPlaylistsSpy = jest.spyOn(Format, "formatPlaylist");
-    const formatFrontMatterSpy = jest.spyOn(Format, "formatFrontMatter");
     const findSeasonSpy = jest.spyOn(FindSeason, "findSeason");
     const writeSpy = jest.spyOn(promises, "writeFile").mockImplementation();
     await action();
@@ -71,7 +71,6 @@ describe("action", () => {
     expect(formatBooksSpy).toHaveBeenCalled();
     expect(formatRecipesSpy).toHaveBeenCalled();
     expect(formatPlaylistsSpy).toHaveBeenCalled();
-    expect(formatFrontMatterSpy).toHaveReturned();
     expect(writeSpy.mock.calls[0]).toMatchSnapshot();
   });
 

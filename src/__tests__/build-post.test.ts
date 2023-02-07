@@ -1,20 +1,46 @@
 import { buildPost } from "../build-post";
-import { bookText, frontmatter, playlistText, recipeText } from "./format.test";
+import {
+  bookMarkdown,
+  bookYaml,
+  playlistYaml,
+  playlistMarkdown,
+  recipeMarkdown,
+  recipeYaml,
+} from "./format.test";
+import * as core from "@actions/core";
+
+const defaultInputs = {
+  GitHubUsername: "katydecorah",
+  GitHubRepository: "archive",
+  SeasonEmoji: "❄️,🌷,☀️,🍂",
+  SeasonNames: "Winter,Spring,Summer,Fall",
+  PostsDir: "notes/_posts/",
+  SeasonalPostTemplate: ".github/actions/seasonal-post-template.md",
+};
+
+beforeEach(() => {
+  jest
+    .spyOn(core, "getInput")
+    .mockImplementation((name) => defaultInputs[name] || undefined);
+});
 
 it("buildPost", () => {
   expect(
     buildPost({
-      frontmatter,
-      season: "2021 Fall",
-      bookText,
-      playlistText,
-      recipeText,
+      season: "Fall",
+      bookMarkdown,
+      playlistMarkdown,
+      recipeMarkdown,
+      year: "2021",
+      image: "2021-fall.jpg",
+      bookYaml,
+      recipeYaml,
+      playlistYaml,
     })
   ).toMatchInlineSnapshot(`
     "---
     title: 2021 Fall
-    image: 
-    type: season
+    image: 2021-fall.jpg
     books:
       - title: People We Meet on Vacation
         authors: Emily Henry
@@ -251,7 +277,7 @@ it("buildPost", () => {
 
     ---
 
-    The books, music, and recipes I enjoyed this 2021 fall.
+    The books, music, and recipes I enjoyed this Fall.
 
     ## Books
 

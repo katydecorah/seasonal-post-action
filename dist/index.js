@@ -39146,24 +39146,37 @@ var __webpack_exports__ = {};
 const promises_namespaceObject = __WEBPACK_EXTERNAL_createRequire(import.meta.url)("fs/promises");
 // EXTERNAL MODULE: ./node_modules/@actions/core/lib/core.js
 var core = __nccwpck_require__(2186);
+// EXTERNAL MODULE: external "fs"
+var external_fs_ = __nccwpck_require__(7147);
 ;// CONCATENATED MODULE: ./src/build-post.ts
-function buildPost({ frontmatter, season, bookText, playlistText, recipeText, }) {
-    return `${frontmatter}
 
-The books, music, and recipes I enjoyed this ${season.toLowerCase()}.
 
-## Books
-
-${bookText}
-
-## Playlist
-
-${playlistText}
-
-## Recipes
-
-${recipeText}
-`;
+function buildPost({ season, bookMarkdown, playlistMarkdown, recipeMarkdown, year, image, bookYaml, recipeYaml, playlistYaml, }) {
+    const templatePath = (0,core.getInput)("SeasonalPostTemplate");
+    const template = (0,external_fs_.readFileSync)(templatePath, "utf8");
+    return transformTemplate(template, {
+        season,
+        bookMarkdown,
+        playlistMarkdown,
+        recipeMarkdown,
+        year,
+        image,
+        bookYaml,
+        recipeYaml,
+        playlistYaml,
+    });
+}
+function transformTemplate(template, { season, bookMarkdown, playlistMarkdown, recipeMarkdown, year, image, bookYaml, recipeYaml, playlistYaml, }) {
+    return template
+        .replace(/\$\{season\}/g, season)
+        .replace(/\$\{year\}/g, year)
+        .replace(/\$\{image\}/g, image)
+        .replace(/\$\{bookYaml\}/g, bookYaml)
+        .replace(/\$\{recipeYaml\}/g, recipeYaml)
+        .replace(/\$\{playlistYaml\}/g, playlistYaml)
+        .replace(/\$\{bookMarkdown\}/g, bookMarkdown)
+        .replace(/\$\{playlistMarkdown\}/g, playlistMarkdown)
+        .replace(/\$\{recipeMarkdown\}/g, recipeMarkdown);
 }
 
 ;// CONCATENATED MODULE: ./node_modules/js-yaml/dist/js-yaml.mjs
@@ -43030,26 +43043,16 @@ function formatBooks({ bookData, start, end }) {
     }));
     return {
         bookYaml: dump({ books }),
-        bookText: books
+        bookMarkdown: books
             .map(({ title, authors, url }) => `- [${title}](${url}) - ${authors}`)
             .join("\n"),
     };
-}
-function formatFrontMatter({ year, season, image, bookYaml, recipeYaml, playlistYaml, }) {
-    return `---
-title: ${year} ${season}
-image: ${image}
-type: season
-${bookYaml}
-${recipeYaml}
-${playlistYaml}
----`;
 }
 function formatPlaylist({ playlistData, name }) {
     const playlist = playlistData.find(({ playlist }) => playlist === name);
     return {
         playlistYaml: dump(playlist),
-        playlistText: playlist.tracks
+        playlistMarkdown: playlist.tracks
             .map(({ track, artist }) => `- ${track} - ${artist}`)
             .join("\n"),
     };
@@ -43064,7 +43067,7 @@ function formatRecipes({ recipeData, start, end }) {
     return {
         recipeYaml: dump({ recipes }),
         // remove irregular whitespace
-        recipeText: recipes
+        recipeMarkdown: recipes
             .map(({ title, site, url }) => `- [${title.replace(" ", "")}](${url}) - ${site}`)
             .join("\n"),
     };
@@ -43232,31 +43235,27 @@ function action() {
                 getJsonFile("recipes.json"),
                 getDataFile("playlists.yml"),
             ]);
-            const { bookYaml, bookText } = formatBooks({ bookData, start, end });
-            const { recipeYaml, recipeText } = formatRecipes({
+            const { bookYaml, bookMarkdown } = formatBooks({ bookData, start, end });
+            const { recipeYaml, recipeMarkdown } = formatRecipes({
                 recipeData,
                 start,
                 end,
             });
-            const { playlistYaml, playlistText } = formatPlaylist({
+            const { playlistYaml, playlistMarkdown } = formatPlaylist({
                 playlistData,
                 name,
             });
             // build post
-            const frontmatter = formatFrontMatter({
-                year,
+            const md = buildPost({
                 season,
+                bookMarkdown,
+                playlistMarkdown,
+                recipeMarkdown,
+                year,
                 image,
                 bookYaml,
                 recipeYaml,
                 playlistYaml,
-            });
-            const md = buildPost({
-                frontmatter,
-                season,
-                bookText,
-                playlistText,
-                recipeText,
             });
             const postsDir = (0,core.getInput)("PostsDir");
             const blogFilePath = (0,external_path_.join)(postsDir, `${end}-${year}-${season.toLowerCase()}.md`);
