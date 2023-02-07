@@ -43201,6 +43201,8 @@ function getJsonFile(file) {
     });
 }
 
+// EXTERNAL MODULE: external "path"
+var external_path_ = __nccwpck_require__(1017);
 ;// CONCATENATED MODULE: ./src/action.ts
 var action_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -43211,6 +43213,7 @@ var action_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _a
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+
 
 
 
@@ -43255,7 +43258,9 @@ function action() {
                 playlistText,
                 recipeText,
             });
-            yield (0,promises_namespaceObject.writeFile)(`./notes/_posts/${end}-${year}-${season.toLowerCase()}.md`, md);
+            const postsDir = (0,core.getInput)("PostsDir");
+            const blogFilePath = (0,external_path_.join)(postsDir, `${end}-${year}-${season.toLowerCase()}.md`);
+            yield (0,promises_namespaceObject.writeFile)(blogFilePath, md);
         }
         catch (error) {
             (0,core.setFailed)(error);
