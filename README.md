@@ -43,7 +43,7 @@ jobs:
           git push
 ```
 
-### Additional example workflows
+ ### Additional example workflows
 
 <details>
 <summary>Manually trigger the action</summary>
@@ -83,6 +83,7 @@ jobs:
 
 </details>
 
+
 ## Action options
 
 - `GitHubUsername`: Required. The GitHub username that owns the repository with the data files.
@@ -94,6 +95,8 @@ jobs:
 - `SeasonEmoji`: Emoji to assign each season in the same order as described by `SeasonNames`. Default: `❄️,🌷,☀️,🍂`.
 
 - `PostsDir`: The path to where you want to save your seasonal post files to in this repository. Default: `notes/_posts/`.
+
+- `SeasonalPostTemplate`: The path to the template file for the seasonal post. Default: `.github/actions/seasonal-post-template.md`.
 <!-- END GENERATED DOCUMENTATION -->
 
 ## Create `SeasonalPostTemplate`
