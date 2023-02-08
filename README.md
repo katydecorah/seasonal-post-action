@@ -43,7 +43,7 @@ jobs:
           git push
 ```
 
-### Additional example workflows
+ ### Additional example workflows
 
 <details>
 <summary>Manually trigger the action</summary>
@@ -83,6 +83,7 @@ jobs:
 
 </details>
 
+
 ## Action options
 
 - `GitHubUsername`: Required. The GitHub username that owns the repository with the data files.
@@ -95,5 +96,5 @@ jobs:
 
 - `PostsDir`: The path to where you want to save your seasonal post files to in this repository. Default: `notes/_posts/`.
 
-- `SeasonalPostTemplate`: The path to the template file for the seasonal post. Default: `.github/actions/seasonal-post-template.md`.
+- `SeasonalPostTemplate`: If you'd like to customize the [markdown template](src/template.md), define a path to your own. Example: `SeasonalPostTemplate: .github/actions/seasonal-post-template.md`. The markdown template shows all the available variables and an idea for how you may want to format this file. For now, the templating is simplistic and does not offer functionality outside of this action replacing variable names.
 <!-- END GENERATED DOCUMENTATION -->
