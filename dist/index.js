@@ -39146,27 +39146,8 @@ var __webpack_exports__ = {};
 const promises_namespaceObject = __WEBPACK_EXTERNAL_createRequire(import.meta.url)("fs/promises");
 // EXTERNAL MODULE: ./node_modules/@actions/core/lib/core.js
 var core = __nccwpck_require__(2186);
-// EXTERNAL MODULE: external "fs"
-var external_fs_ = __nccwpck_require__(7147);
 ;// CONCATENATED MODULE: ./src/build-post.ts
-
-
-function buildPost({ season, bookMarkdown, playlistMarkdown, recipeMarkdown, year, image, bookYaml, recipeYaml, playlistYaml, }) {
-    const templatePath = (0,core.getInput)("SeasonalPostTemplate");
-    const template = (0,external_fs_.readFileSync)(templatePath, "utf8");
-    return transformTemplate(template, {
-        season,
-        bookMarkdown,
-        playlistMarkdown,
-        recipeMarkdown,
-        year,
-        image,
-        bookYaml,
-        recipeYaml,
-        playlistYaml,
-    });
-}
-function transformTemplate(template, { season, bookMarkdown, playlistMarkdown, recipeMarkdown, year, image, bookYaml, recipeYaml, playlistYaml, }) {
+function buildPost({ season, bookMarkdown, playlistMarkdown, recipeMarkdown, year, image, bookYaml, recipeYaml, playlistYaml, template, }) {
     return template
         .replace(/\$\{season\}/g, season)
         .replace(/\$\{year\}/g, year)
@@ -43245,6 +43226,16 @@ function action() {
                 playlistData,
                 name,
             });
+            const templatePath = (0,core.getInput)("SeasonalPostTemplate");
+            let template = yield (0,promises_namespaceObject.readFile)(__nccwpck_require__.ab + "template.md", "utf8");
+            if (templatePath) {
+                try {
+                    template = yield (0,promises_namespaceObject.readFile)(templatePath, "utf8");
+                }
+                catch (error) {
+                    (0,core.warning)(`Could not find template file "${templatePath}". Using default template.`);
+                }
+            }
             // build post
             const md = buildPost({
                 season,
@@ -43256,6 +43247,7 @@ function action() {
                 bookYaml,
                 recipeYaml,
                 playlistYaml,
+                template,
             });
             const postsDir = (0,core.getInput)("PostsDir");
             const blogFilePath = (0,external_path_.join)(postsDir, `${end}-${year}-${season.toLowerCase()}.md`);

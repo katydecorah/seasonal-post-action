@@ -7,22 +7,8 @@ import {
   recipeMarkdown,
   recipeYaml,
 } from "./format.test";
-import * as core from "@actions/core";
-
-const defaultInputs = {
-  GitHubUsername: "katydecorah",
-  GitHubRepository: "archive",
-  SeasonEmoji: "❄️,🌷,☀️,🍂",
-  SeasonNames: "Winter,Spring,Summer,Fall",
-  PostsDir: "notes/_posts/",
-  SeasonalPostTemplate: ".github/actions/seasonal-post-template.md",
-};
-
-beforeEach(() => {
-  jest
-    .spyOn(core, "getInput")
-    .mockImplementation((name) => defaultInputs[name] || undefined);
-});
+import { readFileSync } from "fs";
+import { join } from "path";
 
 it("buildPost", () => {
   expect(
@@ -36,6 +22,7 @@ it("buildPost", () => {
       bookYaml,
       recipeYaml,
       playlistYaml,
+      template: readFileSync(join(__dirname, "../template.md"), "utf8"),
     })
   ).toMatchInlineSnapshot(`
     "---

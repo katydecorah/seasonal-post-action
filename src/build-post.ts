@@ -1,6 +1,3 @@
-import { getInput } from "@actions/core";
-import { readFileSync } from "fs";
-
 export function buildPost({
   season,
   bookMarkdown,
@@ -11,37 +8,8 @@ export function buildPost({
   bookYaml,
   recipeYaml,
   playlistYaml,
+  template,
 }) {
-  const templatePath = getInput("SeasonalPostTemplate");
-  const template = readFileSync(templatePath, "utf8");
-
-  return transformTemplate(template, {
-    season,
-    bookMarkdown,
-    playlistMarkdown,
-    recipeMarkdown,
-    year,
-    image,
-    bookYaml,
-    recipeYaml,
-    playlistYaml,
-  });
-}
-
-function transformTemplate(
-  template: string,
-  {
-    season,
-    bookMarkdown,
-    playlistMarkdown,
-    recipeMarkdown,
-    year,
-    image,
-    bookYaml,
-    recipeYaml,
-    playlistYaml,
-  }
-): string {
   return template
     .replace(/\$\{season\}/g, season)
     .replace(/\$\{year\}/g, year)

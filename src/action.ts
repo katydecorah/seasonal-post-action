@@ -1,5 +1,5 @@
-import { writeFile } from "fs/promises";
-import { exportVariable, getInput, setFailed } from "@actions/core";
+import { writeFile, readFile } from "fs/promises";
+import { exportVariable, getInput, setFailed, warning } from "@actions/core";
 import { buildPost } from "./build-post";
 import { formatPlaylist, formatRecipes, formatBooks } from "./format";
 import { findSeason } from "./find-season";
@@ -31,6 +31,19 @@ export async function action() {
       name,
     });
 
+    const templatePath = getInput("SeasonalPostTemplate");
+    let template = await readFile(join(__dirname, "template.md"), "utf8");
+
+    if (templatePath) {
+      try {
+        template = await readFile(templatePath, "utf8");
+      } catch (error) {
+        warning(
+          `Could not find template file "${templatePath}". Using default template.`
+        );
+      }
+    }
+
     // build post
     const md = buildPost({
       season,
@@ -42,6 +55,7 @@ export async function action() {
       bookYaml,
       recipeYaml,
       playlistYaml,
+      template,
     });
 
     const postsDir = getInput("PostsDir");

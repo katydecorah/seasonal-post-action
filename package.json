@@ -8,7 +8,7 @@
     "pretest": "eslint . --ext .js,.ts",
     "test": "jest --coverage",
     "pretty-quick": "pretty-quick",
-    "build": "ncc build src/index.ts",
+    "build": "ncc build src/index.ts && cpy src/template.md .github/actions/ --flat --rename seasonal-post-template.md",
     "prepare": "husky install"
   },
   "author": "Katy DeCorah",
@@ -24,6 +24,7 @@
     "@typescript-eslint/eslint-plugin": "^5.51.0",
     "@typescript-eslint/parser": "^5.51.0",
     "@vercel/ncc": "^0.36.1",
+    "cpy-cli": "^4.2.0",
     "eslint": "^8.33.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-node": "^11.1.0",
