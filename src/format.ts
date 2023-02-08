@@ -1,6 +1,12 @@
 import { dump } from "js-yaml";
 
-export function formatBooks({ bookData, start, end }) {
+export function formatBooks({ bookKeyName, bookData, start, end }) {
+  if (!bookData || bookData.length === 0) {
+    return {
+      bookYaml: "",
+      bookMarkdown: "",
+    };
+  }
   const books: Book[] = filterData(bookData, "dateFinished", start, end).map(
     ({ title, authors, link, isbn }) => ({
       title,
@@ -10,7 +16,7 @@ export function formatBooks({ bookData, start, end }) {
     })
   );
   return {
-    bookYaml: dump({ books }),
+    bookYaml: dump({ [bookKeyName]: books }),
     bookMarkdown: books
       .map(({ title, authors, url }) => `- [${title}](${url}) - ${authors}`)
       .join("\n"),
@@ -18,6 +24,12 @@ export function formatBooks({ bookData, start, end }) {
 }
 
 export function formatPlaylist({ playlistData, name }) {
+  if (!playlistData || playlistData.length === 0) {
+    return {
+      playlistYaml: "",
+      playlistMarkdown: "",
+    };
+  }
   const playlist: Playlist = playlistData.find(
     ({ playlist }) => playlist === name
   );
@@ -29,11 +41,22 @@ export function formatPlaylist({ playlistData, name }) {
   };
 }
 
-export function formatBookmarks({ bookmarkData, start, end }): {
+export function formatBookmarks({
+  bookmarkKeyName,
+  bookmarkData,
+  start,
+  end,
+}): {
   bookmarkYaml: string;
   // remove irregular whitespace
   bookmarkMarkdown: string;
 } {
+  if (!bookmarkData || bookmarkData.length === 0) {
+    return {
+      bookmarkYaml: "",
+      bookmarkMarkdown: "",
+    };
+  }
   const bookmarks: Bookmark[] = filterData(
     bookmarkData,
     "date",
@@ -46,7 +69,7 @@ export function formatBookmarks({ bookmarkData, start, end }): {
     image,
   }));
   return {
-    bookmarkYaml: dump({ bookmarks }),
+    bookmarkYaml: dump({ [bookmarkKeyName]: bookmarks }),
     // remove irregular whitespace
     bookmarkMarkdown: bookmarks
       .map(

@@ -43017,7 +43017,13 @@ var jsYaml = {
 
 ;// CONCATENATED MODULE: ./src/format.ts
 
-function formatBooks({ bookData, start, end }) {
+function formatBooks({ bookKeyName, bookData, start, end }) {
+    if (!bookData || bookData.length === 0) {
+        return {
+            bookYaml: "",
+            bookMarkdown: "",
+        };
+    }
     const books = filterData(bookData, "dateFinished", start, end).map(({ title, authors, link, isbn }) => ({
         title,
         authors: authors.join(", "),
@@ -43025,13 +43031,19 @@ function formatBooks({ bookData, start, end }) {
         isbn,
     }));
     return {
-        bookYaml: dump({ books }),
+        bookYaml: dump({ [bookKeyName]: books }),
         bookMarkdown: books
             .map(({ title, authors, url }) => `- [${title}](${url}) - ${authors}`)
             .join("\n"),
     };
 }
 function formatPlaylist({ playlistData, name }) {
+    if (!playlistData || playlistData.length === 0) {
+        return {
+            playlistYaml: "",
+            playlistMarkdown: "",
+        };
+    }
     const playlist = playlistData.find(({ playlist }) => playlist === name);
     return {
         playlistYaml: dump(playlist),
@@ -43040,7 +43052,13 @@ function formatPlaylist({ playlistData, name }) {
             .join("\n"),
     };
 }
-function formatBookmarks({ bookmarkData, start, end }) {
+function formatBookmarks({ bookmarkKeyName, bookmarkData, start, end, }) {
+    if (!bookmarkData || bookmarkData.length === 0) {
+        return {
+            bookmarkYaml: "",
+            bookmarkMarkdown: "",
+        };
+    }
     const bookmarks = filterData(bookmarkData, "date", start, end).map(({ title, site, url, image }) => ({
         title,
         site,
@@ -43048,7 +43066,7 @@ function formatBookmarks({ bookmarkData, start, end }) {
         image,
     }));
     return {
-        bookmarkYaml: dump({ bookmarks }),
+        bookmarkYaml: dump({ [bookmarkKeyName]: bookmarks }),
         // remove irregular whitespace
         bookmarkMarkdown: bookmarks
             .map(({ title, site, url }) => `- [${title.replace(" ", "")}](${url}) - ${site}`)
@@ -43124,6 +43142,8 @@ const octokit = new dist_node/* Octokit */.vd({
 });
 function getDataFile(file) {
     return __awaiter(this, void 0, void 0, function* () {
+        if (!file)
+            return [];
         try {
             const owner = (0,core.getInput)("GitHubUsername");
             const repo = (0,core.getInput)("GitHubRepository");
@@ -43165,6 +43185,8 @@ const get_json_file_octokit = new dist_node/* Octokit */.vd({
 });
 function getJsonFile(file) {
     return get_json_file_awaiter(this, void 0, void 0, function* () {
+        if (!file)
+            return [];
         try {
             const owner = (0,core.getInput)("GitHubUsername");
             const repo = (0,core.getInput)("GitHubRepository");
@@ -43213,13 +43235,32 @@ function action() {
             const { start, end, season, year, name } = findSeason();
             const image = `${year}-${season.toLowerCase()}.png`;
             (0,core.exportVariable)("season", name);
+            const sourceBooks = (0,core.getInput)("SourceBooks");
+            const sourceBookmarks = (0,core.getInput)("SourceBookmarks");
+            const sourcePlaylist = (0,core.getInput)("SourcePlaylist");
+            let bookKeyName, bookPath, bookmarkKeyName, bookmarkPath, playlistPath;
+            if (sourceBooks !== "false") {
+                [bookKeyName, bookPath] = sourceBooks.split("|");
+            }
+            if (sourceBookmarks !== "false") {
+                [bookmarkKeyName, bookmarkPath] = sourceBookmarks.split("|");
+            }
+            if (sourcePlaylist !== "false") {
+                playlistPath = sourcePlaylist;
+            }
             const [bookData, bookmarkData, playlistData] = yield Promise.all([
-                getJsonFile("read.json"),
-                getJsonFile("bookmarks.json"),
-                getDataFile("playlists.yml"),
+                getJsonFile(bookPath),
+                getJsonFile(bookmarkPath),
+                getDataFile(playlistPath),
             ]);
-            const { bookYaml, bookMarkdown } = formatBooks({ bookData, start, end });
+            const { bookYaml, bookMarkdown } = formatBooks({
+                bookKeyName,
+                bookData,
+                start,
+                end,
+            });
             const { bookmarkYaml, bookmarkMarkdown } = formatBookmarks({
+                bookmarkKeyName,
                 bookmarkData,
                 start,
                 end,

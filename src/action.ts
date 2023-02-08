@@ -14,18 +14,44 @@ export async function action() {
 
     exportVariable("season", name);
 
+    const sourceBooks = getInput("SourceBooks");
+    const sourceBookmarks = getInput("SourceBookmarks");
+    const sourcePlaylist = getInput("SourcePlaylist");
+
+    let bookKeyName, bookPath, bookmarkKeyName, bookmarkPath, playlistPath;
+
+    if (sourceBooks !== "false") {
+      [bookKeyName, bookPath] = sourceBooks.split("|");
+    }
+
+    if (sourceBookmarks !== "false") {
+      [bookmarkKeyName, bookmarkPath] = sourceBookmarks.split("|");
+    }
+
+    if (sourcePlaylist !== "false") {
+      playlistPath = sourcePlaylist;
+    }
+
     const [bookData, bookmarkData, playlistData] = await Promise.all([
-      getJsonFile("read.json"),
-      getJsonFile("bookmarks.json"),
-      getDataFile("playlists.yml"),
+      getJsonFile(bookPath),
+      getJsonFile(bookmarkPath),
+      getDataFile(playlistPath),
     ]);
 
-    const { bookYaml, bookMarkdown } = formatBooks({ bookData, start, end });
+    const { bookYaml, bookMarkdown } = formatBooks({
+      bookKeyName,
+      bookData,
+      start,
+      end,
+    });
+
     const { bookmarkYaml, bookmarkMarkdown } = formatBookmarks({
+      bookmarkKeyName,
       bookmarkData,
       start,
       end,
     });
+
     const { playlistYaml, playlistMarkdown } = formatPlaylist({
       playlistData,
       name,

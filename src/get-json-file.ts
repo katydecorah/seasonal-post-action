@@ -8,8 +8,9 @@ export const octokit = new Octokit({
 });
 
 export async function getJsonFile(
-  file: string
+  file?: string
 ): Promise<DataFile | undefined | []> {
+  if (!file) return [];
   try {
     const owner = getInput("GitHubUsername");
     const repo = getInput("GitHubRepository");

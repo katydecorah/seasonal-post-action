@@ -22,6 +22,9 @@ const defaultInputs = {
   SeasonNames: "Winter,Spring,Summer,Fall",
   PostsDir: "notes/_posts/",
   SeasonalPostTemplate: "",
+  SourceBooks: "books|_data/read.json",
+  SourceBookmarks: "bookmarks|_data/bookmarks.json",
+  SourcePlaylist: "_data/playlists.yml",
 };
 
 beforeEach(() => {
@@ -70,10 +73,10 @@ describe("action", () => {
     });
     expect(warningSpy).not.toHaveBeenCalled();
     expect(exportVariable).toHaveBeenLastCalledWith("season", "2021 Summer");
-    expect(getJsonFileSpy).toHaveBeenNthCalledWith(1, "read.json");
+    expect(getJsonFileSpy).toHaveBeenNthCalledWith(1, "_data/read.json");
     expect(getJsonFileSpy).toHaveNthReturnedWith(1, books);
-    expect(getJsonFileSpy).toHaveBeenNthCalledWith(2, "bookmarks.json");
-    expect(getDataFileSpy).toHaveBeenNthCalledWith(1, "playlists.yml");
+    expect(getJsonFileSpy).toHaveBeenNthCalledWith(2, "_data/bookmarks.json");
+    expect(getDataFileSpy).toHaveBeenNthCalledWith(1, "_data/playlists.yml");
     expect(setFailed).not.toHaveBeenCalled();
     expect(formatBooksSpy).toHaveBeenCalled();
     expect(formatBookmarksSpy).toHaveBeenCalled();
@@ -118,15 +121,62 @@ describe("action", () => {
     expect(writeSpy.mock.calls[0]).toMatchSnapshot();
   });
 
-  test("fails", async () => {
-    jest
-      .spyOn(GetDataFile, "getDataFile")
-      .mockRejectedValue({ message: "Error" });
+  test("works, disable playlist", async () => {
+    defaultInputs.SourceBooks = "books|_data/read.json";
+    defaultInputs.SourceBookmarks = "bookmarks|_data/bookmarks.json";
+    defaultInputs.SourcePlaylist = "false";
 
-    try {
-      await action();
-    } catch (err) {
-      expect(err).toMatchInlineSnapshot(`[Error: [object Object]]`);
-    }
+    jest
+      .spyOn(GetJsonFile, "getJsonFile")
+      .mockReturnValueOnce(books)
+      .mockReturnValueOnce(recipes);
+    jest.spyOn(GetDataFile, "getDataFile").mockReturnValueOnce([]);
+    const writeSpy = jest.spyOn(promises, "writeFile").mockImplementation();
+    await action();
+    expect(setFailed).not.toHaveBeenCalled();
+    expect(writeSpy.mock.calls[0]).toMatchSnapshot();
+  });
+
+  test("works, disable bookmarks", async () => {
+    defaultInputs.SourceBooks = "books|_data/read.json";
+    defaultInputs.SourceBookmarks = "false";
+    defaultInputs.SourcePlaylist = "_data/playlists.yml";
+
+    jest
+      .spyOn(GetJsonFile, "getJsonFile")
+      .mockReturnValueOnce(books)
+      .mockReturnValueOnce([]);
+    jest.spyOn(GetDataFile, "getDataFile").mockReturnValueOnce(playlists);
+    const writeSpy = jest.spyOn(promises, "writeFile").mockImplementation();
+    await action();
+    expect(setFailed).not.toHaveBeenCalled();
+    expect(writeSpy.mock.calls[0]).toMatchSnapshot();
+  });
+
+  test("works, disable books", async () => {
+    defaultInputs.SourceBooks = "false";
+    defaultInputs.SourceBookmarks = "bookmarks|_data/bookmarks.json";
+    defaultInputs.SourcePlaylist = "_data/playlists.yml";
+    jest
+      .spyOn(GetJsonFile, "getJsonFile")
+      .mockReturnValueOnce([])
+      .mockReturnValueOnce(recipes);
+    jest.spyOn(GetDataFile, "getDataFile").mockReturnValueOnce(playlists);
+    const writeSpy = jest.spyOn(promises, "writeFile").mockImplementation();
+    await action();
+    expect(setFailed).not.toHaveBeenCalled();
+    expect(writeSpy.mock.calls[0]).toMatchSnapshot();
+  });
+
+  test("fails", async () => {
+    const setFailedSpy = jest.spyOn(core, "setFailed");
+
+    jest.spyOn(core, "getInput").mockImplementation(() => {
+      throw new Error("test error");
+    });
+    await action();
+    expect(setFailedSpy.mock.calls[0][0]).toMatchInlineSnapshot(
+      `[Error: test error]`
+    );
   });
 });
