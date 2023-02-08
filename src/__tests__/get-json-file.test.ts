@@ -27,6 +27,9 @@ describe("getJsonFile", () => {
     });
     expect(await getJsonFile("books.json")).toEqual([]);
   });
+  test("missing file", async () => {
+    expect(await getJsonFile()).toEqual([]);
+  });
   test("fails", async () => {
     mockGetContents = Promise.reject("Error");
     try {

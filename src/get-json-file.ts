@@ -8,15 +8,16 @@ export const octokit = new Octokit({
 });
 
 export async function getJsonFile(
-  file: string
+  path?: string
 ): Promise<DataFile | undefined | []> {
+  if (!path) return [];
   try {
     const owner = getInput("GitHubUsername");
     const repo = getInput("GitHubRepository");
     const { data } = await octokit.rest.repos.getContent({
       owner,
       repo,
-      path: `_data/${file}`,
+      path,
     });
     if ("content" in data) {
       const buffer = Buffer.from(data.content, "base64").toString();
@@ -25,6 +26,6 @@ export async function getJsonFile(
       return [];
     }
   } catch (error) {
-    throw new Error(`${file}: ${error}`);
+    throw new Error(`${path}: ${error}`);
   }
 }

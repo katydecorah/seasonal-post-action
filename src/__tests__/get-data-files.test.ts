@@ -27,6 +27,9 @@ describe("getDataFile", () => {
     });
     expect(await getDataFile("playlists.yml")).toEqual([]);
   });
+  test("missing file", async () => {
+    expect(await getDataFile()).toEqual([]);
+  });
   test("fails", async () => {
     mockGetContents = Promise.reject("Error");
 

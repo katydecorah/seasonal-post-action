@@ -6,6 +6,7 @@ const recipes = JSON.parse(
 );
 
 export const { bookmarkYaml, bookmarkMarkdown } = formatBookmarks({
+  bookmarkKeyName: "bookmarks",
   bookmarkData: recipes,
   start: "2021-09-21",
   end: "2021-12-20",
@@ -76,6 +77,7 @@ const books = JSON.parse(
 );
 
 export const { bookYaml, bookMarkdown } = formatBooks({
+  bookKeyName: "books",
   bookData: books,
   start: "2021-09-21",
   end: "2021-12-20",

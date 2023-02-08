@@ -43017,7 +43017,13 @@ var jsYaml = {
 
 ;// CONCATENATED MODULE: ./src/format.ts
 
-function formatBooks({ bookData, start, end }) {
+function formatBooks({ bookKeyName, bookData, start, end }) {
+    if (!bookData || bookData.length === 0) {
+        return {
+            bookYaml: "",
+            bookMarkdown: "",
+        };
+    }
     const books = filterData(bookData, "dateFinished", start, end).map(({ title, authors, link, isbn }) => ({
         title,
         authors: authors.join(", "),
@@ -43025,13 +43031,19 @@ function formatBooks({ bookData, start, end }) {
         isbn,
     }));
     return {
-        bookYaml: dump({ books }),
+        bookYaml: dump({ [bookKeyName]: books }),
         bookMarkdown: books
             .map(({ title, authors, url }) => `- [${title}](${url}) - ${authors}`)
             .join("\n"),
     };
 }
 function formatPlaylist({ playlistData, name }) {
+    if (!playlistData || playlistData.length === 0) {
+        return {
+            playlistYaml: "",
+            playlistMarkdown: "",
+        };
+    }
     const playlist = playlistData.find(({ playlist }) => playlist === name);
     return {
         playlistYaml: dump(playlist),
@@ -43040,7 +43052,13 @@ function formatPlaylist({ playlistData, name }) {
             .join("\n"),
     };
 }
-function formatBookmarks({ bookmarkData, start, end }) {
+function formatBookmarks({ bookmarkKeyName, bookmarkData, start, end, }) {
+    if (!bookmarkData || bookmarkData.length === 0) {
+        return {
+            bookmarkYaml: "",
+            bookmarkMarkdown: "",
+        };
+    }
     const bookmarks = filterData(bookmarkData, "date", start, end).map(({ title, site, url, image }) => ({
         title,
         site,
@@ -43048,7 +43066,7 @@ function formatBookmarks({ bookmarkData, start, end }) {
         image,
     }));
     return {
-        bookmarkYaml: dump({ bookmarks }),
+        bookmarkYaml: dump({ [bookmarkKeyName]: bookmarks }),
         // remove irregular whitespace
         bookmarkMarkdown: bookmarks
             .map(({ title, site, url }) => `- [${title.replace(" ", "")}](${url}) - ${site}`)
@@ -43122,15 +43140,17 @@ var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _argume
 const octokit = new dist_node/* Octokit */.vd({
     auth: process.env.TOKEN,
 });
-function getDataFile(file) {
+function getDataFile(path) {
     return __awaiter(this, void 0, void 0, function* () {
+        if (!path)
+            return [];
         try {
             const owner = (0,core.getInput)("GitHubUsername");
             const repo = (0,core.getInput)("GitHubRepository");
             const { data } = yield octokit.rest.repos.getContent({
                 owner,
                 repo,
-                path: `_data/${file}`,
+                path,
             });
             if ("content" in data) {
                 const buffer = external_buffer_.Buffer.from(data.content, "base64").toString();
@@ -43142,7 +43162,7 @@ function getDataFile(file) {
             }
         }
         catch (error) {
-            throw new Error(`${file}: ${error}`);
+            throw new Error(`${path}: ${error}`);
         }
     });
 }
@@ -43163,15 +43183,17 @@ var get_json_file_awaiter = (undefined && undefined.__awaiter) || function (this
 const get_json_file_octokit = new dist_node/* Octokit */.vd({
     auth: process.env.TOKEN,
 });
-function getJsonFile(file) {
+function getJsonFile(path) {
     return get_json_file_awaiter(this, void 0, void 0, function* () {
+        if (!path)
+            return [];
         try {
             const owner = (0,core.getInput)("GitHubUsername");
             const repo = (0,core.getInput)("GitHubRepository");
             const { data } = yield get_json_file_octokit.rest.repos.getContent({
                 owner,
                 repo,
-                path: `_data/${file}`,
+                path,
             });
             if ("content" in data) {
                 const buffer = external_buffer_.Buffer.from(data.content, "base64").toString();
@@ -43182,7 +43204,7 @@ function getJsonFile(file) {
             }
         }
         catch (error) {
-            throw new Error(`${file}: ${error}`);
+            throw new Error(`${path}: ${error}`);
         }
     });
 }
@@ -43213,13 +43235,32 @@ function action() {
             const { start, end, season, year, name } = findSeason();
             const image = `${year}-${season.toLowerCase()}.png`;
             (0,core.exportVariable)("season", name);
+            const sourceBooks = (0,core.getInput)("SourceBooks");
+            const sourceBookmarks = (0,core.getInput)("SourceBookmarks");
+            const sourcePlaylist = (0,core.getInput)("SourcePlaylist");
+            let bookKeyName, bookPath, bookmarkKeyName, bookmarkPath, playlistPath;
+            if (sourceBooks !== "false") {
+                [bookKeyName, bookPath] = sourceBooks.split("|");
+            }
+            if (sourceBookmarks !== "false") {
+                [bookmarkKeyName, bookmarkPath] = sourceBookmarks.split("|");
+            }
+            if (sourcePlaylist !== "false") {
+                playlistPath = sourcePlaylist;
+            }
             const [bookData, bookmarkData, playlistData] = yield Promise.all([
-                getJsonFile("read.json"),
-                getJsonFile("bookmarks.json"),
-                getDataFile("playlists.yml"),
+                getJsonFile(bookPath),
+                getJsonFile(bookmarkPath),
+                getDataFile(playlistPath),
             ]);
-            const { bookYaml, bookMarkdown } = formatBooks({ bookData, start, end });
+            const { bookYaml, bookMarkdown } = formatBooks({
+                bookKeyName,
+                bookData,
+                start,
+                end,
+            });
             const { bookmarkYaml, bookmarkMarkdown } = formatBookmarks({
+                bookmarkKeyName,
                 bookmarkData,
                 start,
                 end,
