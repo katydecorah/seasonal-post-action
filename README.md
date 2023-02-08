@@ -32,6 +32,7 @@ jobs:
         with:
           GitHubUsername: katydecorah
           GitHubRepository: archive
+          SourceBookmarks: recipes|_data/recipes.json
         env:
           TOKEN: ${{ secrets.TOKEN }}
       - name: Commit files
@@ -70,6 +71,7 @@ jobs:
         with:
           GitHubUsername: katydecorah
           GitHubRepository: archive
+          SourceBookmarks: recipes|_data/recipes.json
         env:
           TOKEN: ${{ secrets.TOKEN }}
       - name: Commit files
@@ -110,6 +112,7 @@ jobs:
           GitHubRepository: archive
           SeasonalPostTemplate: .github/actions/seasonal-post-template-basic.md
           PostsDir: books/
+          SourceBookmarks: recipes|_data/recipes.json
         env:
           TOKEN: ${{ secrets.TOKEN }}
       - name: Commit files
@@ -137,4 +140,10 @@ jobs:
 - `PostsDir`: The path to where you want to save your seasonal post files to in this repository. Default: `notes/_posts/`.
 
 - `SeasonalPostTemplate`: If you'd like to customize the [markdown template](src/template.md), define a path to your own. Example: `SeasonalPostTemplate: .github/actions/seasonal-post-template.md`. The markdown template shows all the available variables and an idea for how you may want to format this file. For now, the templating is simplistic and does not offer functionality outside of this action replacing variable names.
+
+- `SourceBooks`: Define the label and file path for the books data, separate the label and file path with a pipe (`|`). If you do not have books, set this value to `false`. Default: `books|_data/read.json`.
+
+- `SourceBookmarks`: Define the label and file path for the bookmarks data, separate the label and file path with a pipe (`|`). If you do not have bookmarks, set this value to `false`. Default: `bookmarks|_data/bookmarks.json`.
+
+- `SourcePlaylist`: Define the file path for the playlist data. If you do not have playlists, set this value to `false`. Default: `_data/playlists.yml`.
 <!-- END GENERATED DOCUMENTATION -->
