@@ -1,18 +1,18 @@
 import { readFileSync } from "fs";
-import { formatBooks, formatPlaylist, formatRecipes } from "../format";
+import { formatBooks, formatPlaylist, formatBookmarks } from "../format";
 
 const recipes = JSON.parse(
   readFileSync("./src/__tests__/fixtures/recipes.json", "utf-8")
 );
 
-export const { recipeYaml, recipeMarkdown } = formatRecipes({
-  recipeData: recipes,
+export const { bookmarkYaml, bookmarkMarkdown } = formatBookmarks({
+  bookmarkData: recipes,
   start: "2021-09-21",
   end: "2021-12-20",
 });
 
-it("recipeMarkdown", () => {
-  expect(recipeMarkdown).toMatchInlineSnapshot(`
+it("bookmarkMarkdown", () => {
+  expect(bookmarkMarkdown).toMatchInlineSnapshot(`
     "- [Gyeran Bap (Egg Rice) Recipe](https://cooking.nytimes.com/recipes/1022530-gyeran-bap-egg-rice) - NYT Cooking
     - [Breakfast Burritos Recipe](https://cooking.nytimes.com/recipes/1022540-breakfast-burritos) - NYT Cooking
     - [Pressure Cooker Pot Roast Recipe](https://cooking.nytimes.com/recipes/1020846-pressure-cooker-pot-roast) - NYT Cooking

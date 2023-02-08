@@ -2,11 +2,11 @@
 title: ${year} ${season}
 image: ${image}
 ${bookYaml}
-${recipeYaml}
+${bookmarkYaml}
 ${playlistYaml}
 ---
 
-The books, music, and recipes I enjoyed this ${season}.
+The books I read, playlist I made, and bookmarks I saved this ${season}.
 
 ## Books
 
@@ -16,6 +16,6 @@ ${bookMarkdown}
 
 ${playlistMarkdown}
 
-## Recipes
+## Bookmarks
 
-${recipeMarkdown}
+${bookmarkMarkdown}
