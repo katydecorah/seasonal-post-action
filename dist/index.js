@@ -43140,9 +43140,9 @@ var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _argume
 const octokit = new dist_node/* Octokit */.vd({
     auth: process.env.TOKEN,
 });
-function getDataFile(file) {
+function getDataFile(path) {
     return __awaiter(this, void 0, void 0, function* () {
-        if (!file)
+        if (!path)
             return [];
         try {
             const owner = (0,core.getInput)("GitHubUsername");
@@ -43150,7 +43150,7 @@ function getDataFile(file) {
             const { data } = yield octokit.rest.repos.getContent({
                 owner,
                 repo,
-                path: `_data/${file}`,
+                path,
             });
             if ("content" in data) {
                 const buffer = external_buffer_.Buffer.from(data.content, "base64").toString();
@@ -43162,7 +43162,7 @@ function getDataFile(file) {
             }
         }
         catch (error) {
-            throw new Error(`${file}: ${error}`);
+            throw new Error(`${path}: ${error}`);
         }
     });
 }
@@ -43183,9 +43183,9 @@ var get_json_file_awaiter = (undefined && undefined.__awaiter) || function (this
 const get_json_file_octokit = new dist_node/* Octokit */.vd({
     auth: process.env.TOKEN,
 });
-function getJsonFile(file) {
+function getJsonFile(path) {
     return get_json_file_awaiter(this, void 0, void 0, function* () {
-        if (!file)
+        if (!path)
             return [];
         try {
             const owner = (0,core.getInput)("GitHubUsername");
@@ -43193,7 +43193,7 @@ function getJsonFile(file) {
             const { data } = yield get_json_file_octokit.rest.repos.getContent({
                 owner,
                 repo,
-                path: `_data/${file}`,
+                path,
             });
             if ("content" in data) {
                 const buffer = external_buffer_.Buffer.from(data.content, "base64").toString();
@@ -43204,7 +43204,7 @@ function getJsonFile(file) {
             }
         }
         catch (error) {
-            throw new Error(`${file}: ${error}`);
+            throw new Error(`${path}: ${error}`);
         }
     });
 }
