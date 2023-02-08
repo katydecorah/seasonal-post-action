@@ -39148,16 +39148,18 @@ const promises_namespaceObject = __WEBPACK_EXTERNAL_createRequire(import.meta.ur
 var core = __nccwpck_require__(2186);
 ;// CONCATENATED MODULE: ./src/build-post.ts
 function buildPost({ season, bookMarkdown, playlistMarkdown, recipeMarkdown, year, image, bookYaml, recipeYaml, playlistYaml, template, }) {
-    return template
-        .replace(/\$\{season\}/g, season)
-        .replace(/\$\{year\}/g, year)
-        .replace(/\$\{image\}/g, image)
-        .replace(/\$\{bookYaml\}/g, bookYaml)
-        .replace(/\$\{recipeYaml\}/g, recipeYaml)
-        .replace(/\$\{playlistYaml\}/g, playlistYaml)
-        .replace(/\$\{bookMarkdown\}/g, bookMarkdown)
-        .replace(/\$\{playlistMarkdown\}/g, playlistMarkdown)
-        .replace(/\$\{recipeMarkdown\}/g, recipeMarkdown);
+    const postVars = {
+        season,
+        bookMarkdown,
+        playlistMarkdown,
+        recipeMarkdown,
+        year,
+        image,
+        bookYaml,
+        recipeYaml,
+        playlistYaml,
+    };
+    return template.replace(/\${([^{}]+)}/g, (_, key) => postVars[key] || "");
 }
 
 ;// CONCATENATED MODULE: ./node_modules/js-yaml/dist/js-yaml.mjs
