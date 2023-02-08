@@ -1,20 +1,33 @@
 import { buildPost } from "../build-post";
-import { bookText, frontmatter, playlistText, recipeText } from "./format.test";
+import {
+  bookMarkdown,
+  bookYaml,
+  playlistYaml,
+  playlistMarkdown,
+  recipeMarkdown,
+  recipeYaml,
+} from "./format.test";
+import { readFileSync } from "fs";
+import { join } from "path";
 
 it("buildPost", () => {
   expect(
     buildPost({
-      frontmatter,
-      season: "2021 Fall",
-      bookText,
-      playlistText,
-      recipeText,
+      season: "Fall",
+      bookMarkdown,
+      playlistMarkdown,
+      recipeMarkdown,
+      year: "2021",
+      image: "2021-fall.jpg",
+      bookYaml,
+      recipeYaml,
+      playlistYaml,
+      template: readFileSync(join(__dirname, "../template.md"), "utf8"),
     })
   ).toMatchInlineSnapshot(`
     "---
     title: 2021 Fall
-    image: 
-    type: season
+    image: 2021-fall.jpg
     books:
       - title: People We Meet on Vacation
         authors: Emily Henry
@@ -251,7 +264,7 @@ it("buildPost", () => {
 
     ---
 
-    The books, music, and recipes I enjoyed this 2021 fall.
+    The books, music, and recipes I enjoyed this Fall.
 
     ## Books
 

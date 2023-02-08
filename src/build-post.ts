@@ -1,24 +1,28 @@
 export function buildPost({
-  frontmatter,
   season,
-  bookText,
-  playlistText,
-  recipeText,
+  bookMarkdown,
+  playlistMarkdown,
+  recipeMarkdown,
+  year,
+  image,
+  bookYaml,
+  recipeYaml,
+  playlistYaml,
+  template,
 }) {
-  return `${frontmatter}
-
-The books, music, and recipes I enjoyed this ${season.toLowerCase()}.
-
-## Books
-
-${bookText}
-
-## Playlist
-
-${playlistText}
-
-## Recipes
-
-${recipeText}
-`;
+  const postVars = {
+    season,
+    bookMarkdown,
+    playlistMarkdown,
+    recipeMarkdown,
+    year,
+    image,
+    bookYaml,
+    recipeYaml,
+    playlistYaml,
+  };
+  return template.replace(
+    /\${([^{}]+)}/g,
+    (_, key: string) => postVars[key] || ""
+  );
 }

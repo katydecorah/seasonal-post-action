@@ -21,6 +21,7 @@ const defaultInputs = {
   SeasonEmoji: "❄️,🌷,☀️,🍂",
   SeasonNames: "Winter,Spring,Summer,Fall",
   PostsDir: "notes/_posts/",
+  SeasonalPostTemplate: "",
 };
 
 beforeEach(() => {
@@ -38,8 +39,14 @@ beforeEach(() => {
     .mockImplementation((name) => defaultInputs[name] || undefined);
 });
 
+afterEach(() => {
+  jest.clearAllMocks();
+});
+
 describe("action", () => {
   test("works", async () => {
+    const warningSpy = jest.spyOn(core, "warning").mockImplementation();
+
     const getJsonFileSpy = jest
       .spyOn(GetJsonFile, "getJsonFile")
       .mockReturnValueOnce(books)
@@ -50,7 +57,6 @@ describe("action", () => {
     const formatBooksSpy = jest.spyOn(Format, "formatBooks");
     const formatRecipesSpy = jest.spyOn(Format, "formatRecipes");
     const formatPlaylistsSpy = jest.spyOn(Format, "formatPlaylist");
-    const formatFrontMatterSpy = jest.spyOn(Format, "formatFrontMatter");
     const findSeasonSpy = jest.spyOn(FindSeason, "findSeason");
     const writeSpy = jest.spyOn(promises, "writeFile").mockImplementation();
     await action();
@@ -62,6 +68,7 @@ describe("action", () => {
       start: "2021-06-21",
       year: 2021,
     });
+    expect(warningSpy).not.toHaveBeenCalled();
     expect(exportVariable).toHaveBeenLastCalledWith("season", "2021 Summer");
     expect(getJsonFileSpy).toHaveBeenNthCalledWith(1, "read.json");
     expect(getJsonFileSpy).toHaveNthReturnedWith(1, books);
@@ -71,7 +78,43 @@ describe("action", () => {
     expect(formatBooksSpy).toHaveBeenCalled();
     expect(formatRecipesSpy).toHaveBeenCalled();
     expect(formatPlaylistsSpy).toHaveBeenCalled();
-    expect(formatFrontMatterSpy).toHaveReturned();
+    expect(writeSpy.mock.calls[0]).toMatchSnapshot();
+  });
+
+  test("works, custom template", async () => {
+    defaultInputs.SeasonalPostTemplate =
+      ".github/actions/seasonal-post-template-basic.md";
+
+    const warningSpy = jest.spyOn(core, "warning").mockImplementation();
+    jest
+      .spyOn(GetJsonFile, "getJsonFile")
+      .mockReturnValueOnce(books)
+      .mockReturnValueOnce(recipes);
+    jest.spyOn(GetDataFile, "getDataFile").mockReturnValueOnce(playlists);
+
+    const writeSpy = jest.spyOn(promises, "writeFile").mockImplementation();
+    await action();
+    expect(warningSpy).not.toHaveBeenCalled();
+    expect(setFailed).not.toHaveBeenCalled();
+    expect(writeSpy.mock.calls[0]).toMatchSnapshot();
+  });
+
+  test("works, custom template missing", async () => {
+    defaultInputs.SeasonalPostTemplate =
+      ".github/actions/seasonal-post-template-missing.md";
+    const warningSpy = jest.spyOn(core, "warning").mockImplementation();
+    jest
+      .spyOn(GetJsonFile, "getJsonFile")
+      .mockReturnValueOnce(books)
+      .mockReturnValueOnce(recipes);
+    jest.spyOn(GetDataFile, "getDataFile").mockReturnValueOnce(playlists);
+
+    const writeSpy = jest.spyOn(promises, "writeFile").mockImplementation();
+    await action();
+    expect(warningSpy).toHaveBeenCalledWith(
+      'Could not find template file ".github/actions/seasonal-post-template-missing.md". Using default template.'
+    );
+    expect(setFailed).not.toHaveBeenCalled();
     expect(writeSpy.mock.calls[0]).toMatchSnapshot();
   });
 
