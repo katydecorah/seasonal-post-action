@@ -19,6 +19,7 @@ jobs:
         with:
           GitHubUsername: katydecorah
           GitHubRepository: archive
+          SeasonalPostTemplate: .github/actions/seasonal-post-template-basic.md
         env:
           TOKEN: ${{ secrets.TOKEN }}
       - name: Commit files
