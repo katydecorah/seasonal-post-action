@@ -29,23 +29,26 @@ export function formatPlaylist({ playlistData, name }) {
   };
 }
 
-export function formatRecipes({ recipeData, start, end }): {
-  recipeYaml: string;
+export function formatBookmarks({ bookmarkData, start, end }): {
+  bookmarkYaml: string;
   // remove irregular whitespace
-  recipeMarkdown: string;
+  bookmarkMarkdown: string;
 } {
-  const recipes: Recipe[] = filterData(recipeData, "date", start, end).map(
-    ({ title, site, url, image }) => ({
-      title,
-      site,
-      url,
-      image,
-    })
-  );
+  const bookmarks: Bookmark[] = filterData(
+    bookmarkData,
+    "date",
+    start,
+    end
+  ).map(({ title, site, url, image }) => ({
+    title,
+    site,
+    url,
+    image,
+  }));
   return {
-    recipeYaml: dump({ recipes }),
+    bookmarkYaml: dump({ bookmarks }),
     // remove irregular whitespace
-    recipeMarkdown: recipes
+    bookmarkMarkdown: bookmarks
       .map(
         ({ title, site, url }) =>
           `- [${title.replace(" ", "")}](${url}) - ${site}`
@@ -70,7 +73,7 @@ export type Book = {
   isbn: string;
 };
 
-export type Recipe = {
+export type Bookmark = {
   title: string;
   site: string;
   url: string;

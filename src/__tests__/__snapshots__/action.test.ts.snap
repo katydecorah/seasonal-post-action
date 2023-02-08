@@ -82,7 +82,7 @@ books:
     url: https://play.google.com/store/books/details?id=F4QkBQAAQBAJ
     isbn: '9781555973407'
 
-recipes:
+bookmarks:
   - title: Quinoa Salad With Chicken, Almonds and Avocado Recipe
     site: NYT Cooking
     url: >-
@@ -347,7 +347,7 @@ books:
     url: https://play.google.com/store/books/details?id=F4QkBQAAQBAJ
     isbn: '9781555973407'
 
-recipes:
+bookmarks:
   - title: Quinoa Salad With Chicken, Almonds and Avocado Recipe
     site: NYT Cooking
     url: >-

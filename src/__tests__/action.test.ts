@@ -55,7 +55,7 @@ describe("action", () => {
       .spyOn(GetDataFile, "getDataFile")
       .mockReturnValueOnce(playlists);
     const formatBooksSpy = jest.spyOn(Format, "formatBooks");
-    const formatRecipesSpy = jest.spyOn(Format, "formatRecipes");
+    const formatBookmarksSpy = jest.spyOn(Format, "formatBookmarks");
     const formatPlaylistsSpy = jest.spyOn(Format, "formatPlaylist");
     const findSeasonSpy = jest.spyOn(FindSeason, "findSeason");
     const writeSpy = jest.spyOn(promises, "writeFile").mockImplementation();
@@ -72,11 +72,11 @@ describe("action", () => {
     expect(exportVariable).toHaveBeenLastCalledWith("season", "2021 Summer");
     expect(getJsonFileSpy).toHaveBeenNthCalledWith(1, "read.json");
     expect(getJsonFileSpy).toHaveNthReturnedWith(1, books);
-    expect(getJsonFileSpy).toHaveBeenNthCalledWith(2, "recipes.json");
+    expect(getJsonFileSpy).toHaveBeenNthCalledWith(2, "bookmarks.json");
     expect(getDataFileSpy).toHaveBeenNthCalledWith(1, "playlists.yml");
     expect(setFailed).not.toHaveBeenCalled();
     expect(formatBooksSpy).toHaveBeenCalled();
-    expect(formatRecipesSpy).toHaveBeenCalled();
+    expect(formatBookmarksSpy).toHaveBeenCalled();
     expect(formatPlaylistsSpy).toHaveBeenCalled();
     expect(writeSpy.mock.calls[0]).toMatchSnapshot();
   });

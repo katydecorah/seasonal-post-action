@@ -2,7 +2,7 @@
 title: ${year} ${season}
 image: ${image}
 ${bookYaml}
-${recipeYaml}
+${bookmarkYaml}
 ${playlistYaml}
 ---
 
@@ -18,4 +18,4 @@ ${playlistMarkdown}
 
 ## Recipes
 
-${recipeMarkdown}
+${bookmarkMarkdown}

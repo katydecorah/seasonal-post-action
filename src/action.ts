@@ -1,7 +1,7 @@
 import { writeFile, readFile } from "fs/promises";
 import { exportVariable, getInput, setFailed, warning } from "@actions/core";
 import { buildPost } from "./build-post";
-import { formatPlaylist, formatRecipes, formatBooks } from "./format";
+import { formatPlaylist, formatBookmarks, formatBooks } from "./format";
 import { findSeason } from "./find-season";
 import { getDataFile } from "./get-data-file";
 import { getJsonFile } from "./get-json-file";
@@ -14,15 +14,15 @@ export async function action() {
 
     exportVariable("season", name);
 
-    const [bookData, recipeData, playlistData] = await Promise.all([
+    const [bookData, bookmarkData, playlistData] = await Promise.all([
       getJsonFile("read.json"),
-      getJsonFile("recipes.json"),
+      getJsonFile("bookmarks.json"),
       getDataFile("playlists.yml"),
     ]);
 
     const { bookYaml, bookMarkdown } = formatBooks({ bookData, start, end });
-    const { recipeYaml, recipeMarkdown } = formatRecipes({
-      recipeData,
+    const { bookmarkYaml, bookmarkMarkdown } = formatBookmarks({
+      bookmarkData,
       start,
       end,
     });
@@ -49,11 +49,11 @@ export async function action() {
       season,
       bookMarkdown,
       playlistMarkdown,
-      recipeMarkdown,
+      bookmarkMarkdown,
       year,
       image,
       bookYaml,
-      recipeYaml,
+      bookmarkYaml,
       playlistYaml,
       template,
     });

@@ -2,11 +2,11 @@ export function buildPost({
   season,
   bookMarkdown,
   playlistMarkdown,
-  recipeMarkdown,
+  bookmarkMarkdown,
   year,
   image,
   bookYaml,
-  recipeYaml,
+  bookmarkYaml,
   playlistYaml,
   template,
 }) {
@@ -14,11 +14,11 @@ export function buildPost({
     season,
     bookMarkdown,
     playlistMarkdown,
-    recipeMarkdown,
+    bookmarkMarkdown,
     year,
     image,
     bookYaml,
-    recipeYaml,
+    bookmarkYaml,
     playlistYaml,
   };
   return template.replace(
