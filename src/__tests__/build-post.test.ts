@@ -264,7 +264,7 @@ it("buildPost", () => {
 
     ---
 
-    The books, music, and recipes I enjoyed this Fall.
+    The books I read, playlist I made, and bookmarks I saved this Fall.
 
     ## Books
 
@@ -308,7 +308,7 @@ it("buildPost", () => {
     - When the Sun Comes Up - Greta Morgan
     - Mountains Crave - Anna von Hausswolff
 
-    ## Recipes
+    ## Bookmarks
 
     - [Gyeran Bap (Egg Rice) Recipe](https://cooking.nytimes.com/recipes/1022530-gyeran-bap-egg-rice) - NYT Cooking
     - [Breakfast Burritos Recipe](https://cooking.nytimes.com/recipes/1022540-breakfast-burritos) - NYT Cooking
