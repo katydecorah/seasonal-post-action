@@ -39147,16 +39147,16 @@ const promises_namespaceObject = __WEBPACK_EXTERNAL_createRequire(import.meta.ur
 // EXTERNAL MODULE: ./node_modules/@actions/core/lib/core.js
 var core = __nccwpck_require__(2186);
 ;// CONCATENATED MODULE: ./src/build-post.ts
-function buildPost({ season, bookMarkdown, playlistMarkdown, recipeMarkdown, year, image, bookYaml, recipeYaml, playlistYaml, template, }) {
+function buildPost({ season, bookMarkdown, playlistMarkdown, bookmarkMarkdown, year, image, bookYaml, bookmarkYaml, playlistYaml, template, }) {
     const postVars = {
         season,
         bookMarkdown,
         playlistMarkdown,
-        recipeMarkdown,
+        bookmarkMarkdown,
         year,
         image,
         bookYaml,
-        recipeYaml,
+        bookmarkYaml,
         playlistYaml,
     };
     return template.replace(/\${([^{}]+)}/g, (_, key) => postVars[key] || "");
@@ -43040,17 +43040,17 @@ function formatPlaylist({ playlistData, name }) {
             .join("\n"),
     };
 }
-function formatRecipes({ recipeData, start, end }) {
-    const recipes = filterData(recipeData, "date", start, end).map(({ title, site, url, image }) => ({
+function formatBookmarks({ bookmarkData, start, end }) {
+    const bookmarks = filterData(bookmarkData, "date", start, end).map(({ title, site, url, image }) => ({
         title,
         site,
         url,
         image,
     }));
     return {
-        recipeYaml: dump({ recipes }),
+        bookmarkYaml: dump({ bookmarks }),
         // remove irregular whitespace
-        recipeMarkdown: recipes
+        bookmarkMarkdown: bookmarks
             .map(({ title, site, url }) => `- [${title.replace(" ", "")}](${url}) - ${site}`)
             .join("\n"),
     };
@@ -43213,14 +43213,14 @@ function action() {
             const { start, end, season, year, name } = findSeason();
             const image = `${year}-${season.toLowerCase()}.png`;
             (0,core.exportVariable)("season", name);
-            const [bookData, recipeData, playlistData] = yield Promise.all([
+            const [bookData, bookmarkData, playlistData] = yield Promise.all([
                 getJsonFile("read.json"),
-                getJsonFile("recipes.json"),
+                getJsonFile("bookmarks.json"),
                 getDataFile("playlists.yml"),
             ]);
             const { bookYaml, bookMarkdown } = formatBooks({ bookData, start, end });
-            const { recipeYaml, recipeMarkdown } = formatRecipes({
-                recipeData,
+            const { bookmarkYaml, bookmarkMarkdown } = formatBookmarks({
+                bookmarkData,
                 start,
                 end,
             });
@@ -43243,11 +43243,11 @@ function action() {
                 season,
                 bookMarkdown,
                 playlistMarkdown,
-                recipeMarkdown,
+                bookmarkMarkdown,
                 year,
                 image,
                 bookYaml,
-                recipeYaml,
+                bookmarkYaml,
                 playlistYaml,
                 template,
             });

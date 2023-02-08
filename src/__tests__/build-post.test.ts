@@ -4,8 +4,8 @@ import {
   bookYaml,
   playlistYaml,
   playlistMarkdown,
-  recipeMarkdown,
-  recipeYaml,
+  bookmarkMarkdown,
+  bookmarkYaml,
 } from "./format.test";
 import { readFileSync } from "fs";
 import { join } from "path";
@@ -16,11 +16,11 @@ it("buildPost", () => {
       season: "Fall",
       bookMarkdown,
       playlistMarkdown,
-      recipeMarkdown,
+      bookmarkMarkdown,
       year: "2021",
       image: "2021-fall.jpg",
       bookYaml,
-      recipeYaml,
+      bookmarkYaml,
       playlistYaml,
       template: readFileSync(join(__dirname, "../template.md"), "utf8"),
     })
@@ -105,7 +105,7 @@ it("buildPost", () => {
           https://books.google.com/books/about/This_Is_Your_Mind_on_Plants.html?hl=&id=Fxs3EAAAQBAJ
         isbn: '9780593296905'
 
-    recipes:
+    bookmarks:
       - title: Gyeran Bap (Egg Rice) Recipe
         site: NYT Cooking
         url: https://cooking.nytimes.com/recipes/1022530-gyeran-bap-egg-rice
