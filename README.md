@@ -43,7 +43,7 @@ jobs:
           git push
 ```
 
-### Additional example workflows
+ ### Additional example workflows
 
 <details>
 <summary>Manually trigger the action</summary>
@@ -82,6 +82,47 @@ jobs:
 ```
 
 </details>
+
+<details>
+<summary>Uses a custom markdown template (`SeasonalPostTemplate`) and customizes the `PostsDir`, with a manual workflow trigger.</summary>
+
+```yml
+name: Uses a custom markdown template (`SeasonalPostTemplate`) and customizes the `PostsDir`, with a manual workflow trigger.
+
+on:
+  workflow_dispatch:
+    inputs:
+      date:
+        description: Set a specific date to run the action (YYYY-MM-DD), leave blank for today.
+        type: string
+
+jobs:
+  seasonal_post:
+    runs-on: macOS-latest
+    name: Write seasonal post
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Write seasonal post
+        uses: katydecorah/seasonal-post-action@v5.4.0
+        with:
+          GitHubUsername: katydecorah
+          GitHubRepository: archive
+          SeasonalPostTemplate: .github/actions/seasonal-post-template-basic.md
+          PostsDir: books/
+        env:
+          TOKEN: ${{ secrets.TOKEN }}
+      - name: Commit files
+        run: |
+          git pull
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add -A && git commit -m "${{ env.seasonEmoji }} ${{ env.season }}"
+          git push
+```
+
+</details>
+
 
 ## Action options
 
