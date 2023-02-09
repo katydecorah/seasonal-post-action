@@ -16,15 +16,15 @@ jest.mock("@actions/core");
 jest.useFakeTimers().setSystemTime(new Date("2021-9-20"));
 
 const defaultInputs = {
-  GitHubUsername: "katydecorah",
-  GitHubRepository: "archive",
-  SeasonEmoji: "❄️,🌷,☀️,🍂",
-  SeasonNames: "Winter,Spring,Summer,Fall",
-  PostsDir: "notes/_posts/",
-  SeasonalPostTemplate: "",
-  SourceBooks: "books|_data/read.json",
-  SourceBookmarks: "bookmarks|_data/bookmarks.json",
-  SourcePlaylist: "_data/playlists.yml",
+  "github-username": "katydecorah",
+  "github-repository": "archive",
+  "season-emoji": "❄️,🌷,☀️,🍂",
+  "season-names": "Winter,Spring,Summer,Fall",
+  "posts-directory": "notes/_posts/",
+  "seasonal-post-template": "",
+  "source-books": "books|_data/read.json",
+  "source-bookmarks": "bookmarks|_data/bookmarks.json",
+  "source-playlist": "_data/playlists.yml",
 };
 
 beforeEach(() => {
@@ -85,7 +85,7 @@ describe("action", () => {
   });
 
   test("works, custom template", async () => {
-    defaultInputs.SeasonalPostTemplate =
+    defaultInputs["seasonal-post-template"] =
       ".github/actions/seasonal-post-template-basic.md";
 
     const warningSpy = jest.spyOn(core, "warning").mockImplementation();
@@ -103,7 +103,7 @@ describe("action", () => {
   });
 
   test("works, custom template missing", async () => {
-    defaultInputs.SeasonalPostTemplate =
+    defaultInputs["seasonal-post-template"] =
       ".github/actions/seasonal-post-template-missing.md";
     const warningSpy = jest.spyOn(core, "warning").mockImplementation();
     jest
@@ -122,9 +122,9 @@ describe("action", () => {
   });
 
   test("works, disable playlist", async () => {
-    defaultInputs.SourceBooks = "books|_data/read.json";
-    defaultInputs.SourceBookmarks = "bookmarks|_data/bookmarks.json";
-    defaultInputs.SourcePlaylist = "false";
+    defaultInputs["source-books"] = "books|_data/read.json";
+    defaultInputs["source-bookmarks"] = "bookmarks|_data/bookmarks.json";
+    defaultInputs["source-playlist"] = "false";
 
     jest
       .spyOn(GetJsonFile, "getJsonFile")
@@ -138,9 +138,9 @@ describe("action", () => {
   });
 
   test("works, disable bookmarks", async () => {
-    defaultInputs.SourceBooks = "books|_data/read.json";
-    defaultInputs.SourceBookmarks = "false";
-    defaultInputs.SourcePlaylist = "_data/playlists.yml";
+    defaultInputs["source-books"] = "books|_data/read.json";
+    defaultInputs["source-bookmarks"] = "false";
+    defaultInputs["source-playlist"] = "_data/playlists.yml";
 
     jest
       .spyOn(GetJsonFile, "getJsonFile")
@@ -154,9 +154,9 @@ describe("action", () => {
   });
 
   test("works, disable books", async () => {
-    defaultInputs.SourceBooks = "false";
-    defaultInputs.SourceBookmarks = "bookmarks|_data/bookmarks.json";
-    defaultInputs.SourcePlaylist = "_data/playlists.yml";
+    defaultInputs["source-books"] = "false";
+    defaultInputs["source-bookmarks"] = "bookmarks|_data/bookmarks.json";
+    defaultInputs["source-playlist"] = "_data/playlists.yml";
     jest
       .spyOn(GetJsonFile, "getJsonFile")
       .mockReturnValueOnce([])

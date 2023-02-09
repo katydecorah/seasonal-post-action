@@ -30,9 +30,9 @@ jobs:
       - name: Write seasonal post
         uses: katydecorah/seasonal-post-action@v5.4.0
         with:
-          GitHubUsername: katydecorah
-          GitHubRepository: archive
-          SourceBookmarks: recipes|_data/recipes.json
+          github-username: katydecorah
+          github-repository: archive
+          source-bookmarks: recipes|_data/recipes.json
         env:
           TOKEN: ${{ secrets.TOKEN }}
       - name: Commit files
@@ -69,9 +69,9 @@ jobs:
       - name: Write seasonal post
         uses: katydecorah/seasonal-post-action@v5.4.0
         with:
-          GitHubUsername: katydecorah
-          GitHubRepository: archive
-          SourceBookmarks: recipes|_data/recipes.json
+          github-username: katydecorah
+          github-repository: archive
+          source-bookmarks: recipes|_data/recipes.json
         env:
           TOKEN: ${{ secrets.TOKEN }}
       - name: Commit files
@@ -86,10 +86,10 @@ jobs:
 </details>
 
 <details>
-<summary>Uses a custom markdown template (`SeasonalPostTemplate`) and customizes the `PostsDir`, with a manual workflow trigger.</summary>
+<summary>Uses a custom markdown template (`seasonal-post-template`) and customizes the `posts-directory`, with a manual workflow trigger.</summary>
 
 ```yml
-name: Uses a custom markdown template (`SeasonalPostTemplate`) and customizes the `PostsDir`, with a manual workflow trigger.
+name: Uses a custom markdown template (`seasonal-post-template`) and customizes the `posts-directory`, with a manual workflow trigger.
 
 on:
   workflow_dispatch:
@@ -108,11 +108,11 @@ jobs:
       - name: Write seasonal post
         uses: katydecorah/seasonal-post-action@v5.4.0
         with:
-          GitHubUsername: katydecorah
-          GitHubRepository: archive
-          SeasonalPostTemplate: .github/actions/seasonal-post-template-basic.md
-          PostsDir: books/
-          SourceBookmarks: recipes|_data/recipes.json
+          github-username: katydecorah
+          github-repository: archive
+          seasonal-post-template: .github/actions/seasonal-post-template-basic.md
+          posts-directory: books/
+          source-bookmarks: recipes|_data/recipes.json
         env:
           TOKEN: ${{ secrets.TOKEN }}
       - name: Commit files
@@ -129,21 +129,21 @@ jobs:
 
 ## Action options
 
-- `GitHubUsername`: Required. The GitHub username that owns the repository with the data files.
+- `github-username`: Required. The GitHub username that owns the repository with the data files.
 
-- `GitHubRepository`: Required. The Github repository that has the data files.
+- `github-repository`: Required. The Github repository that has the data files.
 
-- `SeasonNames`: The season names in order by the season that ends in March, June, September, and then December. Default: `Winter,Spring,Summer,Fall`.
+- `season-names`: The season names in order by the season that ends in March, June, September, and then December. Default: `Winter,Spring,Summer,Fall`.
 
-- `SeasonEmoji`: Emoji to assign each season in the same order as described by `SeasonNames`. Default: `❄️,🌷,☀️,🍂`.
+- `season-emoji`: Emoji to assign each season in the same order as described by `season-names`. Default: `❄️,🌷,☀️,🍂`.
 
-- `PostsDir`: The path to where you want to save your seasonal post files to in this repository. Default: `notes/_posts/`.
+- `posts-directory`: The path to where you want to save your seasonal post files to in this repository. Default: `notes/_posts/`.
 
-- `SeasonalPostTemplate`: If you'd like to customize the [markdown template](src/template.md), define a path to your own. Example: `SeasonalPostTemplate: .github/actions/seasonal-post-template.md`. The markdown template shows all the available variables and an idea for how you may want to format this file. For now, the templating is simplistic and does not offer functionality outside of this action replacing variable names.
+- `seasonal-post-template`: If you'd like to customize the [markdown template](src/template.md), define a path to your own. Example: `seasonal-post-template: .github/actions/seasonal-post-template.md`. The markdown template shows all the available variables and an idea for how you may want to format this file. For now, the templating is simplistic and does not offer functionality outside of this action replacing variable names.
 
-- `SourceBooks`: Define the label and file path for the books data, separate the label and file path with a pipe (`|`). If you do not have books, set this value to `false`. Note: this value will **not** change the variable name in the markdown template, which is `bookYaml` and `bookMarkdown`. Default: `books|_data/read.json`.
+- `source-books`: Define the label and file path for the books data, separate the label and file path with a pipe (`|`). If you do not have books, set this value to `false`. Note: this value will **not** change the variable name in the markdown template, which is `bookYaml` and `bookMarkdown`. Default: `books|_data/read.json`.
 
-- `SourceBookmarks`: Define the label and file path for the bookmarks data, separate the label and file path with a pipe (`|`). If you do not have bookmarks, set this value to `false`. Note: this value will **not** change the variable name in the markdown template, which is `bookmarkYaml` and `bookmarkMarkdown`. Default: `bookmarks|_data/bookmarks.json`.
+- `source-bookmarks`: Define the label and file path for the bookmarks data, separate the label and file path with a pipe (`|`). If you do not have bookmarks, set this value to `false`. Note: this value will **not** change the variable name in the markdown template, which is `bookmarkYaml` and `bookmarkMarkdown`. Default: `bookmarks|_data/bookmarks.json`.
 
-- `SourcePlaylist`: Define the file path for the playlist data. If you do not have playlists, set this value to `false`. Default: `_data/playlists.yml`.
+- `source-playlist`: Define the file path for the playlist data. If you do not have playlists, set this value to `false`. Default: `_data/playlists.yml`.
 <!-- END GENERATED DOCUMENTATION -->

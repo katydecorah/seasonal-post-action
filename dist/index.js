@@ -43087,7 +43087,7 @@ function findSeason() {
     const today = payload.date ? new Date(payload.date) : new Date();
     const month = today.getMonth();
     const year = today.getFullYear();
-    const [marchEnd, juneEnd, septemberEnd, decemberEnd] = (0,core.getInput)("SeasonNames")
+    const [marchEnd, juneEnd, septemberEnd, decemberEnd] = (0,core.getInput)("season-names")
         .split(",")
         .map((s) => s.trim());
     const seasons = {
@@ -43097,7 +43097,7 @@ function findSeason() {
         11: decemberEnd,
     };
     const season = seasons[month];
-    const seasonEmojis = (0,core.getInput)("SeasonEmoji").split(",");
+    const seasonEmojis = (0,core.getInput)("season-emoji").split(",");
     const seasonEmoji = seasonEmojis[Object.keys(seasons).indexOf(month.toString())];
     (0,core.exportVariable)("seasonEmoji", seasonEmoji);
     const dates = {
@@ -43145,8 +43145,8 @@ function getDataFile(path) {
         if (!path)
             return [];
         try {
-            const owner = (0,core.getInput)("GitHubUsername");
-            const repo = (0,core.getInput)("GitHubRepository");
+            const owner = (0,core.getInput)("github-username");
+            const repo = (0,core.getInput)("github-repository");
             const { data } = yield octokit.rest.repos.getContent({
                 owner,
                 repo,
@@ -43188,8 +43188,8 @@ function getJsonFile(path) {
         if (!path)
             return [];
         try {
-            const owner = (0,core.getInput)("GitHubUsername");
-            const repo = (0,core.getInput)("GitHubRepository");
+            const owner = (0,core.getInput)("github-username");
+            const repo = (0,core.getInput)("github-repository");
             const { data } = yield get_json_file_octokit.rest.repos.getContent({
                 owner,
                 repo,
@@ -43235,9 +43235,9 @@ function action() {
             const { start, end, season, year, name } = findSeason();
             const image = `${year}-${season.toLowerCase()}.png`;
             (0,core.exportVariable)("season", name);
-            const sourceBooks = (0,core.getInput)("SourceBooks");
-            const sourceBookmarks = (0,core.getInput)("SourceBookmarks");
-            const sourcePlaylist = (0,core.getInput)("SourcePlaylist");
+            const sourceBooks = (0,core.getInput)("source-books");
+            const sourceBookmarks = (0,core.getInput)("source-bookmarks");
+            const sourcePlaylist = (0,core.getInput)("source-playlist");
             let bookKeyName, bookPath, bookmarkKeyName, bookmarkPath, playlistPath;
             if (sourceBooks !== "false") {
                 [bookKeyName, bookPath] = sourceBooks.split("|");
@@ -43269,7 +43269,7 @@ function action() {
                 playlistData,
                 name,
             });
-            const templatePath = (0,core.getInput)("SeasonalPostTemplate");
+            const templatePath = (0,core.getInput)("seasonal-post-template");
             let template = yield (0,promises_namespaceObject.readFile)(__nccwpck_require__.ab + "template.md", "utf8");
             if (templatePath) {
                 try {
@@ -43292,7 +43292,7 @@ function action() {
                 playlistYaml,
                 template,
             });
-            const postsDir = (0,core.getInput)("PostsDir");
+            const postsDir = (0,core.getInput)("posts-directory");
             const blogFilePath = (0,external_path_.join)(postsDir, `${end}-${year}-${season.toLowerCase()}.md`);
             yield (0,promises_namespaceObject.writeFile)(blogFilePath, md);
         }

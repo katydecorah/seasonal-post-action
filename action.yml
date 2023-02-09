@@ -6,29 +6,29 @@ runs:
   main: "dist/index.js"
 
 inputs:
-  GitHubUsername:
+  github-username:
     description: The GitHub username that owns the repository with the data files.
     required: true
-  GitHubRepository:
+  github-repository:
     description: The Github repository that has the data files.
     required: true
-  SeasonNames:
+  season-names:
     description: The season names in order by the season that ends in March, June, September, and then December.
     default: "Winter,Spring,Summer,Fall"
-  SeasonEmoji:
-    description: Emoji to assign each season in the same order as described by `SeasonNames`.
+  season-emoji:
+    description: Emoji to assign each season in the same order as described by `season-names`.
     default: "❄️,🌷,☀️,🍂"
-  PostsDir:
+  posts-directory:
     description: The path to where you want to save your seasonal post files to in this repository.
     default: "notes/_posts/"
-  SeasonalPostTemplate:
-    description: "If you'd like to customize the [markdown template](src/template.md), define a path to your own. Example: `SeasonalPostTemplate: .github/actions/seasonal-post-template.md`. The markdown template shows all the available variables and an idea for how you may want to format this file. For now, the templating is simplistic and does not offer functionality outside of this action replacing variable names."
-  SourceBooks:
+  seasonal-post-template:
+    description: "If you'd like to customize the [markdown template](src/template.md), define a path to your own. Example: `seasonal-post-template: .github/actions/seasonal-post-template.md`. The markdown template shows all the available variables and an idea for how you may want to format this file. For now, the templating is simplistic and does not offer functionality outside of this action replacing variable names."
+  source-books:
     description: "Define the label and file path for the books data, separate the label and file path with a pipe (`|`). If you do not have books, set this value to `false`. Note: this value will **not** change the variable name in the markdown template, which is `bookYaml` and `bookMarkdown`."
     default: books|_data/read.json
-  SourceBookmarks:
+  source-bookmarks:
     description: "Define the label and file path for the bookmarks data, separate the label and file path with a pipe (`|`). If you do not have bookmarks, set this value to `false`. Note: this value will **not** change the variable name in the markdown template, which is `bookmarkYaml` and `bookmarkMarkdown`."
     default: bookmarks|_data/bookmarks.json
-  SourcePlaylist:
+  source-playlist:
     description: "Define the file path for the playlist data. If you do not have playlists, set this value to `false`."
     default: _data/playlists.yml

@@ -13,8 +13,8 @@ export async function getDataFile(
 ): Promise<DataFile | undefined | []> {
   if (!path) return [];
   try {
-    const owner = getInput("GitHubUsername");
-    const repo = getInput("GitHubRepository");
+    const owner = getInput("github-username");
+    const repo = getInput("github-repository");
     const { data } = await octokit.rest.repos.getContent({
       owner,
       repo,
