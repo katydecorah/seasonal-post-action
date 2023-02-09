@@ -16,7 +16,9 @@ export function findSeason(): {
   const today = payload.date ? new Date(payload.date) : new Date();
   const month = today.getMonth();
   const year = today.getFullYear();
-  const [marchEnd, juneEnd, septemberEnd, decemberEnd] = getInput("SeasonNames")
+  const [marchEnd, juneEnd, septemberEnd, decemberEnd] = getInput(
+    "season-names"
+  )
     .split(",")
     .map((s) => s.trim());
   const seasons = {
@@ -26,7 +28,7 @@ export function findSeason(): {
     11: decemberEnd,
   };
   const season = seasons[month];
-  const seasonEmojis = getInput("SeasonEmoji").split(",");
+  const seasonEmojis = getInput("season-emoji").split(",");
   const seasonEmoji =
     seasonEmojis[Object.keys(seasons).indexOf(month.toString())];
   exportVariable("seasonEmoji", seasonEmoji);
