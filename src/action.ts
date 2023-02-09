@@ -84,7 +84,7 @@ export async function action() {
       template,
     });
 
-    const postsDir = getInput("posts-dir");
+    const postsDir = getInput("posts-directory");
 
     const blogFilePath = join(
       postsDir,

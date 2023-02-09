@@ -20,7 +20,7 @@ const defaultInputs = {
   "github-repository": "archive",
   "season-emoji": "❄️,🌷,☀️,🍂",
   "season-names": "Winter,Spring,Summer,Fall",
-  "posts-dir": "notes/_posts/",
+  "posts-directory": "notes/_posts/",
   "seasonal-post-template": "",
   "source-books": "books|_data/read.json",
   "source-bookmarks": "bookmarks|_data/bookmarks.json",

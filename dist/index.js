@@ -43292,7 +43292,7 @@ function action() {
                 playlistYaml,
                 template,
             });
-            const postsDir = (0,core.getInput)("posts-dir");
+            const postsDir = (0,core.getInput)("posts-directory");
             const blogFilePath = (0,external_path_.join)(postsDir, `${end}-${year}-${season.toLowerCase()}.md`);
             yield (0,promises_namespaceObject.writeFile)(blogFilePath, md);
         }
