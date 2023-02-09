@@ -14,9 +14,9 @@ export async function action() {
 
     exportVariable("season", name);
 
-    const sourceBooks = getInput("SourceBooks");
-    const sourceBookmarks = getInput("SourceBookmarks");
-    const sourcePlaylist = getInput("SourcePlaylist");
+    const sourceBooks = getInput("source-books");
+    const sourceBookmarks = getInput("source-bookmarks");
+    const sourcePlaylist = getInput("source-playlist");
 
     let bookKeyName, bookPath, bookmarkKeyName, bookmarkPath, playlistPath;
 
@@ -57,7 +57,7 @@ export async function action() {
       name,
     });
 
-    const templatePath = getInput("SeasonalPostTemplate");
+    const templatePath = getInput("seasonal-post-template");
     let template = await readFile(join(__dirname, "template.md"), "utf8");
 
     if (templatePath) {
@@ -84,7 +84,7 @@ export async function action() {
       template,
     });
 
-    const postsDir = getInput("PostsDir");
+    const postsDir = getInput("posts-dir");
 
     const blogFilePath = join(
       postsDir,

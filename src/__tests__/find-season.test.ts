@@ -6,12 +6,12 @@ import * as github from "@actions/github";
 jest.mock("@actions/core");
 
 const defaultInputs = {
-  GitHubUsername: "katydecorah",
-  GitHubRepository: "archive",
-  SeasonEmoji: "❄️,🌷,☀️,🍂",
-  SeasonNames: "Winter,Spring,Summer,Fall",
-  PostsDir: "notes/_posts/",
-  SeasonalPostTemplate: ".github/actions/seasonal-post-template.md",
+  "github-username": "katydecorah",
+  "github-repository": "archive",
+  "season-emoji": "❄️,🌷,☀️,🍂",
+  "season-names": "Winter,Spring,Summer,Fall",
+  "posts-dir": "notes/_posts/",
+  "seasonal-post-template": ".github/actions/seasonal-post-template.md",
 };
 
 beforeEach(() => {
@@ -120,8 +120,8 @@ describe("findSeason", () => {
 
   it("change season names", () => {
     jest.useFakeTimers().setSystemTime(new Date("2021-3-20").getTime());
-    defaultInputs.SeasonNames = "Summer,Fall,Winter,Spring";
-    defaultInputs.SeasonEmoji = "☀️,🍂,❄️,🌷";
+    defaultInputs["season-names"] = "Summer,Fall,Winter,Spring";
+    defaultInputs["season-emoji"] = "☀️,🍂,❄️,🌷";
     expect(findSeason()).toMatchInlineSnapshot(`
       {
         "end": "2021-03-20",

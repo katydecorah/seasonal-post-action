@@ -17,9 +17,9 @@ jobs:
       - name: Write seasonal post
         uses: ./
         with:
-          GitHubUsername: katydecorah
-          GitHubRepository: archive
-          SourceBookmarks: recipes|_data/recipes.json
+          github-username: katydecorah
+          github-repository: archive
+          source-bookmarks: recipes|_data/recipes.json
         env:
           TOKEN: ${{ secrets.TOKEN }}
       - name: Commit files

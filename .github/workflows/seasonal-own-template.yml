@@ -1,4 +1,4 @@
-name: Uses a custom markdown template (`SeasonalPostTemplate`) and customizes the `PostsDir`, with a manual workflow trigger.
+name: Uses a custom markdown template (`seasonal-post-template`) and customizes the `posts-dir`, with a manual workflow trigger.
 
 on:
   workflow_dispatch:
@@ -17,11 +17,11 @@ jobs:
       - name: Write seasonal post
         uses: ./
         with:
-          GitHubUsername: katydecorah
-          GitHubRepository: archive
-          SeasonalPostTemplate: .github/actions/seasonal-post-template-basic.md
-          PostsDir: books/
-          SourceBookmarks: recipes|_data/recipes.json
+          github-username: katydecorah
+          github-repository: archive
+          seasonal-post-template: .github/actions/seasonal-post-template-basic.md
+          posts-dir: books/
+          source-bookmarks: recipes|_data/recipes.json
         env:
           TOKEN: ${{ secrets.TOKEN }}
       - name: Commit files
