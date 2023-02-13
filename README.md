@@ -46,7 +46,7 @@ jobs:
           git push
 ```
 
- ### Additional example workflows
+### Additional example workflows
 
 <details>
 <summary>Manually trigger the action</summary>
@@ -127,7 +127,6 @@ jobs:
 ```
 
 </details>
-
 
 ## Action options
 
