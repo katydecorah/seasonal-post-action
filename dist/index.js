@@ -43107,7 +43107,7 @@ function findSeason() {
         11: ["09", "12"],
     };
     if (dates[month] === undefined) {
-        (0,core.setFailed)(`The current date is out of range, it's not time to create a playlist yet. If testing, set the env variable \`SETDATE\`.`);
+        (0,core.setFailed)(`The current date is out of range, it's not time to create a playlist yet.`);
     }
     return {
         name: `${month == 2 ? `${year - 1}/${year}` : year} ${season}`,

@@ -82,7 +82,15 @@ describe("findSeason", () => {
 
   it("fail", () => {
     jest.useRealTimers();
-    process.env.SETDATE = "2021-01-20";
+    Object.defineProperty(github, "context", {
+      value: {
+        payload: {
+          inputs: {
+            date: "2021-01-20",
+          },
+        },
+      },
+    });
     try {
       findSeason();
     } catch (err) {
@@ -91,9 +99,8 @@ describe("findSeason", () => {
       );
     }
     expect(setFailed).toHaveBeenCalledWith(
-      `The current date is out of range, it's not time to create a playlist yet. If testing, set the env variable \`SETDATE\`.`
+      `The current date is out of range, it's not time to create a playlist yet.`
     );
-    process.env.SETDATE = undefined;
   });
 
   it("set date", () => {
