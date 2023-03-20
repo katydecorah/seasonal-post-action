@@ -80,6 +80,31 @@ describe("findSeason", () => {
     `);
   });
 
+  it("scheduled, no workload inputs", () => {
+    Object.defineProperty(github, "context", {
+      value: {
+        payload: {
+          inputs: undefined,
+        },
+      },
+    });
+    jest
+      .spyOn(core, "getInput")
+      .mockImplementation((name) => defaultInputs[name] || undefined);
+
+    jest.useFakeTimers().setSystemTime(new Date("2021-3-20").getTime());
+    expect(findSeason()).toMatchInlineSnapshot(`
+      {
+        "end": "2021-03-20",
+        "name": "2020/2021 Winter",
+        "season": "Winter",
+        "seasonEmoji": "❄️",
+        "start": "2020-12-21",
+        "year": 2021,
+      }
+    `);
+  });
+
   it("fail", () => {
     jest.useRealTimers();
     Object.defineProperty(github, "context", {
