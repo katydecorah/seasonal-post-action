@@ -100,7 +100,6 @@ it("bookMarkdown", () => {
     - [Beach Read](https://books.google.com/books/about/Beach_Read.html?hl=&id=vDTgDwAAQBAJ) - Emily Henry
     - [Sometimes I Trip on How Happy We Could Be](https://books.google.com/books/about/Sometimes_I_Trip_on_How_Happy_We_Could_B.html?hl=&id=qD8czgEACAAJ) - Nichole Perkins
     - [The Midnight Library](https://play.google.com/store/books/details?id=nNjTDwAAQBAJ) - Matt Haig
-    - [The Paper Palace](https://books.google.com/books/about/The_Paper_Palace.html?hl=&id=qQMyEAAAQBAJ) - Miranda Cowley Heller
     - [This Is Your Mind on Plants](https://books.google.com/books/about/This_Is_Your_Mind_on_Plants.html?hl=&id=Fxs3EAAAQBAJ) - Michael Pollan"
   `);
 });
