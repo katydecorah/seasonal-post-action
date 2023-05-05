@@ -74,6 +74,7 @@ jobs:
           github-username: katydecorah
           github-repository: archive
           source-bookmarks: recipes|_data/recipes.json
+          book-tags: "recommend,skip"
         env:
           TOKEN: ${{ secrets.TOKEN }}
       - name: Commit files
