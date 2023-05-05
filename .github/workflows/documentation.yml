@@ -4,6 +4,8 @@ on:
   push:
     paths:
       - ".github/workflows/seasonal.yml"
+      - ".github/workflows/seasonal-advanced.yml"
+      - ".github/workflows/seasonal-own-template.yml"
       - ".github/workflows/documentation.yml"
       - "action.yml"
       - "package.json"
