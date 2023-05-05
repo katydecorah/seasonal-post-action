@@ -12,10 +12,14 @@ books:
     url: >-
       https://books.google.com/books/about/How_to_Talk_So_Little_Kids_Will_Listen.html?hl=&id=6WfUDQAAQBAJ
     isbn: '9781501131653'
+    tags:
+      - recommend
   - title: Between the World and Me
     authors: Ta-Nehisi Coates
     url: https://play.google.com/store/books/details?id=TV05BgAAQBAJ
     isbn: '9780679645986'
+    tags:
+      - recommend
   - title: The Power of Ritual
     authors: Casper ter Kuile
     url: https://play.google.com/store/books/details?id=il6xDwAAQBAJ
@@ -25,6 +29,8 @@ books:
     url: >-
       https://books.google.com/books/about/Tell_the_Machine_Goodnight.html?hl=&id=Tq6ZDwAAQBAJ
     isbn: '9780525533139'
+    tags:
+      - recommend
   - title: Yearbook
     authors: Seth Rogen
     url: https://books.google.com/books/about/Yearbook.html?hl=&id=t-0qwwEACAAJ
@@ -47,10 +53,14 @@ books:
     authors: Michelle Zauner
     url: https://play.google.com/store/books/details?id=kRjzDwAAQBAJ
     isbn: '9780525657750'
+    tags:
+      - recommend
   - title: A Thousand Ships
     authors: Natalie Haynes
     url: https://play.google.com/store/books/details?id=mrHmDwAAQBAJ
     isbn: '9780063065413'
+    tags:
+      - recommend
   - title: The Divines
     authors: Ellie Eaton
     url: https://play.google.com/store/books/details?id=U2XbDwAAQBAJ
@@ -64,15 +74,21 @@ books:
     authors: Kirstin Valdez Quade
     url: https://play.google.com/store/books/details?id=QjXtDwAAQBAJ
     isbn: '9780393242843'
+    tags:
+      - recommend
   - title: The Secret Lives of Church Ladies
     authors: Deesha Philyaw
     url: >-
       https://books.google.com/books/about/The_Secret_Lives_of_Church_Ladies.html?hl=&id=RalczQEACAAJ
     isbn: '9781949199734'
+    tags:
+      - recommend
   - title: Mexican Gothic
     authors: Silvia Moreno-Garcia
     url: https://play.google.com/store/books/details?id=ksKyDwAAQBAJ
     isbn: '9780525620792'
+    tags:
+      - recommend
   - title: Exciting Times
     authors: Naoise Dolan
     url: https://play.google.com/store/books/details?id=aa6sDwAAQBAJ
@@ -182,21 +198,21 @@ The books I read, playlist I made, and bookmarks I saved this Summer.
 
 ## Books
 
-- [How to Talk So Little Kids Will Listen](https://books.google.com/books/about/How_to_Talk_So_Little_Kids_Will_Listen.html?hl=&id=6WfUDQAAQBAJ) - Joanna Faber, Julie King
-- [Between the World and Me](https://play.google.com/store/books/details?id=TV05BgAAQBAJ) - Ta-Nehisi Coates
+- [How to Talk So Little Kids Will Listen](https://books.google.com/books/about/How_to_Talk_So_Little_Kids_Will_Listen.html?hl=&id=6WfUDQAAQBAJ) - Joanna Faber, Julie King (recommend)
+- [Between the World and Me](https://play.google.com/store/books/details?id=TV05BgAAQBAJ) - Ta-Nehisi Coates (recommend)
 - [The Power of Ritual](https://play.google.com/store/books/details?id=il6xDwAAQBAJ) - Casper ter Kuile
-- [Tell the Machine Goodnight](https://books.google.com/books/about/Tell_the_Machine_Goodnight.html?hl=&id=Tq6ZDwAAQBAJ) - Katie Williams
+- [Tell the Machine Goodnight](https://books.google.com/books/about/Tell_the_Machine_Goodnight.html?hl=&id=Tq6ZDwAAQBAJ) - Katie Williams (recommend)
 - [Yearbook](https://books.google.com/books/about/Yearbook.html?hl=&id=t-0qwwEACAAJ) - Seth Rogen
 - [All Adults Here](https://books.google.com/books/about/All_Adults_Here.html?hl=&id=SQcmEAAAQBAJ) - Emma Straub
 - [The Wedding Date](https://books.google.com/books/about/The_Wedding_Date.html?hl=&id=ugGWDwAAQBAJ) - Jasmine Guillory
 - [The Lamplighters](https://play.google.com/store/books/details?id=FE32DwAAQBAJ) - Emma Stonex
-- [Crying in H Mart](https://play.google.com/store/books/details?id=kRjzDwAAQBAJ) - Michelle Zauner
-- [A Thousand Ships](https://play.google.com/store/books/details?id=mrHmDwAAQBAJ) - Natalie Haynes
+- [Crying in H Mart](https://play.google.com/store/books/details?id=kRjzDwAAQBAJ) - Michelle Zauner (recommend)
+- [A Thousand Ships](https://play.google.com/store/books/details?id=mrHmDwAAQBAJ) - Natalie Haynes (recommend)
 - [The Divines](https://play.google.com/store/books/details?id=U2XbDwAAQBAJ) - Ellie Eaton
 - [Conversations with Friends](https://books.google.com/books/about/Conversations_with_Friends.html?hl=&id=4ZQnDwAAQBAJ) - Sally Rooney
-- [The Five Wounds: A Novel](https://play.google.com/store/books/details?id=QjXtDwAAQBAJ) - Kirstin Valdez Quade
-- [The Secret Lives of Church Ladies](https://books.google.com/books/about/The_Secret_Lives_of_Church_Ladies.html?hl=&id=RalczQEACAAJ) - Deesha Philyaw
-- [Mexican Gothic](https://play.google.com/store/books/details?id=ksKyDwAAQBAJ) - Silvia Moreno-Garcia
+- [The Five Wounds: A Novel](https://play.google.com/store/books/details?id=QjXtDwAAQBAJ) - Kirstin Valdez Quade (recommend)
+- [The Secret Lives of Church Ladies](https://books.google.com/books/about/The_Secret_Lives_of_Church_Ladies.html?hl=&id=RalczQEACAAJ) - Deesha Philyaw (recommend)
+- [Mexican Gothic](https://play.google.com/store/books/details?id=ksKyDwAAQBAJ) - Silvia Moreno-Garcia (recommend)
 - [Exciting Times](https://play.google.com/store/books/details?id=aa6sDwAAQBAJ) - Naoise Dolan
 - [The Argonauts](https://play.google.com/store/books/details?id=F4QkBQAAQBAJ) - Maggie Nelson
 
@@ -240,21 +256,21 @@ exports[`action works, custom template 1`] = `
   "notes/_posts/2021-09-20-2021-summer.md",
   "# 2021 Summer Books
 
-- [How to Talk So Little Kids Will Listen](https://books.google.com/books/about/How_to_Talk_So_Little_Kids_Will_Listen.html?hl=&id=6WfUDQAAQBAJ) - Joanna Faber, Julie King
-- [Between the World and Me](https://play.google.com/store/books/details?id=TV05BgAAQBAJ) - Ta-Nehisi Coates
+- [How to Talk So Little Kids Will Listen](https://books.google.com/books/about/How_to_Talk_So_Little_Kids_Will_Listen.html?hl=&id=6WfUDQAAQBAJ) - Joanna Faber, Julie King (recommend)
+- [Between the World and Me](https://play.google.com/store/books/details?id=TV05BgAAQBAJ) - Ta-Nehisi Coates (recommend)
 - [The Power of Ritual](https://play.google.com/store/books/details?id=il6xDwAAQBAJ) - Casper ter Kuile
-- [Tell the Machine Goodnight](https://books.google.com/books/about/Tell_the_Machine_Goodnight.html?hl=&id=Tq6ZDwAAQBAJ) - Katie Williams
+- [Tell the Machine Goodnight](https://books.google.com/books/about/Tell_the_Machine_Goodnight.html?hl=&id=Tq6ZDwAAQBAJ) - Katie Williams (recommend)
 - [Yearbook](https://books.google.com/books/about/Yearbook.html?hl=&id=t-0qwwEACAAJ) - Seth Rogen
 - [All Adults Here](https://books.google.com/books/about/All_Adults_Here.html?hl=&id=SQcmEAAAQBAJ) - Emma Straub
 - [The Wedding Date](https://books.google.com/books/about/The_Wedding_Date.html?hl=&id=ugGWDwAAQBAJ) - Jasmine Guillory
 - [The Lamplighters](https://play.google.com/store/books/details?id=FE32DwAAQBAJ) - Emma Stonex
-- [Crying in H Mart](https://play.google.com/store/books/details?id=kRjzDwAAQBAJ) - Michelle Zauner
-- [A Thousand Ships](https://play.google.com/store/books/details?id=mrHmDwAAQBAJ) - Natalie Haynes
+- [Crying in H Mart](https://play.google.com/store/books/details?id=kRjzDwAAQBAJ) - Michelle Zauner (recommend)
+- [A Thousand Ships](https://play.google.com/store/books/details?id=mrHmDwAAQBAJ) - Natalie Haynes (recommend)
 - [The Divines](https://play.google.com/store/books/details?id=U2XbDwAAQBAJ) - Ellie Eaton
 - [Conversations with Friends](https://books.google.com/books/about/Conversations_with_Friends.html?hl=&id=4ZQnDwAAQBAJ) - Sally Rooney
-- [The Five Wounds: A Novel](https://play.google.com/store/books/details?id=QjXtDwAAQBAJ) - Kirstin Valdez Quade
-- [The Secret Lives of Church Ladies](https://books.google.com/books/about/The_Secret_Lives_of_Church_Ladies.html?hl=&id=RalczQEACAAJ) - Deesha Philyaw
-- [Mexican Gothic](https://play.google.com/store/books/details?id=ksKyDwAAQBAJ) - Silvia Moreno-Garcia
+- [The Five Wounds: A Novel](https://play.google.com/store/books/details?id=QjXtDwAAQBAJ) - Kirstin Valdez Quade (recommend)
+- [The Secret Lives of Church Ladies](https://books.google.com/books/about/The_Secret_Lives_of_Church_Ladies.html?hl=&id=RalczQEACAAJ) - Deesha Philyaw (recommend)
+- [Mexican Gothic](https://play.google.com/store/books/details?id=ksKyDwAAQBAJ) - Silvia Moreno-Garcia (recommend)
 - [Exciting Times](https://play.google.com/store/books/details?id=aa6sDwAAQBAJ) - Naoise Dolan
 - [The Argonauts](https://play.google.com/store/books/details?id=F4QkBQAAQBAJ) - Maggie Nelson
 
@@ -277,10 +293,14 @@ books:
     url: >-
       https://books.google.com/books/about/How_to_Talk_So_Little_Kids_Will_Listen.html?hl=&id=6WfUDQAAQBAJ
     isbn: '9781501131653'
+    tags:
+      - recommend
   - title: Between the World and Me
     authors: Ta-Nehisi Coates
     url: https://play.google.com/store/books/details?id=TV05BgAAQBAJ
     isbn: '9780679645986'
+    tags:
+      - recommend
   - title: The Power of Ritual
     authors: Casper ter Kuile
     url: https://play.google.com/store/books/details?id=il6xDwAAQBAJ
@@ -290,6 +310,8 @@ books:
     url: >-
       https://books.google.com/books/about/Tell_the_Machine_Goodnight.html?hl=&id=Tq6ZDwAAQBAJ
     isbn: '9780525533139'
+    tags:
+      - recommend
   - title: Yearbook
     authors: Seth Rogen
     url: https://books.google.com/books/about/Yearbook.html?hl=&id=t-0qwwEACAAJ
@@ -312,10 +334,14 @@ books:
     authors: Michelle Zauner
     url: https://play.google.com/store/books/details?id=kRjzDwAAQBAJ
     isbn: '9780525657750'
+    tags:
+      - recommend
   - title: A Thousand Ships
     authors: Natalie Haynes
     url: https://play.google.com/store/books/details?id=mrHmDwAAQBAJ
     isbn: '9780063065413'
+    tags:
+      - recommend
   - title: The Divines
     authors: Ellie Eaton
     url: https://play.google.com/store/books/details?id=U2XbDwAAQBAJ
@@ -329,15 +355,21 @@ books:
     authors: Kirstin Valdez Quade
     url: https://play.google.com/store/books/details?id=QjXtDwAAQBAJ
     isbn: '9780393242843'
+    tags:
+      - recommend
   - title: The Secret Lives of Church Ladies
     authors: Deesha Philyaw
     url: >-
       https://books.google.com/books/about/The_Secret_Lives_of_Church_Ladies.html?hl=&id=RalczQEACAAJ
     isbn: '9781949199734'
+    tags:
+      - recommend
   - title: Mexican Gothic
     authors: Silvia Moreno-Garcia
     url: https://play.google.com/store/books/details?id=ksKyDwAAQBAJ
     isbn: '9780525620792'
+    tags:
+      - recommend
   - title: Exciting Times
     authors: Naoise Dolan
     url: https://play.google.com/store/books/details?id=aa6sDwAAQBAJ
@@ -447,21 +479,21 @@ The books I read, playlist I made, and bookmarks I saved this Summer.
 
 ## Books
 
-- [How to Talk So Little Kids Will Listen](https://books.google.com/books/about/How_to_Talk_So_Little_Kids_Will_Listen.html?hl=&id=6WfUDQAAQBAJ) - Joanna Faber, Julie King
-- [Between the World and Me](https://play.google.com/store/books/details?id=TV05BgAAQBAJ) - Ta-Nehisi Coates
+- [How to Talk So Little Kids Will Listen](https://books.google.com/books/about/How_to_Talk_So_Little_Kids_Will_Listen.html?hl=&id=6WfUDQAAQBAJ) - Joanna Faber, Julie King (recommend)
+- [Between the World and Me](https://play.google.com/store/books/details?id=TV05BgAAQBAJ) - Ta-Nehisi Coates (recommend)
 - [The Power of Ritual](https://play.google.com/store/books/details?id=il6xDwAAQBAJ) - Casper ter Kuile
-- [Tell the Machine Goodnight](https://books.google.com/books/about/Tell_the_Machine_Goodnight.html?hl=&id=Tq6ZDwAAQBAJ) - Katie Williams
+- [Tell the Machine Goodnight](https://books.google.com/books/about/Tell_the_Machine_Goodnight.html?hl=&id=Tq6ZDwAAQBAJ) - Katie Williams (recommend)
 - [Yearbook](https://books.google.com/books/about/Yearbook.html?hl=&id=t-0qwwEACAAJ) - Seth Rogen
 - [All Adults Here](https://books.google.com/books/about/All_Adults_Here.html?hl=&id=SQcmEAAAQBAJ) - Emma Straub
 - [The Wedding Date](https://books.google.com/books/about/The_Wedding_Date.html?hl=&id=ugGWDwAAQBAJ) - Jasmine Guillory
 - [The Lamplighters](https://play.google.com/store/books/details?id=FE32DwAAQBAJ) - Emma Stonex
-- [Crying in H Mart](https://play.google.com/store/books/details?id=kRjzDwAAQBAJ) - Michelle Zauner
-- [A Thousand Ships](https://play.google.com/store/books/details?id=mrHmDwAAQBAJ) - Natalie Haynes
+- [Crying in H Mart](https://play.google.com/store/books/details?id=kRjzDwAAQBAJ) - Michelle Zauner (recommend)
+- [A Thousand Ships](https://play.google.com/store/books/details?id=mrHmDwAAQBAJ) - Natalie Haynes (recommend)
 - [The Divines](https://play.google.com/store/books/details?id=U2XbDwAAQBAJ) - Ellie Eaton
 - [Conversations with Friends](https://books.google.com/books/about/Conversations_with_Friends.html?hl=&id=4ZQnDwAAQBAJ) - Sally Rooney
-- [The Five Wounds: A Novel](https://play.google.com/store/books/details?id=QjXtDwAAQBAJ) - Kirstin Valdez Quade
-- [The Secret Lives of Church Ladies](https://books.google.com/books/about/The_Secret_Lives_of_Church_Ladies.html?hl=&id=RalczQEACAAJ) - Deesha Philyaw
-- [Mexican Gothic](https://play.google.com/store/books/details?id=ksKyDwAAQBAJ) - Silvia Moreno-Garcia
+- [The Five Wounds: A Novel](https://play.google.com/store/books/details?id=QjXtDwAAQBAJ) - Kirstin Valdez Quade (recommend)
+- [The Secret Lives of Church Ladies](https://books.google.com/books/about/The_Secret_Lives_of_Church_Ladies.html?hl=&id=RalczQEACAAJ) - Deesha Philyaw (recommend)
+- [Mexican Gothic](https://play.google.com/store/books/details?id=ksKyDwAAQBAJ) - Silvia Moreno-Garcia (recommend)
 - [Exciting Times](https://play.google.com/store/books/details?id=aa6sDwAAQBAJ) - Naoise Dolan
 - [The Argonauts](https://play.google.com/store/books/details?id=F4QkBQAAQBAJ) - Maggie Nelson
 
@@ -500,7 +532,7 @@ The books I read, playlist I made, and bookmarks I saved this Summer.
 ]
 `;
 
-exports[`action works, disable bookmarks 1`] = `
+exports[`action works, disable book-tags 1`] = `
 [
   "notes/_posts/2021-09-20-2021-summer.md",
   "---
@@ -583,6 +615,141 @@ books:
     isbn: '9781555973407'
 
 
+
+---
+
+The books I read, playlist I made, and bookmarks I saved this Summer.
+
+## Books
+
+- [How to Talk So Little Kids Will Listen](https://books.google.com/books/about/How_to_Talk_So_Little_Kids_Will_Listen.html?hl=&id=6WfUDQAAQBAJ) - Joanna Faber, Julie King
+- [Between the World and Me](https://play.google.com/store/books/details?id=TV05BgAAQBAJ) - Ta-Nehisi Coates
+- [The Power of Ritual](https://play.google.com/store/books/details?id=il6xDwAAQBAJ) - Casper ter Kuile
+- [Tell the Machine Goodnight](https://books.google.com/books/about/Tell_the_Machine_Goodnight.html?hl=&id=Tq6ZDwAAQBAJ) - Katie Williams
+- [Yearbook](https://books.google.com/books/about/Yearbook.html?hl=&id=t-0qwwEACAAJ) - Seth Rogen
+- [All Adults Here](https://books.google.com/books/about/All_Adults_Here.html?hl=&id=SQcmEAAAQBAJ) - Emma Straub
+- [The Wedding Date](https://books.google.com/books/about/The_Wedding_Date.html?hl=&id=ugGWDwAAQBAJ) - Jasmine Guillory
+- [The Lamplighters](https://play.google.com/store/books/details?id=FE32DwAAQBAJ) - Emma Stonex
+- [Crying in H Mart](https://play.google.com/store/books/details?id=kRjzDwAAQBAJ) - Michelle Zauner
+- [A Thousand Ships](https://play.google.com/store/books/details?id=mrHmDwAAQBAJ) - Natalie Haynes
+- [The Divines](https://play.google.com/store/books/details?id=U2XbDwAAQBAJ) - Ellie Eaton
+- [Conversations with Friends](https://books.google.com/books/about/Conversations_with_Friends.html?hl=&id=4ZQnDwAAQBAJ) - Sally Rooney
+- [The Five Wounds: A Novel](https://play.google.com/store/books/details?id=QjXtDwAAQBAJ) - Kirstin Valdez Quade
+- [The Secret Lives of Church Ladies](https://books.google.com/books/about/The_Secret_Lives_of_Church_Ladies.html?hl=&id=RalczQEACAAJ) - Deesha Philyaw
+- [Mexican Gothic](https://play.google.com/store/books/details?id=ksKyDwAAQBAJ) - Silvia Moreno-Garcia
+- [Exciting Times](https://play.google.com/store/books/details?id=aa6sDwAAQBAJ) - Naoise Dolan
+- [The Argonauts](https://play.google.com/store/books/details?id=F4QkBQAAQBAJ) - Maggie Nelson
+
+## Playlist
+
+
+
+## Bookmarks
+
+
+",
+]
+`;
+
+exports[`action works, disable bookmarks 1`] = `
+[
+  "notes/_posts/2021-09-20-2021-summer.md",
+  "---
+title: 2021 Summer
+image: 2021-summer.png
+books:
+  - title: How to Talk So Little Kids Will Listen
+    authors: Joanna Faber, Julie King
+    url: >-
+      https://books.google.com/books/about/How_to_Talk_So_Little_Kids_Will_Listen.html?hl=&id=6WfUDQAAQBAJ
+    isbn: '9781501131653'
+    tags:
+      - recommend
+  - title: Between the World and Me
+    authors: Ta-Nehisi Coates
+    url: https://play.google.com/store/books/details?id=TV05BgAAQBAJ
+    isbn: '9780679645986'
+    tags:
+      - recommend
+  - title: The Power of Ritual
+    authors: Casper ter Kuile
+    url: https://play.google.com/store/books/details?id=il6xDwAAQBAJ
+    isbn: '9780062882066'
+  - title: Tell the Machine Goodnight
+    authors: Katie Williams
+    url: >-
+      https://books.google.com/books/about/Tell_the_Machine_Goodnight.html?hl=&id=Tq6ZDwAAQBAJ
+    isbn: '9780525533139'
+    tags:
+      - recommend
+  - title: Yearbook
+    authors: Seth Rogen
+    url: https://books.google.com/books/about/Yearbook.html?hl=&id=t-0qwwEACAAJ
+    isbn: '9780751575774'
+  - title: All Adults Here
+    authors: Emma Straub
+    url: >-
+      https://books.google.com/books/about/All_Adults_Here.html?hl=&id=SQcmEAAAQBAJ
+    isbn: '9781594634703'
+  - title: The Wedding Date
+    authors: Jasmine Guillory
+    url: >-
+      https://books.google.com/books/about/The_Wedding_Date.html?hl=&id=ugGWDwAAQBAJ
+    isbn: '9780593098394'
+  - title: The Lamplighters
+    authors: Emma Stonex
+    url: https://play.google.com/store/books/details?id=FE32DwAAQBAJ
+    isbn: '9781984882165'
+  - title: Crying in H Mart
+    authors: Michelle Zauner
+    url: https://play.google.com/store/books/details?id=kRjzDwAAQBAJ
+    isbn: '9780525657750'
+    tags:
+      - recommend
+  - title: A Thousand Ships
+    authors: Natalie Haynes
+    url: https://play.google.com/store/books/details?id=mrHmDwAAQBAJ
+    isbn: '9780063065413'
+    tags:
+      - recommend
+  - title: The Divines
+    authors: Ellie Eaton
+    url: https://play.google.com/store/books/details?id=U2XbDwAAQBAJ
+    isbn: '9780063012219'
+  - title: Conversations with Friends
+    authors: Sally Rooney
+    url: >-
+      https://books.google.com/books/about/Conversations_with_Friends.html?hl=&id=4ZQnDwAAQBAJ
+    isbn: '9780451499059'
+  - title: 'The Five Wounds: A Novel'
+    authors: Kirstin Valdez Quade
+    url: https://play.google.com/store/books/details?id=QjXtDwAAQBAJ
+    isbn: '9780393242843'
+    tags:
+      - recommend
+  - title: The Secret Lives of Church Ladies
+    authors: Deesha Philyaw
+    url: >-
+      https://books.google.com/books/about/The_Secret_Lives_of_Church_Ladies.html?hl=&id=RalczQEACAAJ
+    isbn: '9781949199734'
+    tags:
+      - recommend
+  - title: Mexican Gothic
+    authors: Silvia Moreno-Garcia
+    url: https://play.google.com/store/books/details?id=ksKyDwAAQBAJ
+    isbn: '9780525620792'
+    tags:
+      - recommend
+  - title: Exciting Times
+    authors: Naoise Dolan
+    url: https://play.google.com/store/books/details?id=aa6sDwAAQBAJ
+    isbn: '9780062968777'
+  - title: The Argonauts
+    authors: Maggie Nelson
+    url: https://play.google.com/store/books/details?id=F4QkBQAAQBAJ
+    isbn: '9781555973407'
+
+
 playlist: 2021 Summer
 spotify: https://open.spotify.com/playlist/5CWFqwcSoRK7AFfWH4nJyL
 tracks:
@@ -623,21 +790,21 @@ The books I read, playlist I made, and bookmarks I saved this Summer.
 
 ## Books
 
-- [How to Talk So Little Kids Will Listen](https://books.google.com/books/about/How_to_Talk_So_Little_Kids_Will_Listen.html?hl=&id=6WfUDQAAQBAJ) - Joanna Faber, Julie King
-- [Between the World and Me](https://play.google.com/store/books/details?id=TV05BgAAQBAJ) - Ta-Nehisi Coates
+- [How to Talk So Little Kids Will Listen](https://books.google.com/books/about/How_to_Talk_So_Little_Kids_Will_Listen.html?hl=&id=6WfUDQAAQBAJ) - Joanna Faber, Julie King (recommend)
+- [Between the World and Me](https://play.google.com/store/books/details?id=TV05BgAAQBAJ) - Ta-Nehisi Coates (recommend)
 - [The Power of Ritual](https://play.google.com/store/books/details?id=il6xDwAAQBAJ) - Casper ter Kuile
-- [Tell the Machine Goodnight](https://books.google.com/books/about/Tell_the_Machine_Goodnight.html?hl=&id=Tq6ZDwAAQBAJ) - Katie Williams
+- [Tell the Machine Goodnight](https://books.google.com/books/about/Tell_the_Machine_Goodnight.html?hl=&id=Tq6ZDwAAQBAJ) - Katie Williams (recommend)
 - [Yearbook](https://books.google.com/books/about/Yearbook.html?hl=&id=t-0qwwEACAAJ) - Seth Rogen
 - [All Adults Here](https://books.google.com/books/about/All_Adults_Here.html?hl=&id=SQcmEAAAQBAJ) - Emma Straub
 - [The Wedding Date](https://books.google.com/books/about/The_Wedding_Date.html?hl=&id=ugGWDwAAQBAJ) - Jasmine Guillory
 - [The Lamplighters](https://play.google.com/store/books/details?id=FE32DwAAQBAJ) - Emma Stonex
-- [Crying in H Mart](https://play.google.com/store/books/details?id=kRjzDwAAQBAJ) - Michelle Zauner
-- [A Thousand Ships](https://play.google.com/store/books/details?id=mrHmDwAAQBAJ) - Natalie Haynes
+- [Crying in H Mart](https://play.google.com/store/books/details?id=kRjzDwAAQBAJ) - Michelle Zauner (recommend)
+- [A Thousand Ships](https://play.google.com/store/books/details?id=mrHmDwAAQBAJ) - Natalie Haynes (recommend)
 - [The Divines](https://play.google.com/store/books/details?id=U2XbDwAAQBAJ) - Ellie Eaton
 - [Conversations with Friends](https://books.google.com/books/about/Conversations_with_Friends.html?hl=&id=4ZQnDwAAQBAJ) - Sally Rooney
-- [The Five Wounds: A Novel](https://play.google.com/store/books/details?id=QjXtDwAAQBAJ) - Kirstin Valdez Quade
-- [The Secret Lives of Church Ladies](https://books.google.com/books/about/The_Secret_Lives_of_Church_Ladies.html?hl=&id=RalczQEACAAJ) - Deesha Philyaw
-- [Mexican Gothic](https://play.google.com/store/books/details?id=ksKyDwAAQBAJ) - Silvia Moreno-Garcia
+- [The Five Wounds: A Novel](https://play.google.com/store/books/details?id=QjXtDwAAQBAJ) - Kirstin Valdez Quade (recommend)
+- [The Secret Lives of Church Ladies](https://books.google.com/books/about/The_Secret_Lives_of_Church_Ladies.html?hl=&id=RalczQEACAAJ) - Deesha Philyaw (recommend)
+- [Mexican Gothic](https://play.google.com/store/books/details?id=ksKyDwAAQBAJ) - Silvia Moreno-Garcia (recommend)
 - [Exciting Times](https://play.google.com/store/books/details?id=aa6sDwAAQBAJ) - Naoise Dolan
 - [The Argonauts](https://play.google.com/store/books/details?id=F4QkBQAAQBAJ) - Maggie Nelson
 
@@ -817,10 +984,14 @@ books:
     url: >-
       https://books.google.com/books/about/How_to_Talk_So_Little_Kids_Will_Listen.html?hl=&id=6WfUDQAAQBAJ
     isbn: '9781501131653'
+    tags:
+      - recommend
   - title: Between the World and Me
     authors: Ta-Nehisi Coates
     url: https://play.google.com/store/books/details?id=TV05BgAAQBAJ
     isbn: '9780679645986'
+    tags:
+      - recommend
   - title: The Power of Ritual
     authors: Casper ter Kuile
     url: https://play.google.com/store/books/details?id=il6xDwAAQBAJ
@@ -830,6 +1001,8 @@ books:
     url: >-
       https://books.google.com/books/about/Tell_the_Machine_Goodnight.html?hl=&id=Tq6ZDwAAQBAJ
     isbn: '9780525533139'
+    tags:
+      - recommend
   - title: Yearbook
     authors: Seth Rogen
     url: https://books.google.com/books/about/Yearbook.html?hl=&id=t-0qwwEACAAJ
@@ -852,10 +1025,14 @@ books:
     authors: Michelle Zauner
     url: https://play.google.com/store/books/details?id=kRjzDwAAQBAJ
     isbn: '9780525657750'
+    tags:
+      - recommend
   - title: A Thousand Ships
     authors: Natalie Haynes
     url: https://play.google.com/store/books/details?id=mrHmDwAAQBAJ
     isbn: '9780063065413'
+    tags:
+      - recommend
   - title: The Divines
     authors: Ellie Eaton
     url: https://play.google.com/store/books/details?id=U2XbDwAAQBAJ
@@ -869,15 +1046,21 @@ books:
     authors: Kirstin Valdez Quade
     url: https://play.google.com/store/books/details?id=QjXtDwAAQBAJ
     isbn: '9780393242843'
+    tags:
+      - recommend
   - title: The Secret Lives of Church Ladies
     authors: Deesha Philyaw
     url: >-
       https://books.google.com/books/about/The_Secret_Lives_of_Church_Ladies.html?hl=&id=RalczQEACAAJ
     isbn: '9781949199734'
+    tags:
+      - recommend
   - title: Mexican Gothic
     authors: Silvia Moreno-Garcia
     url: https://play.google.com/store/books/details?id=ksKyDwAAQBAJ
     isbn: '9780525620792'
+    tags:
+      - recommend
   - title: Exciting Times
     authors: Naoise Dolan
     url: https://play.google.com/store/books/details?id=aa6sDwAAQBAJ
@@ -954,21 +1137,21 @@ The books I read, playlist I made, and bookmarks I saved this Summer.
 
 ## Books
 
-- [How to Talk So Little Kids Will Listen](https://books.google.com/books/about/How_to_Talk_So_Little_Kids_Will_Listen.html?hl=&id=6WfUDQAAQBAJ) - Joanna Faber, Julie King
-- [Between the World and Me](https://play.google.com/store/books/details?id=TV05BgAAQBAJ) - Ta-Nehisi Coates
+- [How to Talk So Little Kids Will Listen](https://books.google.com/books/about/How_to_Talk_So_Little_Kids_Will_Listen.html?hl=&id=6WfUDQAAQBAJ) - Joanna Faber, Julie King (recommend)
+- [Between the World and Me](https://play.google.com/store/books/details?id=TV05BgAAQBAJ) - Ta-Nehisi Coates (recommend)
 - [The Power of Ritual](https://play.google.com/store/books/details?id=il6xDwAAQBAJ) - Casper ter Kuile
-- [Tell the Machine Goodnight](https://books.google.com/books/about/Tell_the_Machine_Goodnight.html?hl=&id=Tq6ZDwAAQBAJ) - Katie Williams
+- [Tell the Machine Goodnight](https://books.google.com/books/about/Tell_the_Machine_Goodnight.html?hl=&id=Tq6ZDwAAQBAJ) - Katie Williams (recommend)
 - [Yearbook](https://books.google.com/books/about/Yearbook.html?hl=&id=t-0qwwEACAAJ) - Seth Rogen
 - [All Adults Here](https://books.google.com/books/about/All_Adults_Here.html?hl=&id=SQcmEAAAQBAJ) - Emma Straub
 - [The Wedding Date](https://books.google.com/books/about/The_Wedding_Date.html?hl=&id=ugGWDwAAQBAJ) - Jasmine Guillory
 - [The Lamplighters](https://play.google.com/store/books/details?id=FE32DwAAQBAJ) - Emma Stonex
-- [Crying in H Mart](https://play.google.com/store/books/details?id=kRjzDwAAQBAJ) - Michelle Zauner
-- [A Thousand Ships](https://play.google.com/store/books/details?id=mrHmDwAAQBAJ) - Natalie Haynes
+- [Crying in H Mart](https://play.google.com/store/books/details?id=kRjzDwAAQBAJ) - Michelle Zauner (recommend)
+- [A Thousand Ships](https://play.google.com/store/books/details?id=mrHmDwAAQBAJ) - Natalie Haynes (recommend)
 - [The Divines](https://play.google.com/store/books/details?id=U2XbDwAAQBAJ) - Ellie Eaton
 - [Conversations with Friends](https://books.google.com/books/about/Conversations_with_Friends.html?hl=&id=4ZQnDwAAQBAJ) - Sally Rooney
-- [The Five Wounds: A Novel](https://play.google.com/store/books/details?id=QjXtDwAAQBAJ) - Kirstin Valdez Quade
-- [The Secret Lives of Church Ladies](https://books.google.com/books/about/The_Secret_Lives_of_Church_Ladies.html?hl=&id=RalczQEACAAJ) - Deesha Philyaw
-- [Mexican Gothic](https://play.google.com/store/books/details?id=ksKyDwAAQBAJ) - Silvia Moreno-Garcia
+- [The Five Wounds: A Novel](https://play.google.com/store/books/details?id=QjXtDwAAQBAJ) - Kirstin Valdez Quade (recommend)
+- [The Secret Lives of Church Ladies](https://books.google.com/books/about/The_Secret_Lives_of_Church_Ladies.html?hl=&id=RalczQEACAAJ) - Deesha Philyaw (recommend)
+- [Mexican Gothic](https://play.google.com/store/books/details?id=ksKyDwAAQBAJ) - Silvia Moreno-Garcia (recommend)
 - [Exciting Times](https://play.google.com/store/books/details?id=aa6sDwAAQBAJ) - Naoise Dolan
 - [The Argonauts](https://play.google.com/store/books/details?id=F4QkBQAAQBAJ) - Maggie Nelson
 

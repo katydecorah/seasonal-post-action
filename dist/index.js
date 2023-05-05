@@ -43017,6 +43017,7 @@ var jsYaml = {
 
 ;// CONCATENATED MODULE: ./src/format.ts
 
+
 function formatBooks({ bookKeyName, bookData, start, end }) {
     if (!bookData || bookData.length === 0) {
         return {
@@ -43024,18 +43025,22 @@ function formatBooks({ bookKeyName, bookData, start, end }) {
             bookMarkdown: "",
         };
     }
+    const bookTags = (0,core.getInput)("book-tags")
+        ? (0,core.getInput)("book-tags")
+            .split(",")
+            .map((tag) => tag.trim())
+        : [];
     const books = filterData(bookData, "dateFinished", start, end)
         .filter((book) => { var _a; return !((_a = book.tags) === null || _a === void 0 ? void 0 : _a.includes("hide")); })
-        .map(({ title, authors, link, isbn }) => ({
-        title,
-        authors: authors.join(", "),
-        url: link,
-        isbn,
-    }));
+        .map(({ title, authors, link, isbn, tags }) => {
+        return Object.assign({ title, authors: authors.join(", "), url: link, isbn }, (bookTags.length > 0 && {
+            tags: tags === null || tags === void 0 ? void 0 : tags.filter((tag) => bookTags.includes(tag)),
+        }));
+    });
     return {
         bookYaml: dump({ [bookKeyName]: books }),
         bookMarkdown: books
-            .map(({ title, authors, url }) => `- [${title}](${url}) - ${authors}`)
+            .map(({ title, authors, url, tags }) => `- [${title}](${url}) - ${authors}${tags ? ` (${tags.join(", ")})` : ""}`)
             .join("\n"),
     };
 }

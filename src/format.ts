@@ -1,3 +1,4 @@
+import { getInput } from "@actions/core";
 import { dump } from "js-yaml";
 
 export function formatBooks({ bookKeyName, bookData, start, end }) {
@@ -7,18 +8,35 @@ export function formatBooks({ bookKeyName, bookData, start, end }) {
       bookMarkdown: "",
     };
   }
+  const bookTags = getInput("book-tags")
+    ? getInput("book-tags")
+        .split(",")
+        .map((tag) => tag.trim())
+    : [];
+
   const books: Book[] = filterData(bookData, "dateFinished", start, end)
     .filter((book) => !book.tags?.includes("hide"))
-    .map(({ title, authors, link, isbn }) => ({
-      title,
-      authors: authors.join(", "),
-      url: link,
-      isbn,
-    }));
+    .map(({ title, authors, link, isbn, tags }) => {
+      return {
+        title,
+        authors: authors.join(", "),
+        url: link,
+        isbn,
+        ...(bookTags.length > 0 && {
+          tags: tags?.filter((tag) => bookTags.includes(tag)),
+        }),
+      };
+    });
+
   return {
     bookYaml: dump({ [bookKeyName]: books }),
     bookMarkdown: books
-      .map(({ title, authors, url }) => `- [${title}](${url}) - ${authors}`)
+      .map(
+        ({ title, authors, url, tags }) =>
+          `- [${title}](${url}) - ${authors}${
+            tags ? ` (${tags.join(", ")})` : ""
+          }`
+      )
       .join("\n"),
   };
 }
@@ -94,6 +112,7 @@ export type Book = {
   authors: string;
   url: string;
   isbn: string;
+  tags?: string[];
 };
 
 export type Bookmark = {

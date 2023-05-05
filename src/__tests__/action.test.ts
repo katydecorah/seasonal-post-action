@@ -25,6 +25,7 @@ const defaultInputs = {
   "source-books": "books|_data/read.json",
   "source-bookmarks": "bookmarks|_data/bookmarks.json",
   "source-playlist": "_data/playlists.yml",
+  "book-tags": "recommend, skip",
 };
 
 beforeEach(() => {
@@ -178,5 +179,22 @@ describe("action", () => {
     expect(setFailedSpy.mock.calls[0][0]).toMatchInlineSnapshot(
       `[Error: test error]`
     );
+  });
+
+  test("works, disable book-tags", async () => {
+    defaultInputs["source-books"] = "books|_data/read.json";
+    defaultInputs["source-bookmarks"] = "false";
+    defaultInputs["source-playlist"] = "false";
+    defaultInputs["book-tags"] = "";
+
+    jest
+      .spyOn(GetJsonFile, "getJsonFile")
+      .mockReturnValueOnce(books)
+      .mockReturnValueOnce([]);
+    jest.spyOn(GetDataFile, "getDataFile").mockReturnValueOnce([]);
+    const writeSpy = jest.spyOn(promises, "writeFile").mockImplementation();
+    await action();
+    expect(setFailed).not.toHaveBeenCalled();
+    expect(writeSpy.mock.calls[0]).toMatchSnapshot();
   });
 });
