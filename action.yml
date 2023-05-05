@@ -42,5 +42,4 @@ inputs:
     default: _data/playlists.yml
 
   book-tags:
-    description: "Allow specific tags to be passed through. Separate each tag with a comma. Example: `book-tags: recommend, new`."
-    default: ""
+    description: "Allow specific tags to be passed through. Separate each tag with a comma."
