@@ -903,7 +903,8 @@
     "categories": ["Fiction"],
     "thumbnail": "https://books.google.com/books/content?id=qQMyEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
     "language": "en",
-    "link": "https://books.google.com/books/about/The_Paper_Palace.html?hl=&id=qQMyEAAAQBAJ"
+    "link": "https://books.google.com/books/about/The_Paper_Palace.html?hl=&id=qQMyEAAAQBAJ",
+    "tags": ["hide"]
   },
   {
     "isbn": "9780593296905",

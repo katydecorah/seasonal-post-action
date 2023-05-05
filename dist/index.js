@@ -43024,7 +43024,9 @@ function formatBooks({ bookKeyName, bookData, start, end }) {
             bookMarkdown: "",
         };
     }
-    const books = filterData(bookData, "dateFinished", start, end).map(({ title, authors, link, isbn }) => ({
+    const books = filterData(bookData, "dateFinished", start, end)
+        .filter((book) => { var _a; return !((_a = book.tags) === null || _a === void 0 ? void 0 : _a.includes("hide")); })
+        .map(({ title, authors, link, isbn }) => ({
         title,
         authors: authors.join(", "),
         url: link,

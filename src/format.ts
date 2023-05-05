@@ -7,14 +7,14 @@ export function formatBooks({ bookKeyName, bookData, start, end }) {
       bookMarkdown: "",
     };
   }
-  const books: Book[] = filterData(bookData, "dateFinished", start, end).map(
-    ({ title, authors, link, isbn }) => ({
+  const books: Book[] = filterData(bookData, "dateFinished", start, end)
+    .filter((book) => !book.tags?.includes("hide"))
+    .map(({ title, authors, link, isbn }) => ({
       title,
       authors: authors.join(", "),
       url: link,
       isbn,
-    })
-  );
+    }));
   return {
     bookYaml: dump({ [bookKeyName]: books }),
     bookMarkdown: books
@@ -125,4 +125,5 @@ export type DataFile = {
   dateFinished: number;
   date: number;
   image: string;
+  tags?: string[];
 };
