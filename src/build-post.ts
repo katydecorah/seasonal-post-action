@@ -21,8 +21,15 @@ export function buildPost({
     bookmarkYaml,
     playlistYaml,
   };
-  return template.replace(
-    /\${([^{}]+)}/g,
-    (_, key: string) => postVars[key] || ""
-  );
+
+  const safePattern = /\${([a-zA-Z_][a-zA-Z0-9_]*)}/g;
+
+  const replacedTemplate = template.replace(safePattern, (match, key) => {
+    if (Object.prototype.hasOwnProperty.call(postVars, key)) {
+      return postVars[key];
+    }
+    return "";
+  });
+
+  return replacedTemplate;
 }
