@@ -28,7 +28,7 @@ jobs:
     name: Write seasonal post
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Write seasonal post
         uses: katydecorah/seasonal-post-action@v6.1.0
         with:
@@ -67,7 +67,7 @@ jobs:
     name: Write seasonal post
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Write seasonal post
         uses: katydecorah/seasonal-post-action@v6.1.0
         with:
@@ -107,7 +107,7 @@ jobs:
     name: Write seasonal post
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Write seasonal post
         uses: katydecorah/seasonal-post-action@v6.1.0
         with:
