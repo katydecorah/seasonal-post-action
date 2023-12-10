@@ -2,7 +2,7 @@ name: "Seasonal post action"
 author: "@katydecorah"
 description: "A GitHub action that creates a seasonal post from data files."
 runs:
-  using: "node16"
+  using: node20
   main: "dist/index.js"
 
 inputs:
