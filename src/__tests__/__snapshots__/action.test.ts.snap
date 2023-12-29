@@ -12,8 +12,6 @@ books:
     url: >-
       https://books.google.com/books/about/How_to_Talk_So_Little_Kids_Will_Listen.html?hl=&id=6WfUDQAAQBAJ
     isbn: '9781501131653'
-    tags:
-      - recommend
   - title: Between the World and Me
     authors: Ta-Nehisi Coates
     url: https://play.google.com/store/books/details?id=TV05BgAAQBAJ
@@ -198,7 +196,7 @@ The books I read, playlist I made, and bookmarks I saved this Summer.
 
 ## Books
 
-- [How to Talk So Little Kids Will Listen](https://books.google.com/books/about/How_to_Talk_So_Little_Kids_Will_Listen.html?hl=&id=6WfUDQAAQBAJ) - Joanna Faber, Julie King (recommend)
+- [How to Talk So Little Kids Will Listen](https://books.google.com/books/about/How_to_Talk_So_Little_Kids_Will_Listen.html?hl=&id=6WfUDQAAQBAJ) - Joanna Faber, Julie King
 - [Between the World and Me](https://play.google.com/store/books/details?id=TV05BgAAQBAJ) - Ta-Nehisi Coates (recommend)
 - [The Power of Ritual](https://play.google.com/store/books/details?id=il6xDwAAQBAJ) - Casper ter Kuile
 - [Tell the Machine Goodnight](https://books.google.com/books/about/Tell_the_Machine_Goodnight.html?hl=&id=Tq6ZDwAAQBAJ) - Katie Williams (recommend)
@@ -256,7 +254,7 @@ exports[`action works, custom template 1`] = `
   "notes/_posts/2021-09-20-2021-summer.md",
   "# 2021 Summer Books
 
-- [How to Talk So Little Kids Will Listen](https://books.google.com/books/about/How_to_Talk_So_Little_Kids_Will_Listen.html?hl=&id=6WfUDQAAQBAJ) - Joanna Faber, Julie King (recommend)
+- [How to Talk So Little Kids Will Listen](https://books.google.com/books/about/How_to_Talk_So_Little_Kids_Will_Listen.html?hl=&id=6WfUDQAAQBAJ) - Joanna Faber, Julie King
 - [Between the World and Me](https://play.google.com/store/books/details?id=TV05BgAAQBAJ) - Ta-Nehisi Coates (recommend)
 - [The Power of Ritual](https://play.google.com/store/books/details?id=il6xDwAAQBAJ) - Casper ter Kuile
 - [Tell the Machine Goodnight](https://books.google.com/books/about/Tell_the_Machine_Goodnight.html?hl=&id=Tq6ZDwAAQBAJ) - Katie Williams (recommend)
@@ -293,8 +291,6 @@ books:
     url: >-
       https://books.google.com/books/about/How_to_Talk_So_Little_Kids_Will_Listen.html?hl=&id=6WfUDQAAQBAJ
     isbn: '9781501131653'
-    tags:
-      - recommend
   - title: Between the World and Me
     authors: Ta-Nehisi Coates
     url: https://play.google.com/store/books/details?id=TV05BgAAQBAJ
@@ -479,7 +475,7 @@ The books I read, playlist I made, and bookmarks I saved this Summer.
 
 ## Books
 
-- [How to Talk So Little Kids Will Listen](https://books.google.com/books/about/How_to_Talk_So_Little_Kids_Will_Listen.html?hl=&id=6WfUDQAAQBAJ) - Joanna Faber, Julie King (recommend)
+- [How to Talk So Little Kids Will Listen](https://books.google.com/books/about/How_to_Talk_So_Little_Kids_Will_Listen.html?hl=&id=6WfUDQAAQBAJ) - Joanna Faber, Julie King
 - [Between the World and Me](https://play.google.com/store/books/details?id=TV05BgAAQBAJ) - Ta-Nehisi Coates (recommend)
 - [The Power of Ritual](https://play.google.com/store/books/details?id=il6xDwAAQBAJ) - Casper ter Kuile
 - [Tell the Machine Goodnight](https://books.google.com/books/about/Tell_the_Machine_Goodnight.html?hl=&id=Tq6ZDwAAQBAJ) - Katie Williams (recommend)
@@ -663,8 +659,6 @@ books:
     url: >-
       https://books.google.com/books/about/How_to_Talk_So_Little_Kids_Will_Listen.html?hl=&id=6WfUDQAAQBAJ
     isbn: '9781501131653'
-    tags:
-      - recommend
   - title: Between the World and Me
     authors: Ta-Nehisi Coates
     url: https://play.google.com/store/books/details?id=TV05BgAAQBAJ
@@ -790,7 +784,7 @@ The books I read, playlist I made, and bookmarks I saved this Summer.
 
 ## Books
 
-- [How to Talk So Little Kids Will Listen](https://books.google.com/books/about/How_to_Talk_So_Little_Kids_Will_Listen.html?hl=&id=6WfUDQAAQBAJ) - Joanna Faber, Julie King (recommend)
+- [How to Talk So Little Kids Will Listen](https://books.google.com/books/about/How_to_Talk_So_Little_Kids_Will_Listen.html?hl=&id=6WfUDQAAQBAJ) - Joanna Faber, Julie King
 - [Between the World and Me](https://play.google.com/store/books/details?id=TV05BgAAQBAJ) - Ta-Nehisi Coates (recommend)
 - [The Power of Ritual](https://play.google.com/store/books/details?id=il6xDwAAQBAJ) - Casper ter Kuile
 - [Tell the Machine Goodnight](https://books.google.com/books/about/Tell_the_Machine_Goodnight.html?hl=&id=Tq6ZDwAAQBAJ) - Katie Williams (recommend)
@@ -984,8 +978,6 @@ books:
     url: >-
       https://books.google.com/books/about/How_to_Talk_So_Little_Kids_Will_Listen.html?hl=&id=6WfUDQAAQBAJ
     isbn: '9781501131653'
-    tags:
-      - recommend
   - title: Between the World and Me
     authors: Ta-Nehisi Coates
     url: https://play.google.com/store/books/details?id=TV05BgAAQBAJ
@@ -1137,7 +1129,7 @@ The books I read, playlist I made, and bookmarks I saved this Summer.
 
 ## Books
 
-- [How to Talk So Little Kids Will Listen](https://books.google.com/books/about/How_to_Talk_So_Little_Kids_Will_Listen.html?hl=&id=6WfUDQAAQBAJ) - Joanna Faber, Julie King (recommend)
+- [How to Talk So Little Kids Will Listen](https://books.google.com/books/about/How_to_Talk_So_Little_Kids_Will_Listen.html?hl=&id=6WfUDQAAQBAJ) - Joanna Faber, Julie King
 - [Between the World and Me](https://play.google.com/store/books/details?id=TV05BgAAQBAJ) - Ta-Nehisi Coates (recommend)
 - [The Power of Ritual](https://play.google.com/store/books/details?id=il6xDwAAQBAJ) - Casper ter Kuile
 - [Tell the Machine Goodnight](https://books.google.com/books/about/Tell_the_Machine_Goodnight.html?hl=&id=Tq6ZDwAAQBAJ) - Katie Williams (recommend)

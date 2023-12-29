@@ -48794,9 +48794,11 @@ function formatBooks({ bookKeyName, bookData, start, end }) {
     const books = filterData(bookData, "dateFinished", start, end)
         .filter((book) => { var _a; return !((_a = book.tags) === null || _a === void 0 ? void 0 : _a.includes("hide")); })
         .map(({ title, authors, link, isbn, tags }) => {
-        return Object.assign({ title, authors: authors.join(", "), url: link, isbn }, (bookTags.length > 0 && {
-            tags: tags === null || tags === void 0 ? void 0 : tags.filter((tag) => bookTags.includes(tag)),
-        }));
+        tags =
+            bookTags.length > 0
+                ? tags === null || tags === void 0 ? void 0 : tags.filter((tag) => bookTags.includes(tag))
+                : [];
+        return Object.assign({ title, authors: authors.join(", "), url: link, isbn }, ((tags === null || tags === void 0 ? void 0 : tags.length) && { tags }));
     });
     return {
         bookYaml: dump({ [bookKeyName]: books }),
