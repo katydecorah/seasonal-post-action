@@ -17,14 +17,16 @@ export function formatBooks({ bookKeyName, bookData, start, end }) {
   const books: Book[] = filterData(bookData, "dateFinished", start, end)
     .filter((book) => !book.tags?.includes("hide"))
     .map(({ title, authors, link, isbn, tags }) => {
+      tags =
+        bookTags.length > 0
+          ? tags?.filter((tag) => bookTags.includes(tag))
+          : [];
       return {
         title,
         authors: authors.join(", "),
         url: link,
         isbn,
-        ...(bookTags.length > 0 && {
-          tags: tags?.filter((tag) => bookTags.includes(tag)),
-        }),
+        ...(tags?.length && { tags }),
       };
     });
 
