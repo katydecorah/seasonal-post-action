@@ -30,7 +30,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Write seasonal post
-        uses: katydecorah/seasonal-post-action@v6.2.0
+        uses: katydecorah/seasonal-post-action@v6.2.1
         with:
           github-username: katydecorah
           github-repository: archive
@@ -69,7 +69,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Write seasonal post
-        uses: katydecorah/seasonal-post-action@v6.2.0
+        uses: katydecorah/seasonal-post-action@v6.2.1
         with:
           github-username: katydecorah
           github-repository: archive
@@ -109,7 +109,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Write seasonal post
-        uses: katydecorah/seasonal-post-action@v6.2.0
+        uses: katydecorah/seasonal-post-action@v6.2.1
         with:
           github-username: katydecorah
           github-repository: archive
