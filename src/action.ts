@@ -38,21 +38,21 @@ export async function action() {
       getDataFile(playlistPath),
     ]);
 
-    const { bookYaml, bookMarkdown } = formatBooks({
+    const { bookYaml, books } = formatBooks({
       bookKeyName,
       bookData,
       start,
       end,
     });
 
-    const { bookmarkYaml, bookmarkMarkdown } = formatBookmarks({
+    const { bookmarkYaml, bookmarks } = formatBookmarks({
       bookmarkKeyName,
       bookmarkData,
       start,
       end,
     });
 
-    const { playlistYaml, playlistMarkdown } = formatPlaylist({
+    const { playlistYaml, playlistTracks } = formatPlaylist({
       playlistData,
       name,
     });
@@ -71,11 +71,11 @@ export async function action() {
     }
 
     // build post
-    const md = buildPost({
+    const md = await buildPost({
       season,
-      bookMarkdown,
-      playlistMarkdown,
-      bookmarkMarkdown,
+      books,
+      playlistTracks,
+      bookmarks,
       year,
       image,
       bookYaml,

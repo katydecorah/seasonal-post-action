@@ -1,8 +1,11 @@
-export function buildPost({
+import { Liquid } from "liquidjs";
+const engine = new Liquid();
+
+export async function buildPost({
   season,
-  bookMarkdown,
-  playlistMarkdown,
-  bookmarkMarkdown,
+  books,
+  playlistTracks,
+  bookmarks,
   year,
   image,
   bookYaml,
@@ -10,26 +13,15 @@ export function buildPost({
   playlistYaml,
   template,
 }) {
-  const postVars = {
+  return await engine.parseAndRender(template, {
     season,
-    bookMarkdown,
-    playlistMarkdown,
-    bookmarkMarkdown,
+    books,
+    playlistTracks,
+    bookmarks,
     year,
     image,
     bookYaml,
     bookmarkYaml,
     playlistYaml,
-  };
-
-  const safePattern = /\${([a-zA-Z_][a-zA-Z0-9_]*)}/g;
-
-  const replacedTemplate = template.replace(safePattern, (match, key) => {
-    if (Object.prototype.hasOwnProperty.call(postVars, key)) {
-      return postVars[key];
-    }
-    return "";
   });
-
-  return replacedTemplate;
 }

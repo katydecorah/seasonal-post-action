@@ -1,7 +1,8 @@
-# ${year} ${season} Books
+# {{year}} {{season}} Books
 
-${bookMarkdown}
+{% for book in books %}- [{{book.title}}]({{book.url}}) - {{book.authors}}{% if book.tags %} ({{book.tags | join: ', '}}){% endif %}
+{% endfor %}
 
 ---
 
-${radomVarThatWontWork}
+{{radomVarThatWontWork}}

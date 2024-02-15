@@ -5,7 +5,7 @@ export function formatBooks({ bookKeyName, bookData, start, end }) {
   if (!bookData || bookData.length === 0) {
     return {
       bookYaml: "",
-      bookMarkdown: "",
+      books: "",
     };
   }
   const bookTags = getInput("book-tags")
@@ -32,14 +32,7 @@ export function formatBooks({ bookKeyName, bookData, start, end }) {
 
   return {
     bookYaml: dump({ [bookKeyName]: books }),
-    bookMarkdown: books
-      .map(
-        ({ title, authors, url, tags }) =>
-          `- [${title}](${url}) - ${authors}${
-            tags ? ` (${tags.join(", ")})` : ""
-          }`
-      )
-      .join("\n"),
+    books,
   };
 }
 
@@ -47,7 +40,7 @@ export function formatPlaylist({ playlistData, name }) {
   if (!playlistData || playlistData.length === 0) {
     return {
       playlistYaml: "",
-      playlistMarkdown: "",
+      playlistTracks: "",
     };
   }
   const playlist: Playlist = playlistData.find(
@@ -55,26 +48,15 @@ export function formatPlaylist({ playlistData, name }) {
   );
   return {
     playlistYaml: dump(playlist),
-    playlistMarkdown: playlist.tracks
-      .map(({ track, artist }) => `- ${track} - ${artist}`)
-      .join("\n"),
+    playlistTracks: playlist.tracks,
   };
 }
 
-export function formatBookmarks({
-  bookmarkKeyName,
-  bookmarkData,
-  start,
-  end,
-}): {
-  bookmarkYaml: string;
-  // remove irregular whitespace
-  bookmarkMarkdown: string;
-} {
+export function formatBookmarks({ bookmarkKeyName, bookmarkData, start, end }) {
   if (!bookmarkData || bookmarkData.length === 0) {
     return {
       bookmarkYaml: "",
-      bookmarkMarkdown: "",
+      bookmarks: "",
     };
   }
   const bookmarks: Bookmark[] = filterData(
@@ -90,13 +72,10 @@ export function formatBookmarks({
   }));
   return {
     bookmarkYaml: dump({ [bookmarkKeyName]: bookmarks }),
-    // remove irregular whitespace
-    bookmarkMarkdown: bookmarks
-      .map(
-        ({ title, site, url }) =>
-          `- [${title.replace(" ", "")}](${url}) - ${site}`
-      )
-      .join("\n"),
+    bookmarks: bookmarks.map((bookmark) => ({
+      ...bookmark,
+      title: bookmark.title.replace(" ", ""),
+    })),
   };
 }
 
