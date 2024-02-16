@@ -1,19 +1,20 @@
+import { writeFile } from "fs/promises";
 import { buildPost } from "../build-post";
 import { books, playlist, bookmarks } from "./format.test";
 import { readFileSync } from "fs";
 import { join } from "path";
 
 it("buildPost", async () => {
-  expect(
-    await buildPost({
-      season: "Fall",
-      books,
-      playlist,
-      bookmarks,
-      year: "2021",
-      template: readFileSync(join(__dirname, "../template.md"), "utf8"),
-    })
-  ).toMatchInlineSnapshot(`
+  const md = await buildPost({
+    season: "Fall",
+    books,
+    playlist,
+    bookmarks,
+    year: "2021",
+    template: readFileSync(join(__dirname, "../template.md"), "utf8"),
+  });
+  await writeFile(join(__dirname, "__markdown-snapshots__", "template.md"), md);
+  expect(md).toMatchInlineSnapshot(`
     "---
     title: 2021 Fall
     image: 2021-fall.png
@@ -320,34 +321,82 @@ it("buildPost", async () => {
   `);
 });
 
-it("buildPost, custom", async () => {
-  expect(
-    await buildPost({
-      season: "Fall",
-      books: [],
-      playlist: [],
-      bookmarks: [
-        {
-          title: "Bookmark 1",
-          url: "https://example.com",
-          quote: "Quote 1",
-        },
-        {
-          title: "Bookmark 2",
-          url: "https://example.com",
-          quote: "Quote 2",
-        },
-      ],
+it("buildPost, custom 2", async () => {
+  const md = await buildPost({
+    season: "Fall",
+    books,
+    playlist,
+    bookmarks,
+    year: "2021",
+    template: readFileSync(
+      ".github/actions/seasonal-post-template-basic.md",
+      "utf8"
+    ),
+  });
+  await writeFile(
+    join(__dirname, "__markdown-snapshots__", "custom-template-2.md"),
+    md
+  );
+  expect(md).toMatchInlineSnapshot(`
+    "# 2021 Fall Books
 
-      year: "2021",
-      template: `# Bookmarks
+    - [People We Meet on Vacation](https://books.google.com/books/about/People_We_Meet_on_Vacation.html?hl=&id=5fooEAAAQBAJ) - Emily Henry
+    - [Beautiful World, Where Are You](https://play.google.com/store/books/details?id=sL4SEAAAQBAJ) - Sally Rooney
+    - [Freshwater](https://play.google.com/store/books/details?id=_eUoDwAAQBAJ) - Akwaeke Emezi
+    - [The Renunciations](https://books.google.com/books/about/The_Renunciations.html?hl=&id=_xC-zQEACAAJ) - Donika Kelly
+    - [The Heart Principle](https://books.google.com/books/about/The_Heart_Principle.html?hl=&id=fzc7EAAAQBAJ) - Helen Hoang
+    - [Eileen](https://books.google.com/books/about/Eileen.html?hl=&id=AKqvDAAAQBAJ) - Ottessa Moshfegh
+    - [Attached](https://books.google.com/books/about/Attached.html?hl=&id=_O0oDwAAQBAJ) - Amir Levine, Rachel Heller
+    - [The Haunting of Hill House](https://books.google.com/books/about/The_Haunting_of_Hill_House.html?hl=&id=8v3mwAEACAAJ) - Shirley Jackson
+    - [Leave the World Behind](https://play.google.com/store/books/details?id=UyTIDwAAQBAJ) - Rumaan Alam
+    - [Goodbye, Again](https://play.google.com/store/books/details?id=MWinDwAAQBAJ) - Jonny Sun
+    - [Unwinding Anxiety](https://play.google.com/store/books/details?id=GxACEAAAQBAJ) - Judson Brewer
+    - [Empire of Wild](https://play.google.com/store/books/details?id=O5K5DwAAQBAJ) - Cherie Dimaline
+    - [Beach Read](https://books.google.com/books/about/Beach_Read.html?hl=&id=vDTgDwAAQBAJ) - Emily Henry
+    - [Sometimes I Trip on How Happy We Could Be](https://books.google.com/books/about/Sometimes_I_Trip_on_How_Happy_We_Could_B.html?hl=&id=qD8czgEACAAJ) - Nichole Perkins
+    - [The Midnight Library](https://play.google.com/store/books/details?id=nNjTDwAAQBAJ) - Matt Haig
+    - [This Is Your Mind on Plants](https://books.google.com/books/about/This_Is_Your_Mind_on_Plants.html?hl=&id=Fxs3EAAAQBAJ) - Michael Pollan
+
+
+    ---
+
+
+    "
+  `);
+});
+
+it("buildPost, custom", async () => {
+  const md = await buildPost({
+    season: "Fall",
+    books: [],
+    playlist: [],
+    bookmarks: [
+      {
+        title: "Bookmark 1",
+        url: "https://example.com",
+        quote: "Quote 1",
+      },
+      {
+        title: "Bookmark 2",
+        url: "https://example.com",
+        quote: "Quote 2",
+      },
+    ],
+
+    year: "2021",
+    template: `# Bookmarks
 {% for bookmark in bookmarks %}
 ## [{{bookmark.title}}]({{bookmark.url}})
 
 > {{bookmark.quote}}
 {% endfor %}`,
-    })
-  ).toMatchInlineSnapshot(`
+  });
+  await writeFile(
+    join(__dirname, "__markdown-snapshots__", "custom-template.md"),
+    md
+  );
+
+  expect(md).toMatchInlineSnapshot(`
     "# Bookmarks
 
     ## [Bookmark 1](https://example.com)
