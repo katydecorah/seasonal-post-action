@@ -320,3 +320,45 @@ it("buildPost", async () => {
     "
   `);
 });
+
+it("buildPost, custom", async () => {
+  expect(
+    await buildPost({
+      season: "Fall",
+      books: [],
+      playlist: [],
+      bookmarks: [
+        {
+          title: "Bookmark 1",
+          url: "https://example.com",
+          quote: "Quote 1",
+        },
+        {
+          title: "Bookmark 2",
+          url: "https://example.com",
+          quote: "Quote 2",
+        },
+      ],
+
+      year: "2021",
+      image: "2021-fall.jpg",
+      template: `# Bookmarks
+{% for bookmark in bookmarks %}
+## [{{bookmark.title}}]({{bookmark.url}})
+
+> {{bookmark.quote}}
+{% endfor %}`,
+    })
+  ).toMatchInlineSnapshot(`
+    "# Bookmarks
+
+    ## [Bookmark 1](https://example.com)
+
+    > Quote 1
+
+    ## [Bookmark 2](https://example.com)
+
+    > Quote 2
+    "
+  `);
+});
