@@ -11,13 +11,12 @@ it("buildPost", async () => {
       playlist,
       bookmarks,
       year: "2021",
-      image: "2021-fall.jpg",
       template: readFileSync(join(__dirname, "../template.md"), "utf8"),
     })
   ).toMatchInlineSnapshot(`
     "---
     title: 2021 Fall
-    image: 2021-fall.jpg
+    image: 2021-fall.png
     books: |
       - title: People We Meet on Vacation
         authors: Emily Henry
@@ -341,7 +340,6 @@ it("buildPost, custom", async () => {
       ],
 
       year: "2021",
-      image: "2021-fall.jpg",
       template: `# Bookmarks
 {% for bookmark in bookmarks %}
 ## [{{bookmark.title}}]({{bookmark.url}})

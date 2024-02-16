@@ -52750,7 +52750,7 @@ var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _argume
 
 
 const engine = new liquid_node_cjs/* Liquid */.Kj();
-function buildPost({ season, books, playlist, bookmarks, year, image, template, }) {
+function buildPost({ season, books, playlist, bookmarks, year, template, }) {
     return __awaiter(this, void 0, void 0, function* () {
         /* istanbul ignore next */
         engine.registerFilter("name", (initial, key) => {
@@ -52786,7 +52786,6 @@ function buildPost({ season, books, playlist, bookmarks, year, image, template, 
             playlist,
             bookmarks,
             year,
-            image,
         });
     });
 }
@@ -53003,7 +53002,6 @@ function action() {
     return action_awaiter(this, void 0, void 0, function* () {
         try {
             const { start, end, season, year, name } = findSeason();
-            const image = `${year}-${season.toLowerCase()}.png`;
             (0,core.exportVariable)("season", name);
             const sourceBooks = (0,core.getInput)("source-books");
             const sourceBookmarks = (0,core.getInput)("source-bookmarks");
@@ -53054,7 +53052,6 @@ function action() {
                 playlist,
                 bookmarks,
                 year,
-                image,
                 template,
             });
             const postsDir = (0,core.getInput)("posts-directory");

@@ -12,32 +12,71 @@ You can use all [LiquidJS](https://liquidjs.com/index.html) syntax to compose th
 
 ### Template data
 
-- `season` - This is the current season.
-- `books` - This is the array of books pulled from [read-action](https://github.com/katydecorah/read-action) for the season. A few exceptions in the data:
-  - `link` is renamed to `url`
-  - `authors` is a comma deliminated string.
-- `playlist` - This is an object pulled from [spotify-to-yaml-action](https://github.com/katydecorah/spotify-to-yaml-action) for the season.
-- `bookmarks` - This is an array of objects pulled from [bookmark-action](https://github.com/katydecorah/bookmark-action) for the season.
-- `year` - The current year.
-- `image` - An image file path.
+- `season` - Current season. Example: `Fall`
+- `year` - Current year. Example: `2024`
+- `books` - Array of books pulled from [read-action](https://github.com/katydecorah/read-action) for the season. A few exceptions in the data: `link` is renamed to `url` and `authors` is a comma delimited string.
+- `playlist` - Object pulled from [spotify-to-yaml-action](https://github.com/katydecorah/spotify-to-yaml-action) for the season.
+- `bookmarks` - Array of objects pulled from [bookmark-action](https://github.com/katydecorah/bookmark-action) for the season.
 
 ### Template filters
 
-In addition to LiquidJS filters, there are a couple custom filters:
+In addition to [LiquidJS](https://liquidjs.com/index.html) functionality, there are a couple custom filters:
 
-This will return all bookmarks formatted in yaml:
+The `yaml` will return the data formatted in yaml. This is helpful if you want to include the data in the file frontmatter:
 
+Input:
+
+```liquid
+{{books  | yaml }}
 ```
-{{bookmarks  | yaml }}
+
+Output:
+
+```yaml
+- title: Book title
+  authors: Author Name, Author Name
+  isbn: 1234567890
+  description: Book description.
+- title: Book title
+  authors: Author Name, Author Name
+  isbn: 1234567890
+  description: Book description.
 ```
 
-This will return all bookmarks formatted in yaml, but will only return the listed key names.
+The `yaml` filter with arguments will only return the listed key names for the input data:
 
-{{bookmarks  | yaml: 'title','site','url','image' }}
+Input:
 
-This will return all bookmarks formatted in yaml, but will only return the listed key names and place it under `recipes`.
+```liquid
+{{books  | yaml: 'title','authors' }}
+```
 
-{{bookmarks  | yaml: 'title','site','url','image' | name: 'recipes' }}
+Output:
+
+```yaml
+- title: Book title
+  authors: Author Name, Author Name
+- title: Book title
+  authors: Author Name, Author Name
+```
+
+The `yaml` filter along with the `name` filter will return all data formatted in yaml and place the data under `recipes` property.
+
+Input:
+
+```liquid
+{{books  | yaml: 'title','authors' | name: 'bookShelf' }}
+```
+
+Output:
+
+```yaml
+bookShelf:
+  - title: Book title
+    authors: Author Name, Author Name
+  - title: Book title
+    authors: Author Name, Author Name
+```
 
 <!-- START GENERATED DOCUMENTATION -->
 
@@ -186,3 +225,7 @@ jobs:
 
 - `book-tags`: Allow specific tags to be passed through. Separate each tag with a comma.
 <!-- END GENERATED DOCUMENTATION -->
+
+```
+
+```

@@ -10,7 +10,6 @@ import { join } from "path";
 export async function action() {
   try {
     const { start, end, season, year, name } = findSeason();
-    const image = `${year}-${season.toLowerCase()}.png`;
 
     exportVariable("season", name);
 
@@ -75,7 +74,6 @@ export async function action() {
       playlist,
       bookmarks,
       year,
-      image,
       template,
     });
 

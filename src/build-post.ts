@@ -8,7 +8,6 @@ export async function buildPost({
   playlist,
   bookmarks,
   year,
-  image,
   template,
 }) {
   /* istanbul ignore next */
@@ -41,6 +40,5 @@ export async function buildPost({
     playlist,
     bookmarks,
     year,
-    image,
   });
 }
