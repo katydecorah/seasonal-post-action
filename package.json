@@ -4,9 +4,10 @@
   "description": "A GitHub action that creates a seasonal post from data files.",
   "main": "dist/index.js",
   "scripts": {
-    "pretest": "eslint . --ext .js,.ts",
+    "pretest": "npm run copy-templates && eslint . --ext .js,.ts",
     "test": "jest --coverage",
-    "build": "ncc build src/index.ts && cpy src/template.md .github/actions/ --flat --rename seasonal-post-template.md"
+    "copy-templates": "cpy src/template.md .github/actions/ --flat --rename seasonal-post-template.md",
+    "build": "ncc build src/index.ts && npm run copy-templates"
   },
   "author": "Katy DeCorah",
   "license": "MIT",
