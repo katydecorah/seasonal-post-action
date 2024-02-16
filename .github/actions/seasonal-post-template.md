@@ -2,7 +2,7 @@
 title: {{year}} {{season}}
 image: {{image}}
 {{books  | yaml: 'title','authors','url','isbn','tags' | name: 'books'}}
-{{bookmarks  | yaml: 'title','site','url' | name: 'bookmarks' }}
+{{bookmarks  | yaml: 'title','site','url','image' | name: 'bookmarks' }}
 {{playlist | yaml}}
 ---
 
