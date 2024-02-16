@@ -1,11 +1,9 @@
 import { getInput } from "@actions/core";
-import { dump } from "js-yaml";
 
-export function formatBooks({ bookKeyName, bookData, start, end }) {
+export function formatBooks({ bookData, start, end }) {
   if (!bookData || bookData.length === 0) {
     return {
-      bookYaml: "",
-      books: "",
+      books: [],
     };
   }
   const bookTags = getInput("book-tags")
@@ -16,22 +14,24 @@ export function formatBooks({ bookKeyName, bookData, start, end }) {
 
   const books: Book[] = filterData(bookData, "dateFinished", start, end)
     .filter((book) => !book.tags?.includes("hide"))
-    .map(({ title, authors, link, isbn, tags }) => {
-      tags =
+    .map((book) => {
+      const tags =
         bookTags.length > 0
-          ? tags?.filter((tag) => bookTags.includes(tag))
+          ? book.tags?.filter((tag) => bookTags.includes(tag))
           : [];
-      return {
-        title,
-        authors: authors.join(", "),
-        url: link,
-        isbn,
-        ...(tags?.length && { tags }),
+      const newBook = {
+        ...book,
+        authors: book.authors.join(", "),
+        url: book.link,
+        tags,
       };
+      if (newBook?.tags?.length === 0) {
+        delete newBook.tags;
+      }
+      return newBook;
     });
 
   return {
-    bookYaml: dump({ [bookKeyName]: books }),
     books,
   };
 }
@@ -39,39 +39,25 @@ export function formatBooks({ bookKeyName, bookData, start, end }) {
 export function formatPlaylist({ playlistData, name }) {
   if (!playlistData || playlistData.length === 0) {
     return {
-      playlistYaml: "",
-      playlistTracks: "",
+      playlist: [],
     };
   }
   const playlist: Playlist = playlistData.find(
     ({ playlist }) => playlist === name
   );
   return {
-    playlistYaml: dump(playlist),
-    playlistTracks: playlist.tracks,
+    playlist,
   };
 }
 
-export function formatBookmarks({ bookmarkKeyName, bookmarkData, start, end }) {
+export function formatBookmarks({ bookmarkData, start, end }) {
   if (!bookmarkData || bookmarkData.length === 0) {
     return {
-      bookmarkYaml: "",
-      bookmarks: "",
+      bookmarks: [],
     };
   }
-  const bookmarks: Bookmark[] = filterData(
-    bookmarkData,
-    "date",
-    start,
-    end
-  ).map(({ title, site, url, image }) => ({
-    title,
-    site,
-    url,
-    image,
-  }));
+  const bookmarks: Bookmark[] = filterData(bookmarkData, "date", start, end);
   return {
-    bookmarkYaml: dump({ [bookmarkKeyName]: bookmarks }),
     bookmarks: bookmarks.map((bookmark) => ({
       ...bookmark,
       title: bookmark.title.replace(" ", ""),
@@ -106,7 +92,7 @@ export type Bookmark = {
 export type Track = {
   track: string;
   artist: string;
-  albumn: string;
+  album: string;
 };
 
 export type Playlist = {

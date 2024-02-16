@@ -48690,36 +48690,6 @@ var __webpack_exports__ = {};
 const promises_namespaceObject = __WEBPACK_EXTERNAL_createRequire(import.meta.url)("fs/promises");
 // EXTERNAL MODULE: ./node_modules/@actions/core/lib/core.js
 var core = __nccwpck_require__(2186);
-// EXTERNAL MODULE: ./node_modules/liquidjs/dist/liquid.node.cjs.js
-var liquid_node_cjs = __nccwpck_require__(3385);
-;// CONCATENATED MODULE: ./src/build-post.ts
-var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-
-const engine = new liquid_node_cjs/* Liquid */.Kj();
-function buildPost({ season, books, playlistTracks, bookmarks, year, image, bookYaml, bookmarkYaml, playlistYaml, template, }) {
-    return __awaiter(this, void 0, void 0, function* () {
-        return yield engine.parseAndRender(template, {
-            season,
-            books,
-            playlistTracks,
-            bookmarks,
-            year,
-            image,
-            bookYaml,
-            bookmarkYaml,
-            playlistYaml,
-        });
-    });
-}
-
 ;// CONCATENATED MODULE: ./node_modules/js-yaml/dist/js-yaml.mjs
 
 /*! js-yaml 4.1.0 https://github.com/nodeca/js-yaml @license MIT */
@@ -52573,14 +52543,68 @@ var jsYaml = {
 /* harmony default export */ const js_yaml = ((/* unused pure expression or super */ null && (jsYaml)));
 
 
+// EXTERNAL MODULE: ./node_modules/liquidjs/dist/liquid.node.cjs.js
+var liquid_node_cjs = __nccwpck_require__(3385);
+;// CONCATENATED MODULE: ./src/build-post.ts
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+
+
+const engine = new liquid_node_cjs/* Liquid */.Kj();
+function buildPost({ season, books, playlist, bookmarks, year, image, template, }) {
+    return __awaiter(this, void 0, void 0, function* () {
+        /* istanbul ignore next */
+        engine.registerFilter("name", (initial, key) => {
+            if (!initial)
+                return null;
+            if (Array.isArray(initial) && initial.length === 0)
+                return null;
+            if (!key)
+                return dump(initial);
+            return dump({
+                [key]: initial,
+            });
+        });
+        /* istanbul ignore next */
+        engine.registerFilter("yaml", (initial, ...allowedKeys) => {
+            if (!initial)
+                return null;
+            if (Array.isArray(initial) && initial.length === 0)
+                return null;
+            if (!allowedKeys.length)
+                return dump(initial);
+            return dump(initial.reduce((acc, item) => {
+                const newItem = allowedKeys.reduce((obj, key) => {
+                    obj[key] = item[key];
+                    return obj;
+                }, {});
+                return [...acc, newItem];
+            }, []));
+        });
+        return yield engine.parseAndRender(template, {
+            season,
+            books,
+            playlist,
+            bookmarks,
+            year,
+            image,
+        });
+    });
+}
+
 ;// CONCATENATED MODULE: ./src/format.ts
 
-
-function formatBooks({ bookKeyName, bookData, start, end }) {
+function formatBooks({ bookData, start, end }) {
     if (!bookData || bookData.length === 0) {
         return {
-            bookYaml: "",
-            books: "",
+            books: [],
         };
     }
     const bookTags = (0,core.getInput)("book-tags")
@@ -52590,46 +52614,40 @@ function formatBooks({ bookKeyName, bookData, start, end }) {
         : [];
     const books = filterData(bookData, "dateFinished", start, end)
         .filter((book) => { var _a; return !((_a = book.tags) === null || _a === void 0 ? void 0 : _a.includes("hide")); })
-        .map(({ title, authors, link, isbn, tags }) => {
-        tags =
-            bookTags.length > 0
-                ? tags === null || tags === void 0 ? void 0 : tags.filter((tag) => bookTags.includes(tag))
-                : [];
-        return Object.assign({ title, authors: authors.join(", "), url: link, isbn }, ((tags === null || tags === void 0 ? void 0 : tags.length) && { tags }));
+        .map((book) => {
+        var _a, _b;
+        const tags = bookTags.length > 0
+            ? (_a = book.tags) === null || _a === void 0 ? void 0 : _a.filter((tag) => bookTags.includes(tag))
+            : [];
+        const newBook = Object.assign(Object.assign({}, book), { authors: book.authors.join(", "), url: book.link, tags });
+        if (((_b = newBook === null || newBook === void 0 ? void 0 : newBook.tags) === null || _b === void 0 ? void 0 : _b.length) === 0) {
+            delete newBook.tags;
+        }
+        return newBook;
     });
     return {
-        bookYaml: dump({ [bookKeyName]: books }),
         books,
     };
 }
 function formatPlaylist({ playlistData, name }) {
     if (!playlistData || playlistData.length === 0) {
         return {
-            playlistYaml: "",
-            playlistTracks: "",
+            playlist: [],
         };
     }
     const playlist = playlistData.find(({ playlist }) => playlist === name);
     return {
-        playlistYaml: dump(playlist),
-        playlistTracks: playlist.tracks,
+        playlist,
     };
 }
-function formatBookmarks({ bookmarkKeyName, bookmarkData, start, end }) {
+function formatBookmarks({ bookmarkData, start, end }) {
     if (!bookmarkData || bookmarkData.length === 0) {
         return {
-            bookmarkYaml: "",
-            bookmarks: "",
+            bookmarks: [],
         };
     }
-    const bookmarks = filterData(bookmarkData, "date", start, end).map(({ title, site, url, image }) => ({
-        title,
-        site,
-        url,
-        image,
-    }));
+    const bookmarks = filterData(bookmarkData, "date", start, end);
     return {
-        bookmarkYaml: dump({ [bookmarkKeyName]: bookmarks }),
         bookmarks: bookmarks.map((bookmark) => (Object.assign(Object.assign({}, bookmark), { title: bookmark.title.replace(" ", "") }))),
     };
 }
@@ -52798,12 +52816,12 @@ function action() {
             const sourceBooks = (0,core.getInput)("source-books");
             const sourceBookmarks = (0,core.getInput)("source-bookmarks");
             const sourcePlaylist = (0,core.getInput)("source-playlist");
-            let bookKeyName, bookPath, bookmarkKeyName, bookmarkPath, playlistPath;
+            let bookPath, bookmarkPath, playlistPath;
             if (sourceBooks !== "false") {
-                [bookKeyName, bookPath] = sourceBooks.split("|");
+                bookPath = sourceBooks;
             }
             if (sourceBookmarks !== "false") {
-                [bookmarkKeyName, bookmarkPath] = sourceBookmarks.split("|");
+                bookmarkPath = sourceBookmarks;
             }
             if (sourcePlaylist !== "false") {
                 playlistPath = sourcePlaylist;
@@ -52813,19 +52831,17 @@ function action() {
                 getJsonFile(bookmarkPath),
                 getDataFile(playlistPath),
             ]);
-            const { bookYaml, books } = formatBooks({
-                bookKeyName,
+            const { books } = formatBooks({
                 bookData,
                 start,
                 end,
             });
-            const { bookmarkYaml, bookmarks } = formatBookmarks({
-                bookmarkKeyName,
+            const { bookmarks } = formatBookmarks({
                 bookmarkData,
                 start,
                 end,
             });
-            const { playlistYaml, playlistTracks } = formatPlaylist({
+            const { playlist } = formatPlaylist({
                 playlistData,
                 name,
             });
@@ -52843,13 +52859,10 @@ function action() {
             const md = yield buildPost({
                 season,
                 books,
-                playlistTracks,
+                playlist,
                 bookmarks,
                 year,
                 image,
-                bookYaml,
-                bookmarkYaml,
-                playlistYaml,
                 template,
             });
             const postsDir = (0,core.getInput)("posts-directory");

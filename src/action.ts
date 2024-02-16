@@ -18,14 +18,14 @@ export async function action() {
     const sourceBookmarks = getInput("source-bookmarks");
     const sourcePlaylist = getInput("source-playlist");
 
-    let bookKeyName, bookPath, bookmarkKeyName, bookmarkPath, playlistPath;
+    let bookPath, bookmarkPath, playlistPath;
 
     if (sourceBooks !== "false") {
-      [bookKeyName, bookPath] = sourceBooks.split("|");
+      bookPath = sourceBooks;
     }
 
     if (sourceBookmarks !== "false") {
-      [bookmarkKeyName, bookmarkPath] = sourceBookmarks.split("|");
+      bookmarkPath = sourceBookmarks;
     }
 
     if (sourcePlaylist !== "false") {
@@ -38,21 +38,19 @@ export async function action() {
       getDataFile(playlistPath),
     ]);
 
-    const { bookYaml, books } = formatBooks({
-      bookKeyName,
+    const { books } = formatBooks({
       bookData,
       start,
       end,
     });
 
-    const { bookmarkYaml, bookmarks } = formatBookmarks({
-      bookmarkKeyName,
+    const { bookmarks } = formatBookmarks({
       bookmarkData,
       start,
       end,
     });
 
-    const { playlistYaml, playlistTracks } = formatPlaylist({
+    const { playlist } = formatPlaylist({
       playlistData,
       name,
     });
@@ -74,13 +72,10 @@ export async function action() {
     const md = await buildPost({
       season,
       books,
-      playlistTracks,
+      playlist,
       bookmarks,
       year,
       image,
-      bookYaml,
-      bookmarkYaml,
-      playlistYaml,
       template,
     });
 
