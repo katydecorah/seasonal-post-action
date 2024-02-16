@@ -34,7 +34,7 @@ jobs:
         with:
           github-username: katydecorah
           github-repository: archive
-          source-bookmarks: recipes|_data/recipes.json
+          source-bookmarks: _data/recipes.json
         env:
           TOKEN: ${{ secrets.TOKEN }}
       - name: Commit files
@@ -73,7 +73,7 @@ jobs:
         with:
           github-username: katydecorah
           github-repository: archive
-          source-bookmarks: recipes|_data/recipes.json
+          source-bookmarks: _data/recipes.json
           book-tags: "recommend,skip"
         env:
           TOKEN: ${{ secrets.TOKEN }}
@@ -115,7 +115,7 @@ jobs:
           github-repository: archive
           seasonal-post-template: .github/actions/seasonal-post-template-basic.md
           posts-directory: books/
-          source-bookmarks: recipes|_data/recipes.json
+          source-bookmarks: _data/recipes.json
         env:
           TOKEN: ${{ secrets.TOKEN }}
       - name: Commit files
