@@ -11,14 +11,14 @@ The books I read, playlist I made, and bookmarks I saved this {{season}}.
 ## Books
 
 {% for book in books %}- [{{book.title}}]({{book.link}}) - {{book.authors}}{% if book.tags %} ({{book.tags | join: ', '}}){% endif %}
-{% endfor %}
+{% endfor -%}
 
 ## Playlist
 
 {% for playlist in playlist.tracks %}- {{playlist.track}} - {{playlist.artist}}
-{% endfor %}
+{% endfor -%}
 
 ## Bookmarks
 
 {% for bookmark in bookmarks %}- [{{bookmark.title}}]({{bookmark.url}}) - {{bookmark.site}}
-{% endfor %}
+{% endfor -%}

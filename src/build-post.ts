@@ -1,6 +1,8 @@
 import { dump } from "js-yaml";
 import { Liquid } from "liquidjs";
-const engine = new Liquid();
+const engine = new Liquid({
+  greedy: false,
+});
 
 export async function buildPost({
   season,

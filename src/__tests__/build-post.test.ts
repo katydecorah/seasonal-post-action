@@ -268,7 +268,6 @@ it("buildPost", async () => {
     - [The Midnight Library](https://play.google.com/store/books/details?id=nNjTDwAAQBAJ) - Matt Haig
     - [This Is Your Mind on Plants](https://books.google.com/books/about/This_Is_Your_Mind_on_Plants.html?hl=&id=Fxs3EAAAQBAJ) - Michael Pollan
 
-
     ## Playlist
 
     - can't stop me from dying - Ada Lea
@@ -290,7 +289,6 @@ it("buildPost", async () => {
     - Of Pressure - Mirah
     - When the Sun Comes Up - Greta Morgan
     - Mountains Crave - Anna von Hausswolff
-
 
     ## Bookmarks
 
@@ -316,7 +314,6 @@ it("buildPost", async () => {
     - [Sheet-Pan Crispy Pork Schnitzel Recipe](https://cooking.nytimes.com/recipes/1022582-sheet-pan-crispy-pork-schnitzel) - NYT Cooking
     - [Sugar Cookies Recipe](https://cooking.nytimes.com/recipes/1018383-sugar-cookies) - NYT Cooking
     - [The Fluffiest Royal Icing Recipe](https://cooking.nytimes.com/recipes/1019785-the-fluffiest-royal-icing) - NYT Cooking
-
     "
   `);
 });
