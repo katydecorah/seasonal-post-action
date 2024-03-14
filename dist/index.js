@@ -52753,8 +52753,8 @@ var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _argume
 
 
 const engine = new liquid_node_cjs/* Liquid */.Kj();
-function buildPost({ season, books, playlist, bookmarks, year, template, }) {
-    return __awaiter(this, void 0, void 0, function* () {
+function buildPost(_a) {
+    return __awaiter(this, arguments, void 0, function* ({ season, books, playlist, bookmarks, year, template, }) {
         /* istanbul ignore next */
         engine.registerFilter("name", (initial, key) => {
             if (!initial)
