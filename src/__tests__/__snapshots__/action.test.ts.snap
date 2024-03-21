@@ -6,7 +6,7 @@ exports[`action works 1`] = `
   "---
 title: 2021 Summer
 image: 2021-summer.png
-books:
+books: |
   - title: How to Talk So Little Kids Will Listen
     authors: Joanna Faber, Julie King
     url: >-
@@ -96,7 +96,7 @@ books:
     url: https://play.google.com/store/books/details?id=F4QkBQAAQBAJ
     isbn: '9781555973407'
 
-bookmarks:
+bookmarks: |
   - title: Quinoa Salad With Chicken, Almonds and Avocado Recipe
     site: NYT Cooking
     url: >-
@@ -272,6 +272,7 @@ exports[`action works, custom template 1`] = `
 - [Exciting Times](https://play.google.com/store/books/details?id=aa6sDwAAQBAJ) - Naoise Dolan
 - [The Argonauts](https://play.google.com/store/books/details?id=F4QkBQAAQBAJ) - Maggie Nelson
 
+
 ---
 
 
@@ -285,7 +286,7 @@ exports[`action works, custom template missing 1`] = `
   "---
 title: 2021 Summer
 image: 2021-summer.png
-books:
+books: |
   - title: How to Talk So Little Kids Will Listen
     authors: Joanna Faber, Julie King
     url: >-
@@ -375,7 +376,7 @@ books:
     url: https://play.google.com/store/books/details?id=F4QkBQAAQBAJ
     isbn: '9781555973407'
 
-bookmarks:
+bookmarks: |
   - title: Quinoa Salad With Chicken, Almonds and Avocado Recipe
     site: NYT Cooking
     url: >-
@@ -534,7 +535,7 @@ exports[`action works, disable book-tags 1`] = `
   "---
 title: 2021 Summer
 image: 2021-summer.png
-books:
+books: |
   - title: How to Talk So Little Kids Will Listen
     authors: Joanna Faber, Julie King
     url: >-
@@ -639,9 +640,7 @@ The books I read, playlist I made, and bookmarks I saved this Summer.
 ## Playlist
 
 
-
 ## Bookmarks
-
 
 ",
 ]
@@ -653,7 +652,7 @@ exports[`action works, disable bookmarks 1`] = `
   "---
 title: 2021 Summer
 image: 2021-summer.png
-books:
+books: |
   - title: How to Talk So Little Kids Will Listen
     authors: Joanna Faber, Julie King
     url: >-
@@ -817,7 +816,6 @@ The books I read, playlist I made, and bookmarks I saved this Summer.
 
 ## Bookmarks
 
-
 ",
 ]
 `;
@@ -829,7 +827,7 @@ exports[`action works, disable books 1`] = `
 title: 2021 Summer
 image: 2021-summer.png
 
-bookmarks:
+bookmarks: |
   - title: Quinoa Salad With Chicken, Almonds and Avocado Recipe
     site: NYT Cooking
     url: >-
@@ -928,7 +926,6 @@ tracks:
 The books I read, playlist I made, and bookmarks I saved this Summer.
 
 ## Books
-
 
 
 ## Playlist
@@ -972,7 +969,7 @@ exports[`action works, disable playlist 1`] = `
   "---
 title: 2021 Summer
 image: 2021-summer.png
-books:
+books: |
   - title: How to Talk So Little Kids Will Listen
     authors: Joanna Faber, Julie King
     url: >-
@@ -1062,7 +1059,7 @@ books:
     url: https://play.google.com/store/books/details?id=F4QkBQAAQBAJ
     isbn: '9781555973407'
 
-bookmarks:
+bookmarks: |
   - title: Quinoa Salad With Chicken, Almonds and Avocado Recipe
     site: NYT Cooking
     url: >-
@@ -1148,7 +1145,6 @@ The books I read, playlist I made, and bookmarks I saved this Summer.
 - [The Argonauts](https://play.google.com/store/books/details?id=F4QkBQAAQBAJ) - Maggie Nelson
 
 ## Playlist
-
 
 
 ## Bookmarks

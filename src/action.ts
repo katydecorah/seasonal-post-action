@@ -10,7 +10,6 @@ import { join } from "path";
 export async function action() {
   try {
     const { start, end, season, year, name } = findSeason();
-    const image = `${year}-${season.toLowerCase()}.png`;
 
     exportVariable("season", name);
 
@@ -18,14 +17,14 @@ export async function action() {
     const sourceBookmarks = getInput("source-bookmarks");
     const sourcePlaylist = getInput("source-playlist");
 
-    let bookKeyName, bookPath, bookmarkKeyName, bookmarkPath, playlistPath;
+    let bookPath, bookmarkPath, playlistPath;
 
     if (sourceBooks !== "false") {
-      [bookKeyName, bookPath] = sourceBooks.split("|");
+      bookPath = sourceBooks;
     }
 
     if (sourceBookmarks !== "false") {
-      [bookmarkKeyName, bookmarkPath] = sourceBookmarks.split("|");
+      bookmarkPath = sourceBookmarks;
     }
 
     if (sourcePlaylist !== "false") {
@@ -38,21 +37,19 @@ export async function action() {
       getDataFile(playlistPath),
     ]);
 
-    const { bookYaml, bookMarkdown } = formatBooks({
-      bookKeyName,
+    const { books } = formatBooks({
       bookData,
       start,
       end,
     });
 
-    const { bookmarkYaml, bookmarkMarkdown } = formatBookmarks({
-      bookmarkKeyName,
+    const { bookmarks } = formatBookmarks({
       bookmarkData,
       start,
       end,
     });
 
-    const { playlistYaml, playlistMarkdown } = formatPlaylist({
+    const { playlist } = formatPlaylist({
       playlistData,
       name,
     });
@@ -71,16 +68,12 @@ export async function action() {
     }
 
     // build post
-    const md = buildPost({
+    const md = await buildPost({
       season,
-      bookMarkdown,
-      playlistMarkdown,
-      bookmarkMarkdown,
+      books,
+      playlist,
+      bookmarks,
       year,
-      image,
-      bookYaml,
-      bookmarkYaml,
-      playlistYaml,
       template,
     });
 

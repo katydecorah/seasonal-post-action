@@ -1,35 +1,46 @@
-export function buildPost({
+import { dump } from "js-yaml";
+import { Liquid } from "liquidjs";
+const engine = new Liquid({
+  greedy: false,
+});
+
+export async function buildPost({
   season,
-  bookMarkdown,
-  playlistMarkdown,
-  bookmarkMarkdown,
+  books,
+  playlist,
+  bookmarks,
   year,
-  image,
-  bookYaml,
-  bookmarkYaml,
-  playlistYaml,
   template,
 }) {
-  const postVars = {
-    season,
-    bookMarkdown,
-    playlistMarkdown,
-    bookmarkMarkdown,
-    year,
-    image,
-    bookYaml,
-    bookmarkYaml,
-    playlistYaml,
-  };
-
-  const safePattern = /\${([a-zA-Z_][a-zA-Z0-9_]*)}/g;
-
-  const replacedTemplate = template.replace(safePattern, (match, key) => {
-    if (Object.prototype.hasOwnProperty.call(postVars, key)) {
-      return postVars[key];
-    }
-    return "";
+  /* istanbul ignore next */
+  engine.registerFilter("name", (initial, key) => {
+    if (!initial) return null;
+    if (Array.isArray(initial) && initial.length === 0) return null;
+    if (!key) return dump(initial);
+    return dump({
+      [key]: initial,
+    });
   });
-
-  return replacedTemplate;
+  /* istanbul ignore next */
+  engine.registerFilter("yaml", (initial, ...allowedKeys) => {
+    if (!initial) return null;
+    if (Array.isArray(initial) && initial.length === 0) return null;
+    if (!allowedKeys.length) return dump(initial);
+    return dump(
+      initial.reduce((acc, item) => {
+        const newItem = allowedKeys.reduce((obj, key) => {
+          obj[key] = item[key];
+          return obj;
+        }, {});
+        return [...acc, newItem];
+      }, [])
+    );
+  });
+  return await engine.parseAndRender(template, {
+    season,
+    books,
+    playlist,
+    bookmarks,
+    year,
+  });
 }

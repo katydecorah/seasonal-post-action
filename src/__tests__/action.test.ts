@@ -22,8 +22,8 @@ const defaultInputs = {
   "season-names": "Winter,Spring,Summer,Fall",
   "posts-directory": "notes/_posts/",
   "seasonal-post-template": "",
-  "source-books": "books|_data/read.json",
-  "source-bookmarks": "bookmarks|_data/bookmarks.json",
+  "source-books": "_data/read.json",
+  "source-bookmarks": "_data/bookmarks.json",
   "source-playlist": "_data/playlists.yml",
   "book-tags": "recommend, skip",
 };
@@ -123,8 +123,8 @@ describe("action", () => {
   });
 
   test("works, disable playlist", async () => {
-    defaultInputs["source-books"] = "books|_data/read.json";
-    defaultInputs["source-bookmarks"] = "bookmarks|_data/bookmarks.json";
+    defaultInputs["source-books"] = "_data/read.json";
+    defaultInputs["source-bookmarks"] = "_data/bookmarks.json";
     defaultInputs["source-playlist"] = "false";
 
     jest
@@ -139,7 +139,7 @@ describe("action", () => {
   });
 
   test("works, disable bookmarks", async () => {
-    defaultInputs["source-books"] = "books|_data/read.json";
+    defaultInputs["source-books"] = "_data/read.json";
     defaultInputs["source-bookmarks"] = "false";
     defaultInputs["source-playlist"] = "_data/playlists.yml";
 
@@ -156,7 +156,7 @@ describe("action", () => {
 
   test("works, disable books", async () => {
     defaultInputs["source-books"] = "false";
-    defaultInputs["source-bookmarks"] = "bookmarks|_data/bookmarks.json";
+    defaultInputs["source-bookmarks"] = "_data/bookmarks.json";
     defaultInputs["source-playlist"] = "_data/playlists.yml";
     jest
       .spyOn(GetJsonFile, "getJsonFile")
@@ -182,7 +182,7 @@ describe("action", () => {
   });
 
   test("works, disable book-tags", async () => {
-    defaultInputs["source-books"] = "books|_data/read.json";
+    defaultInputs["source-books"] = "_data/read.json";
     defaultInputs["source-bookmarks"] = "false";
     defaultInputs["source-playlist"] = "false";
     defaultInputs["book-tags"] = "";
