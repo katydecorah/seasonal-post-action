@@ -1,21 +1,24 @@
 ---
-title: ${year} ${season}
-image: ${image}
-${bookYaml}
-${bookmarkYaml}
-${playlistYaml}
+title: {{year}} {{season}}
+image: {{year}}-{{season | downcase}}.png
+{{books  | yaml: 'title','authors','url','isbn','tags' | name: 'books'}}
+{{bookmarks  | yaml: 'title','site','url','image' | name: 'bookmarks' }}
+{{playlist | yaml}}
 ---
 
-The books I read, playlist I made, and bookmarks I saved this ${season}.
+The books I read, playlist I made, and bookmarks I saved this {{season}}.
 
 ## Books
 
-${bookMarkdown}
+{% for book in books %}- [{{book.title}}]({{book.link}}) - {{book.authors}}{% if book.tags %} ({{book.tags | join: ', '}}){% endif %}
+{% endfor -%}
 
 ## Playlist
 
-${playlistMarkdown}
+{% for playlist in playlist.tracks %}- {{playlist.track}} - {{playlist.artist}}
+{% endfor -%}
 
 ## Bookmarks
 
-${bookmarkMarkdown}
+{% for bookmark in bookmarks %}- [{{bookmark.title}}]({{bookmark.url}}) - {{bookmark.site}}
+{% endfor -%}

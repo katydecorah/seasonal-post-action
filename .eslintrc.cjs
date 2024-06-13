@@ -7,4 +7,7 @@ module.exports = {
     "plugin:@typescript-eslint/recommended",
     "prettier",
   ],
+  rules: {
+    "no-irregular-whitespace": "off",
+  },
 };

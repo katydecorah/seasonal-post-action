@@ -1,34 +1,24 @@
+import { writeFile } from "fs/promises";
 import { buildPost } from "../build-post";
-import {
-  bookMarkdown,
-  bookYaml,
-  playlistYaml,
-  playlistMarkdown,
-  bookmarkMarkdown,
-  bookmarkYaml,
-} from "./format.test";
+import { books, playlist, bookmarks } from "./format.test";
 import { readFileSync } from "fs";
 import { join } from "path";
 
-it("buildPost", () => {
-  expect(
-    buildPost({
-      season: "Fall",
-      bookMarkdown,
-      playlistMarkdown,
-      bookmarkMarkdown,
-      year: "2021",
-      image: "2021-fall.jpg",
-      bookYaml,
-      bookmarkYaml,
-      playlistYaml,
-      template: readFileSync(join(__dirname, "../template.md"), "utf8"),
-    })
-  ).toMatchInlineSnapshot(`
+it("buildPost", async () => {
+  const md = await buildPost({
+    season: "Fall",
+    books,
+    playlist,
+    bookmarks,
+    year: "2021",
+    template: readFileSync(join(__dirname, "../template.md"), "utf8"),
+  });
+  await writeFile(join(__dirname, "__markdown-snapshots__", "template.md"), md);
+  expect(md).toMatchInlineSnapshot(`
     "---
     title: 2021 Fall
-    image: 2021-fall.jpg
-    books:
+    image: 2021-fall.png
+    books: |
       - title: People We Meet on Vacation
         authors: Emily Henry
         url: >-
@@ -100,7 +90,7 @@ it("buildPost", () => {
           https://books.google.com/books/about/This_Is_Your_Mind_on_Plants.html?hl=&id=Fxs3EAAAQBAJ
         isbn: '9780593296905'
 
-    bookmarks:
+    bookmarks: |
       - title: Gyeran Bap (Egg Rice) Recipe
         site: NYT Cooking
         url: https://cooking.nytimes.com/recipes/1022530-gyeran-bap-egg-rice
@@ -162,8 +152,7 @@ it("buildPost", () => {
         image: bookmark-orange-cardamom-pancakes-recipe.jpg
       - title: Small-Batch Buttermilk Biscuits Recipe
         site: NYT Cooking
-        url: >-
-          https://cooking.nytimes.com/recipes/1021862-small-batch-buttermilk-biscuits
+        url: https://cooking.nytimes.com/recipes/1021862-small-batch-buttermilk-biscuits
         image: bookmark-small-batch-buttermilk-biscuits-recipe.jpg
       - title: Sheet-Pan Chicken Fajitas Recipe
         site: NYT Cooking
@@ -182,10 +171,9 @@ it("buildPost", () => {
         site: NYT Cooking
         url: https://cooking.nytimes.com/recipes/1022121-mushroom-pasta-stir-fry
         image: bookmark-mushroom-pasta-stir-fry-recipe.jpg
-      - title: "Sheet-Pan Crispy Pork Schnitzel\\_ Recipe"
+      - title: Sheet-Pan Crispy Pork Schnitzel Recipe
         site: NYT Cooking
-        url: >-
-          https://cooking.nytimes.com/recipes/1022582-sheet-pan-crispy-pork-schnitzel
+        url: https://cooking.nytimes.com/recipes/1022582-sheet-pan-crispy-pork-schnitzel
         image: bookmark-sheet-pan-crispy-pork-schnitzel-recipe.jpg
       - title: Sugar Cookies Recipe
         site: NYT Cooking
@@ -326,6 +314,95 @@ it("buildPost", () => {
     - [Sheet-Pan Crispy Pork Schnitzel Recipe](https://cooking.nytimes.com/recipes/1022582-sheet-pan-crispy-pork-schnitzel) - NYT Cooking
     - [Sugar Cookies Recipe](https://cooking.nytimes.com/recipes/1018383-sugar-cookies) - NYT Cooking
     - [The Fluffiest Royal Icing Recipe](https://cooking.nytimes.com/recipes/1019785-the-fluffiest-royal-icing) - NYT Cooking
+    "
+  `);
+});
+
+it("buildPost, custom 2", async () => {
+  const md = await buildPost({
+    season: "Fall",
+    books,
+    playlist,
+    bookmarks,
+    year: "2021",
+    template: readFileSync(
+      ".github/actions/seasonal-post-template-basic.md",
+      "utf8"
+    ),
+  });
+  await writeFile(
+    join(__dirname, "__markdown-snapshots__", "custom-template-2.md"),
+    md
+  );
+  expect(md).toMatchInlineSnapshot(`
+    "# 2021 Fall Books
+
+    - [People We Meet on Vacation](https://books.google.com/books/about/People_We_Meet_on_Vacation.html?hl=&id=5fooEAAAQBAJ) - Emily Henry
+    - [Beautiful World, Where Are You](https://play.google.com/store/books/details?id=sL4SEAAAQBAJ) - Sally Rooney
+    - [Freshwater](https://play.google.com/store/books/details?id=_eUoDwAAQBAJ) - Akwaeke Emezi
+    - [The Renunciations](https://books.google.com/books/about/The_Renunciations.html?hl=&id=_xC-zQEACAAJ) - Donika Kelly
+    - [The Heart Principle](https://books.google.com/books/about/The_Heart_Principle.html?hl=&id=fzc7EAAAQBAJ) - Helen Hoang
+    - [Eileen](https://books.google.com/books/about/Eileen.html?hl=&id=AKqvDAAAQBAJ) - Ottessa Moshfegh
+    - [Attached](https://books.google.com/books/about/Attached.html?hl=&id=_O0oDwAAQBAJ) - Amir Levine, Rachel Heller
+    - [The Haunting of Hill House](https://books.google.com/books/about/The_Haunting_of_Hill_House.html?hl=&id=8v3mwAEACAAJ) - Shirley Jackson
+    - [Leave the World Behind](https://play.google.com/store/books/details?id=UyTIDwAAQBAJ) - Rumaan Alam
+    - [Goodbye, Again](https://play.google.com/store/books/details?id=MWinDwAAQBAJ) - Jonny Sun
+    - [Unwinding Anxiety](https://play.google.com/store/books/details?id=GxACEAAAQBAJ) - Judson Brewer
+    - [Empire of Wild](https://play.google.com/store/books/details?id=O5K5DwAAQBAJ) - Cherie Dimaline
+    - [Beach Read](https://books.google.com/books/about/Beach_Read.html?hl=&id=vDTgDwAAQBAJ) - Emily Henry
+    - [Sometimes I Trip on How Happy We Could Be](https://books.google.com/books/about/Sometimes_I_Trip_on_How_Happy_We_Could_B.html?hl=&id=qD8czgEACAAJ) - Nichole Perkins
+    - [The Midnight Library](https://play.google.com/store/books/details?id=nNjTDwAAQBAJ) - Matt Haig
+    - [This Is Your Mind on Plants](https://books.google.com/books/about/This_Is_Your_Mind_on_Plants.html?hl=&id=Fxs3EAAAQBAJ) - Michael Pollan
+
+
+    ---
+
+
+    "
+  `);
+});
+
+it("buildPost, custom", async () => {
+  const md = await buildPost({
+    season: "Fall",
+    books: [],
+    playlist: [],
+    bookmarks: [
+      {
+        title: "Bookmark 1",
+        url: "https://example.com",
+        quote: "Quote 1",
+      },
+      {
+        title: "Bookmark 2",
+        url: "https://example.com",
+        quote: "Quote 2",
+      },
+    ],
+
+    year: "2021",
+    template: `# Bookmarks
+{% for bookmark in bookmarks %}
+## [{{bookmark.title}}]({{bookmark.url}})
+
+> {{bookmark.quote}}
+{% endfor %}`,
+  });
+  await writeFile(
+    join(__dirname, "__markdown-snapshots__", "custom-template.md"),
+    md
+  );
+
+  expect(md).toMatchInlineSnapshot(`
+    "# Bookmarks
+
+    ## [Bookmark 1](https://example.com)
+
+    > Quote 1
+
+    ## [Bookmark 2](https://example.com)
+
+    > Quote 2
     "
   `);
 });
