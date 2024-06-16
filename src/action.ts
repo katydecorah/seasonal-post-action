@@ -106,28 +106,27 @@ export async function action() {
   }
 }
 
-function validateInputs(title, start, end) {
-  // validate inputs, start and end dates are required
+export function validateInputs(title: string, start: string, end: string) {
   if (!title) {
-    throw new Error("Title is required.");
+    throw new Error("`post-title` is required.");
   }
 
   if (!start) {
-    throw new Error("Start date is required.");
+    throw new Error("`start-date` is required.");
   }
 
   if (!end) {
-    throw new Error("End date is required.");
+    throw new Error("`end-date` is required.");
   }
 
-  // start and end must be in YYYY-MM-DD format
   const datePattern = /^\d{4}-\d{2}-\d{2}$/;
   if (!datePattern.test(start) || !datePattern.test(end)) {
-    throw new Error("Start and end dates must be in YYYY-MM-DD format.");
+    throw new Error(
+      "`start-date` and `end-date` must be in YYYY-MM-DD format."
+    );
   }
 
-  // start date must be before end date
   if (new Date(start) > new Date(end)) {
-    throw new Error("Start date must be before end date.");
+    throw new Error("`start-date` must be before `end-date`.");
   }
 }

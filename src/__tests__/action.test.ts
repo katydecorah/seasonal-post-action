@@ -1,4 +1,4 @@
-import { action } from "../action";
+import { action, validateInputs } from "../action";
 import { setFailed } from "@actions/core";
 import * as GetDataFile from "../get-data-file";
 import * as GetJsonFile from "../get-json-file";
@@ -184,5 +184,49 @@ describe("action", () => {
     await action();
     expect(setFailed).not.toHaveBeenCalled();
     expect(writeSpy.mock.calls[0]).toMatchSnapshot();
+  });
+});
+
+describe("validateInputs", () => {
+  it("throws an error if title is not provided", () => {
+    expect(() => validateInputs(null, "2022-01-01", "2022-12-31")).toThrow(
+      "Title is required."
+    );
+  });
+
+  it("throws an error if start date is not provided", () => {
+    expect(() => validateInputs("Title", null, "2022-12-31")).toThrow(
+      "`start-date` is required."
+    );
+  });
+
+  it("throws an error if end date is not provided", () => {
+    expect(() => validateInputs("Title", "2022-01-01", null)).toThrow(
+      "`end-date` is required."
+    );
+  });
+
+  it("throws an error if start date is not in YYYY-MM-DD format", () => {
+    expect(() => validateInputs("Title", "01-01-2022", "2022-12-31")).toThrow(
+      "`start-date` and `end-date` must be in YYYY-MM-DD format."
+    );
+  });
+
+  it("throws an error if end date is not in YYYY-MM-DD format", () => {
+    expect(() => validateInputs("Title", "2022-01-01", "31-12-2022")).toThrow(
+      "`start-date` and `end-date` must be in YYYY-MM-DD format."
+    );
+  });
+
+  it("throws an error if start date is after end date", () => {
+    expect(() => validateInputs("Title", "2022-12-31", "2022-01-01")).toThrow(
+      "`start-date` must be before `end-date`."
+    );
+  });
+
+  it("does not throw an error for valid inputs", () => {
+    expect(() =>
+      validateInputs("Title", "2022-01-01", "2022-12-31")
+    ).not.toThrow();
   });
 });
