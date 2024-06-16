@@ -62,13 +62,13 @@ on:
         type: string
 
 jobs:
-  seasonal_post:
+  scheduled-post:
     runs-on: ubuntu-latest
-    name: Write seasonal post
+    name: Write scheduled post
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Write seasonal post
+      - name: Write scheduled post
         uses: katydecorah/seasonal-post-action@v6.2.1
         with:
           github-username: katydecorah
@@ -82,7 +82,7 @@ jobs:
           git pull
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add -A && git commit -m "${{ env.seasonEmoji }} ${{ env.season }}"
+          git add -A && git commit -m "${{ env.title }}"
           git push
 ```
 
