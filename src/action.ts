@@ -1,5 +1,5 @@
 import { writeFile, readFile } from "fs/promises";
-import { exportVariable, getInput, setFailed, warning } from "@actions/core";
+import { getInput, setFailed, warning } from "@actions/core";
 import { buildPost } from "./build-post";
 import { formatPlaylist, formatBookmarks, formatBooks } from "./format";
 import { getDataFile } from "./get-data-file";
@@ -12,35 +12,22 @@ export async function action() {
     const payload = github.context.payload.inputs;
     const {
       "post-title": title,
-      "start-date": startData,
+      "start-date": startDate,
       "end-date": endDate,
     } = payload;
 
-    validateInputs(title, startData, endDate);
+    validateInputs(title, startDate, endDate);
 
     const slugifyTitle = title.toLowerCase().replace(/\s/g, "-");
-
     const image = `${slugifyTitle}.png`;
 
-    exportVariable("post-title", title);
-
-    const sourceBooks = getInput("source-books");
-    const sourceBookmarks = getInput("source-bookmarks");
-    const sourcePlaylist = getInput("source-playlist");
-
-    let bookKeyName, bookPath, bookmarkKeyName, bookmarkPath, playlistPath;
-
-    if (sourceBooks !== "false") {
-      [bookKeyName, bookPath] = sourceBooks.split("|");
-    }
-
-    if (sourceBookmarks !== "false") {
-      [bookmarkKeyName, bookmarkPath] = sourceBookmarks.split("|");
-    }
-
-    if (sourcePlaylist !== "false") {
-      playlistPath = sourcePlaylist;
-    }
+    const {
+      bookKeyName,
+      bookPath,
+      bookmarkKeyName,
+      bookmarkPath,
+      playlistPath,
+    } = processSources();
 
     const [bookData, bookmarkData, playlistData] = await Promise.all([
       getJsonFile(bookPath),
@@ -51,14 +38,14 @@ export async function action() {
     const { bookYaml, bookMarkdown } = formatBooks({
       bookKeyName,
       bookData,
-      start: startData,
+      start: startDate,
       end: endDate,
     });
 
     const { bookmarkYaml, bookmarkMarkdown } = formatBookmarks({
       bookmarkKeyName,
       bookmarkData,
-      start: startData,
+      start: startDate,
       end: endDate,
     });
 
@@ -67,18 +54,7 @@ export async function action() {
       title,
     });
 
-    const templatePath = getInput("post-template");
-    let template = await readFile(join(__dirname, "template.md"), "utf8");
-
-    if (templatePath) {
-      try {
-        template = await readFile(templatePath, "utf8");
-      } catch (error) {
-        warning(
-          `Could not find template file "${templatePath}". Using default template.`
-        );
-      }
-    }
+    const template = await getTemplate();
 
     // build post
     const md = buildPost({
@@ -106,6 +82,21 @@ export async function action() {
   }
 }
 
+async function getTemplate() {
+  const templatePath = getInput("post-template");
+
+  if (templatePath) {
+    try {
+      return await readFile(templatePath, "utf8");
+    } catch (error) {
+      warning(
+        `Could not find template file "${templatePath}". Using default template.`
+      );
+    }
+  }
+  return await readFile(join(__dirname, "template.md"), "utf8");
+}
+
 export function validateInputs(title: string, start: string, end: string) {
   if (!title) {
     throw new Error("`post-title` is required.");
@@ -129,4 +120,36 @@ export function validateInputs(title: string, start: string, end: string) {
   if (new Date(start) > new Date(end)) {
     throw new Error("`start-date` must be before `end-date`.");
   }
+}
+
+function processSources(): {
+  bookKeyName: string;
+  bookPath: string;
+  bookmarkKeyName: string;
+  bookmarkPath: string;
+  playlistPath: string;
+} {
+  const sourceBooks = getInput("source-books");
+  const sourceBookmarks = getInput("source-bookmarks");
+  const sourcePlaylist = getInput("source-playlist");
+
+  let bookKeyName, bookPath, bookmarkKeyName, bookmarkPath, playlistPath;
+  if (sourceBooks !== "false") {
+    [bookKeyName, bookPath] = sourceBooks.split("|");
+  }
+
+  if (sourceBookmarks !== "false") {
+    [bookmarkKeyName, bookmarkPath] = sourceBookmarks.split("|");
+  }
+
+  if (sourcePlaylist !== "false") {
+    playlistPath = sourcePlaylist;
+  }
+  return {
+    bookKeyName,
+    bookPath,
+    bookmarkKeyName,
+    bookmarkPath,
+    playlistPath,
+  };
 }

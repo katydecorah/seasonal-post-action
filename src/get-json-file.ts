@@ -12,8 +12,12 @@ export async function getJsonFile(
 ): Promise<DataFile | undefined | []> {
   if (!path) return [];
   try {
-    const owner = getInput("github-username");
-    const repo = getInput("github-repository");
+    const owner = getInput("github-username", {
+      required: true,
+    });
+    const repo = getInput("github-repository", {
+      required: true,
+    });
     const { data } = await octokit.rest.repos.getContent({
       owner,
       repo,

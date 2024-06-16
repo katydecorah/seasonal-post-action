@@ -3,9 +3,18 @@ name: Uses a custom markdown template (`post-template`) and customizes the `post
 on:
   workflow_dispatch:
     inputs:
-      date:
-        description: Set a specific date to run the action (YYYY-MM-DD), leave blank for today.
+      start-date:
+        description: "The start date for the post in the format YYYY-MM-DD"
         type: string
+        required: true
+      end-date:
+        description: "The end date for the post in the format YYYY-MM-DD"
+        type: string
+        required: true
+      post-title:
+        description: "The title of the post"
+        type: string
+        required: true
 
 jobs:
   scheduled-post:

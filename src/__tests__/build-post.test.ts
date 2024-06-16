@@ -258,7 +258,7 @@ it("buildPost", () => {
 
     ---
 
-    The books I read, playlist I made, and bookmarks I saved this 2011 Fall.
+    The books I read, playlist I made, and bookmarks I saved during 2011 Fall.
 
     ## Books
 

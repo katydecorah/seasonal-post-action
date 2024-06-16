@@ -6,7 +6,7 @@ ${bookmarkYaml}
 ${playlistYaml}
 ---
 
-The books I read, playlist I made, and bookmarks I saved this ${title}.
+The books I read, playlist I made, and bookmarks I saved throughout ${title}.
 
 ## Books
 

@@ -58,12 +58,10 @@ describe("action", () => {
     const formatBooksSpy = jest.spyOn(Format, "formatBooks");
     const formatBookmarksSpy = jest.spyOn(Format, "formatBookmarks");
     const formatPlaylistsSpy = jest.spyOn(Format, "formatPlaylist");
-    const exportVariableSpy = jest.spyOn(core, "exportVariable");
     const writeSpy = jest.spyOn(promises, "writeFile").mockImplementation();
     await action();
 
     expect(warningSpy).not.toHaveBeenCalled();
-    expect(exportVariableSpy).toHaveBeenCalledWith("post-title", "2021 Summer");
     expect(getJsonFileSpy).toHaveBeenNthCalledWith(1, "_data/read.json");
     expect(getJsonFileSpy).toHaveNthReturnedWith(1, books);
     expect(getJsonFileSpy).toHaveBeenNthCalledWith(2, "_data/bookmarks.json");
