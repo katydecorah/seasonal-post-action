@@ -1,7 +1,7 @@
 {
-  "name": "seasonal-post-action",
+  "name": "scheduled-post-action",
   "version": "6.2.1",
-  "description": "A GitHub action that creates a seasonal post from data files.",
+  "description": "A GitHub action that creates a scheduled post from data files.",
   "main": "dist/index.js",
   "type": "module",
   "scripts": {
