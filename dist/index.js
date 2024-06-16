@@ -46943,13 +46943,12 @@ const promises_namespaceObject = __WEBPACK_EXTERNAL_createRequire(import.meta.ur
 // EXTERNAL MODULE: ./node_modules/@actions/core/lib/core.js
 var core = __nccwpck_require__(2186);
 ;// CONCATENATED MODULE: ./src/build-post.ts
-function buildPost({ season, bookMarkdown, playlistMarkdown, bookmarkMarkdown, year, image, bookYaml, bookmarkYaml, playlistYaml, template, }) {
+function buildPost({ title, bookMarkdown, playlistMarkdown, bookmarkMarkdown, image, bookYaml, bookmarkYaml, playlistYaml, template, }) {
     const postVars = {
-        season,
+        title,
         bookMarkdown,
         playlistMarkdown,
         bookmarkMarkdown,
-        year,
         image,
         bookYaml,
         bookmarkYaml,
@@ -50849,14 +50848,14 @@ function formatBooks({ bookKeyName, bookData, start, end }) {
             .join("\n"),
     };
 }
-function formatPlaylist({ playlistData, name }) {
+function formatPlaylist({ playlistData, title }) {
     if (!playlistData || playlistData.length === 0) {
         return {
             playlistYaml: "",
             playlistMarkdown: "",
         };
     }
-    const playlist = playlistData.find(({ playlist }) => playlist === name);
+    const playlist = playlistData.find(({ playlist }) => playlist === title);
     return {
         playlistYaml: dump(playlist),
         playlistMarkdown: playlist.tracks
@@ -50887,48 +50886,6 @@ function formatBookmarks({ bookmarkKeyName, bookmarkData, start, end, }) {
 }
 function filterData(data, field, start, end) {
     return data.filter((f) => f[field] >= start && f[field] <= end);
-}
-
-// EXTERNAL MODULE: ./node_modules/@actions/github/lib/github.js
-var github = __nccwpck_require__(5438);
-;// CONCATENATED MODULE: ./src/find-season.ts
-
-
-function findSeason() {
-    const payload = github.context.payload.inputs;
-    const today = (payload === null || payload === void 0 ? void 0 : payload.date) ? new Date(payload.date) : new Date();
-    const month = today.getMonth();
-    const year = today.getFullYear();
-    const [marchEnd, juneEnd, septemberEnd, decemberEnd] = (0,core.getInput)("season-names")
-        .split(",")
-        .map((s) => s.trim());
-    const seasons = {
-        2: marchEnd,
-        5: juneEnd,
-        8: septemberEnd,
-        11: decemberEnd,
-    };
-    const season = seasons[month];
-    const seasonEmojis = (0,core.getInput)("season-emoji").split(",");
-    const seasonEmoji = seasonEmojis[Object.keys(seasons).indexOf(month.toString())];
-    (0,core.exportVariable)("seasonEmoji", seasonEmoji);
-    const dates = {
-        2: ["12", "03"],
-        5: ["03", "06"],
-        8: ["06", "09"],
-        11: ["09", "12"],
-    };
-    if (dates[month] === undefined) {
-        (0,core.setFailed)(`The current date is out of range, it's not time to create a playlist yet.`);
-    }
-    return {
-        name: `${month == 2 ? `${year - 1}/${year}` : year} ${season}`,
-        season,
-        year,
-        start: `${month === 2 ? `${year - 1}` : `${year}`}-${dates[month][0]}-21`,
-        end: `${year}-${dates[month][1]}-20`,
-        seasonEmoji,
-    };
 }
 
 // EXTERNAL MODULE: external "buffer"
@@ -51023,6 +50980,8 @@ function getJsonFile(path) {
 
 // EXTERNAL MODULE: external "path"
 var external_path_ = __nccwpck_require__(1017);
+// EXTERNAL MODULE: ./node_modules/@actions/github/lib/github.js
+var github = __nccwpck_require__(5438);
 ;// CONCATENATED MODULE: ./src/action.ts
 var action_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -51044,9 +51003,12 @@ var action_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _a
 function action() {
     return action_awaiter(this, void 0, void 0, function* () {
         try {
-            const { start, end, season, year, name } = findSeason();
-            const image = `${year}-${season.toLowerCase()}.png`;
-            (0,core.exportVariable)("season", name);
+            const payload = github.context.payload.inputs;
+            const { "post-title": title, "start-date": startData, "end-date": endDate, } = payload;
+            validateInputs(title, startData, endDate);
+            const slugifyTitle = title.toLowerCase().replace(/\s/g, "-");
+            const image = `${slugifyTitle}.png`;
+            (0,core.exportVariable)("post-title", title);
             const sourceBooks = (0,core.getInput)("source-books");
             const sourceBookmarks = (0,core.getInput)("source-bookmarks");
             const sourcePlaylist = (0,core.getInput)("source-playlist");
@@ -51068,20 +51030,20 @@ function action() {
             const { bookYaml, bookMarkdown } = formatBooks({
                 bookKeyName,
                 bookData,
-                start,
-                end,
+                start: startData,
+                end: endDate,
             });
             const { bookmarkYaml, bookmarkMarkdown } = formatBookmarks({
                 bookmarkKeyName,
                 bookmarkData,
-                start,
-                end,
+                start: startData,
+                end: endDate,
             });
             const { playlistYaml, playlistMarkdown } = formatPlaylist({
                 playlistData,
-                name,
+                title,
             });
-            const templatePath = (0,core.getInput)("seasonal-post-template");
+            const templatePath = (0,core.getInput)("post-template");
             let template = yield (0,promises_namespaceObject.readFile)(__nccwpck_require__.ab + "template.md", "utf8");
             if (templatePath) {
                 try {
@@ -51093,11 +51055,10 @@ function action() {
             }
             // build post
             const md = buildPost({
-                season,
+                title,
                 bookMarkdown,
                 playlistMarkdown,
                 bookmarkMarkdown,
-                year,
                 image,
                 bookYaml,
                 bookmarkYaml,
@@ -51105,13 +51066,34 @@ function action() {
                 template,
             });
             const postsDir = (0,core.getInput)("posts-directory");
-            const blogFilePath = (0,external_path_.join)(postsDir, `${end}-${year}-${season.toLowerCase()}.md`);
+            const blogFilePath = (0,external_path_.join)(postsDir, `${endDate}-${slugifyTitle.toLowerCase()}.md`);
             yield (0,promises_namespaceObject.writeFile)(blogFilePath, md);
         }
         catch (error) {
             (0,core.setFailed)(error);
         }
     });
+}
+function validateInputs(title, start, end) {
+    // validate inputs, start and end dates are required
+    if (!title) {
+        throw new Error("Title is required.");
+    }
+    if (!start) {
+        throw new Error("Start date is required.");
+    }
+    if (!end) {
+        throw new Error("End date is required.");
+    }
+    // start and end must be in YYYY-MM-DD format
+    const datePattern = /^\d{4}-\d{2}-\d{2}$/;
+    if (!datePattern.test(start) || !datePattern.test(end)) {
+        throw new Error("Start and end dates must be in YYYY-MM-DD format.");
+    }
+    // start date must be before end date
+    if (new Date(start) > new Date(end)) {
+        throw new Error("Start date must be before end date.");
+    }
 }
 
 ;// CONCATENATED MODULE: ./src/index.ts

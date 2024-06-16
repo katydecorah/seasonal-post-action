@@ -1,6 +1,6 @@
-name: "Seasonal post action"
+name: "Scheduled post action"
 author: "@katydecorah"
-description: "A GitHub action that creates a seasonal post from data files."
+description: "A GitHub action that creates a scheduled post from data files."
 runs:
   using: node20
   main: "dist/index.js"
@@ -15,7 +15,7 @@ inputs:
     required: true
 
   posts-directory:
-    description: The path to where you want to save your seasonal post files to in this repository.
+    description: The path to where you want to save your scheduled post files to in this repository.
     default: "notes/_posts/"
 
   post-template:

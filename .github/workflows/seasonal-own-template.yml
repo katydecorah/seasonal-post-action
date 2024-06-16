@@ -1,4 +1,4 @@
-name: Uses a custom markdown template (`seasonal-post-template`) and customizes the `posts-directory`, with a manual workflow trigger.
+name: Uses a custom markdown template (`post-template`) and customizes the `posts-directory`, with a manual workflow trigger.
 
 on:
   workflow_dispatch:
@@ -8,18 +8,18 @@ on:
         type: string
 
 jobs:
-  seasonal_post:
+  scheduled-post:
     runs-on: macOS-latest
-    name: Write seasonal post
+    name: Write scheduled post
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Write seasonal post
+      - name: Write scheduled post
         uses: ./
         with:
           github-username: katydecorah
           github-repository: archive
-          seasonal-post-template: .github/actions/seasonal-post-template-basic.md
+          post-template: .github/actions/post-template-basic.md
           posts-directory: books/
           source-bookmarks: recipes|_data/recipes.json
         env:
@@ -29,5 +29,5 @@ jobs:
           git pull
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add -A && git commit -m "${{ env.seasonEmoji }} ${{ env.season }}"
+          git add -A && git commit -m "${{ env.title }}"
           git push
