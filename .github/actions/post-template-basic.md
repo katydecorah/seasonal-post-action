@@ -1,4 +1,4 @@
-# ${year} ${season} Books
+# ${title} Books
 
 ${bookMarkdown}
 

@@ -1,8 +1,7 @@
 import { action } from "../action";
-import { exportVariable, setFailed } from "@actions/core";
+import { setFailed } from "@actions/core";
 import * as GetDataFile from "../get-data-file";
 import * as GetJsonFile from "../get-json-file";
-import * as FindSeason from "../find-season";
 import * as Format from "../format";
 import recipes from "./fixtures/recipes.json";
 import playlists from "./fixtures/playlists.json";
@@ -13,15 +12,11 @@ import * as github from "@actions/github";
 
 jest.mock("@actions/core");
 
-jest.useFakeTimers().setSystemTime(new Date("2021-9-20"));
-
 const defaultInputs = {
   "github-username": "katydecorah",
   "github-repository": "archive",
-  "season-emoji": "❄️,🌷,☀️,🍂",
-  "season-names": "Winter,Spring,Summer,Fall",
   "posts-directory": "notes/_posts/",
-  "seasonal-post-template": "",
+  "post-template": "",
   "source-books": "books|_data/read.json",
   "source-bookmarks": "bookmarks|_data/bookmarks.json",
   "source-playlist": "_data/playlists.yml",
@@ -33,7 +28,9 @@ beforeEach(() => {
     value: {
       payload: {
         inputs: {
-          date: undefined,
+          "start-date": "2021-06-21",
+          "end-date": "2021-09-20",
+          "post-title": "2021 Summer",
         },
       },
     },
@@ -61,19 +58,12 @@ describe("action", () => {
     const formatBooksSpy = jest.spyOn(Format, "formatBooks");
     const formatBookmarksSpy = jest.spyOn(Format, "formatBookmarks");
     const formatPlaylistsSpy = jest.spyOn(Format, "formatPlaylist");
-    const findSeasonSpy = jest.spyOn(FindSeason, "findSeason");
+    const exportVariableSpy = jest.spyOn(core, "exportVariable");
     const writeSpy = jest.spyOn(promises, "writeFile").mockImplementation();
     await action();
-    expect(findSeasonSpy).toHaveReturnedWith({
-      end: "2021-09-20",
-      name: "2021 Summer",
-      season: "Summer",
-      seasonEmoji: "☀️",
-      start: "2021-06-21",
-      year: 2021,
-    });
+
     expect(warningSpy).not.toHaveBeenCalled();
-    expect(exportVariable).toHaveBeenLastCalledWith("season", "2021 Summer");
+    expect(exportVariableSpy).toHaveBeenCalledWith("post-title", "2021 Summer");
     expect(getJsonFileSpy).toHaveBeenNthCalledWith(1, "_data/read.json");
     expect(getJsonFileSpy).toHaveNthReturnedWith(1, books);
     expect(getJsonFileSpy).toHaveBeenNthCalledWith(2, "_data/bookmarks.json");
@@ -86,8 +76,7 @@ describe("action", () => {
   });
 
   test("works, custom template", async () => {
-    defaultInputs["seasonal-post-template"] =
-      ".github/actions/seasonal-post-template-basic.md";
+    defaultInputs["post-template"] = ".github/actions/post-template-basic.md";
 
     const warningSpy = jest.spyOn(core, "warning").mockImplementation();
     jest
@@ -104,8 +93,7 @@ describe("action", () => {
   });
 
   test("works, custom template missing", async () => {
-    defaultInputs["seasonal-post-template"] =
-      ".github/actions/seasonal-post-template-missing.md";
+    defaultInputs["post-template"] = ".github/actions/post-template-missing.md";
     const warningSpy = jest.spyOn(core, "warning").mockImplementation();
     jest
       .spyOn(GetJsonFile, "getJsonFile")
@@ -116,7 +104,7 @@ describe("action", () => {
     const writeSpy = jest.spyOn(promises, "writeFile").mockImplementation();
     await action();
     expect(warningSpy).toHaveBeenCalledWith(
-      'Could not find template file ".github/actions/seasonal-post-template-missing.md". Using default template.'
+      'Could not find template file ".github/actions/post-template-missing.md". Using default template.'
     );
     expect(setFailed).not.toHaveBeenCalled();
     expect(writeSpy.mock.calls[0]).toMatchSnapshot();

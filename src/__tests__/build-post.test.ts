@@ -13,11 +13,10 @@ import { join } from "path";
 it("buildPost", () => {
   expect(
     buildPost({
-      season: "Fall",
+      title: "2011 Fall",
       bookMarkdown,
       playlistMarkdown,
       bookmarkMarkdown,
-      year: "2021",
       image: "2021-fall.jpg",
       bookYaml,
       bookmarkYaml,
@@ -26,7 +25,7 @@ it("buildPost", () => {
     })
   ).toMatchInlineSnapshot(`
     "---
-    title: 2021 Fall
+    title: 2011 Fall
     image: 2021-fall.jpg
     books:
       - title: People We Meet on Vacation
@@ -259,7 +258,7 @@ it("buildPost", () => {
 
     ---
 
-    The books I read, playlist I made, and bookmarks I saved this Fall.
+    The books I read, playlist I made, and bookmarks I saved this 2011 Fall.
 
     ## Books
 

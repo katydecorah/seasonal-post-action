@@ -45,7 +45,7 @@ const playlist = JSON.parse(
 
 export const { playlistYaml, playlistMarkdown } = formatPlaylist({
   playlistData: playlist,
-  name: "2021 Fall",
+  title: "2021 Fall",
 });
 
 it("playlistMarkdown", () => {

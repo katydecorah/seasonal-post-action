@@ -43,7 +43,7 @@ export function formatBooks({ bookKeyName, bookData, start, end }) {
   };
 }
 
-export function formatPlaylist({ playlistData, name }) {
+export function formatPlaylist({ playlistData, title }) {
   if (!playlistData || playlistData.length === 0) {
     return {
       playlistYaml: "",
@@ -51,7 +51,7 @@ export function formatPlaylist({ playlistData, name }) {
     };
   }
   const playlist: Playlist = playlistData.find(
-    ({ playlist }) => playlist === name
+    ({ playlist }) => playlist === title
   );
   return {
     playlistYaml: dump(playlist),

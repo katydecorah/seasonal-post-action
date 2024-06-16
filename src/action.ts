@@ -2,17 +2,27 @@ import { writeFile, readFile } from "fs/promises";
 import { exportVariable, getInput, setFailed, warning } from "@actions/core";
 import { buildPost } from "./build-post";
 import { formatPlaylist, formatBookmarks, formatBooks } from "./format";
-import { findSeason } from "./find-season";
 import { getDataFile } from "./get-data-file";
 import { getJsonFile } from "./get-json-file";
 import { join } from "path";
+import * as github from "@actions/github";
 
 export async function action() {
   try {
-    const { start, end, season, year, name } = findSeason();
-    const image = `${year}-${season.toLowerCase()}.png`;
+    const payload = github.context.payload.inputs;
+    const {
+      "post-title": title,
+      "start-date": startData,
+      "end-date": endDate,
+    } = payload;
 
-    exportVariable("season", name);
+    validateInputs(title, startData, endDate);
+
+    const slugifyTitle = title.toLowerCase().replace(/\s/g, "-");
+
+    const image = `${slugifyTitle}.png`;
+
+    exportVariable("post-title", title);
 
     const sourceBooks = getInput("source-books");
     const sourceBookmarks = getInput("source-bookmarks");
@@ -41,23 +51,23 @@ export async function action() {
     const { bookYaml, bookMarkdown } = formatBooks({
       bookKeyName,
       bookData,
-      start,
-      end,
+      start: startData,
+      end: endDate,
     });
 
     const { bookmarkYaml, bookmarkMarkdown } = formatBookmarks({
       bookmarkKeyName,
       bookmarkData,
-      start,
-      end,
+      start: startData,
+      end: endDate,
     });
 
     const { playlistYaml, playlistMarkdown } = formatPlaylist({
       playlistData,
-      name,
+      title,
     });
 
-    const templatePath = getInput("seasonal-post-template");
+    const templatePath = getInput("post-template");
     let template = await readFile(join(__dirname, "template.md"), "utf8");
 
     if (templatePath) {
@@ -72,11 +82,10 @@ export async function action() {
 
     // build post
     const md = buildPost({
-      season,
+      title,
       bookMarkdown,
       playlistMarkdown,
       bookmarkMarkdown,
-      year,
       image,
       bookYaml,
       bookmarkYaml,
@@ -88,11 +97,37 @@ export async function action() {
 
     const blogFilePath = join(
       postsDir,
-      `${end}-${year}-${season.toLowerCase()}.md`
+      `${endDate}-${slugifyTitle.toLowerCase()}.md`
     );
 
     await writeFile(blogFilePath, md);
   } catch (error) {
     setFailed(error);
+  }
+}
+
+function validateInputs(title, start, end) {
+  // validate inputs, start and end dates are required
+  if (!title) {
+    throw new Error("Title is required.");
+  }
+
+  if (!start) {
+    throw new Error("Start date is required.");
+  }
+
+  if (!end) {
+    throw new Error("End date is required.");
+  }
+
+  // start and end must be in YYYY-MM-DD format
+  const datePattern = /^\d{4}-\d{2}-\d{2}$/;
+  if (!datePattern.test(start) || !datePattern.test(end)) {
+    throw new Error("Start and end dates must be in YYYY-MM-DD format.");
+  }
+
+  // start date must be before end date
+  if (new Date(start) > new Date(end)) {
+    throw new Error("Start date must be before end date.");
   }
 }

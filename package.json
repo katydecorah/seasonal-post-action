@@ -7,7 +7,7 @@
   "scripts": {
     "pretest": "eslint .",
     "test": "jest --coverage",
-    "build": "ncc build src/index.ts && cpy src/template.md .github/actions/ --flat --rename seasonal-post-template.md"
+    "build": "ncc build src/index.ts && cpy src/template.md .github/actions/ --flat --rename post-template.md"
   },
   "author": "Katy DeCorah",
   "license": "MIT",

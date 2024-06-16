@@ -1,9 +1,8 @@
 export function buildPost({
-  season,
+  title,
   bookMarkdown,
   playlistMarkdown,
   bookmarkMarkdown,
-  year,
   image,
   bookYaml,
   bookmarkYaml,
@@ -11,11 +10,10 @@ export function buildPost({
   template,
 }) {
   const postVars = {
-    season,
+    title,
     bookMarkdown,
     playlistMarkdown,
     bookmarkMarkdown,
-    year,
     image,
     bookYaml,
     bookmarkYaml,
