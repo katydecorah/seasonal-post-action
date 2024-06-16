@@ -190,7 +190,7 @@ describe("action", () => {
 describe("validateInputs", () => {
   it("throws an error if title is not provided", () => {
     expect(() => validateInputs(null, "2022-01-01", "2022-12-31")).toThrow(
-      "Title is required."
+      "`post-title` is required."
     );
   });
 
