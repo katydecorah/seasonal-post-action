@@ -24,7 +24,7 @@ on:
 
 jobs:
   scheduled-post:
-    runs-on: macOS-latest
+    runs-on: ubuntu-latest
     name: Write scheduled post
     steps:
       - name: Checkout
@@ -63,7 +63,7 @@ on:
 
 jobs:
   seasonal_post:
-    runs-on: macOS-latest
+    runs-on: ubuntu-latest
     name: Write seasonal post
     steps:
       - name: Checkout
@@ -103,7 +103,7 @@ on:
 
 jobs:
   scheduled-post:
-    runs-on: macOS-latest
+    runs-on: ubuntu-latest
     name: Write scheduled post
     steps:
       - name: Checkout
