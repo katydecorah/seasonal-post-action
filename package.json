@@ -1,6 +1,6 @@
 {
   "name": "scheduled-post-action",
-  "version": "6.2.1",
+  "version": "0.0.0",
   "description": "A GitHub action that creates a scheduled post from data files.",
   "main": "dist/index.js",
   "type": "module",
@@ -36,13 +36,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/katydecorah/seasonal-post-action.git"
+    "url": "git+https://github.com/library-pals/scheduled-post-action.git"
   },
   "keywords": [
     "github-actions"
   ],
   "bugs": {
-    "url": "https://github.com/katydecorah/seasonal-post-action/issues"
+    "url": "https://github.com/katydecorah/library-pals/scheduled-post-action/issues"
   },
-  "homepage": "https://github.com/katydecorah/seasonal-post-action#readme"
+  "homepage": "https://github.com/katydecorah/library-pals/scheduled-post-action#readme"
 }
