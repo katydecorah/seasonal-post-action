@@ -30,7 +30,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Write scheduled post
-        uses: katydecorah/seasonal-post-action@v6.2.1
+        uses: katydecorah/seasonal-post-action@v0.0.0
         with:
           github-username: katydecorah
           github-repository: archive
@@ -92,7 +92,7 @@ jobs:
               ;;
           esac
       - name: Write scheduled post
-        uses: katydecorah/seasonal-post-action@v6.2.1
+        uses: katydecorah/seasonal-post-action@v0.0.0
         with:
           github-username: katydecorah
           github-repository: archive
@@ -144,7 +144,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Write scheduled post
-        uses: katydecorah/seasonal-post-action@v6.2.1
+        uses: katydecorah/seasonal-post-action@v0.0.0
         with:
           github-username: katydecorah
           github-repository: archive
