@@ -49,17 +49,14 @@ jobs:
 ### Additional example workflows
 
 <details>
-<summary>Manually trigger the action</summary>
+<summary>Seasonal scheduled post</summary>
 
 ```yml
-name: Manually trigger the action
+name: Seasonal scheduled post
 
 on:
-  workflow_dispatch:
-    inputs:
-      date:
-        description: Set a specific date to run the action (YYYY-MM-DD), leave blank for today.
-        type: string
+  schedule:
+    - cron: "00 02 20 Mar,Jun,Sep,Dec *"
 
 jobs:
   scheduled-post:
@@ -68,6 +65,32 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Setpost title and date
+        run: |
+          MONTH=$(date +%m)
+          YEAR=$(date +%Y)
+          case $MONTH in
+            03)
+              echo "POST_TITLE=$(($YEAR - 1))/${YEAR} Winter" >> $GITHUB_ENV
+              echo "START_DATE=$(($YEAR - 1))-12-20" >> $GITHUB_ENV
+              echo "END_DATE=${YEAR}-03-20" >> $GITHUB_ENV
+              ;;
+            06)
+              echo "POST_TITLE=${YEAR} Spring" >> $GITHUB_ENV
+              echo "START_DATE=${YEAR}-03-20" >> $GITHUB_ENV
+              echo "END_DATE=${YEAR}-06-20" >> $GITHUB_ENV
+              ;;
+            09)
+              echo "POST_TITLE=${YEAR} Summer" >> $GITHUB_ENV
+              echo "START_DATE=${YEAR}-06-20" >> $GITHUB_ENV
+              echo "END_DATE=${YEAR}-09-20" >> $GITHUB_ENV
+              ;;
+            12)
+              echo "POST_TITLE=${YEAR} Fall" >> $GITHUB_ENV
+              echo "START_DATE=${YEAR}-09-20" >> $GITHUB_ENV
+              echo "END_DATE=${YEAR}-12-20" >> $GITHUB_ENV
+              ;;
+          esac
       - name: Write scheduled post
         uses: katydecorah/seasonal-post-action@v6.2.1
         with:
@@ -75,6 +98,9 @@ jobs:
           github-repository: archive
           source-bookmarks: recipes|_data/recipes.json
           book-tags: "recommend,skip"
+          start-date: ${{ env.START_DATE }}
+          end-date: ${{ env.END_DATE }}
+          post-title: ${{ env.POST_TITLE }}
         env:
           TOKEN: ${{ secrets.TOKEN }}
       - name: Commit files
@@ -82,7 +108,7 @@ jobs:
           git pull
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add -A && git commit -m "${{ env.title }}"
+          git add -A && git commit -m "${{ env.POST_TITLE }}"
           git push
 ```
 
@@ -97,9 +123,18 @@ name: Uses a custom markdown template (`post-template`) and customizes the `post
 on:
   workflow_dispatch:
     inputs:
-      date:
-        description: Set a specific date to run the action (YYYY-MM-DD), leave blank for today.
+      start-date:
+        description: "The start date for the post in the format YYYY-MM-DD"
         type: string
+        required: true
+      end-date:
+        description: "The end date for the post in the format YYYY-MM-DD"
+        type: string
+        required: true
+      post-title:
+        description: "The title of the post"
+        type: string
+        required: true
 
 jobs:
   scheduled-post:
